@@ -51,16 +51,12 @@ The image is the option of Octopus-toolkit.
 .. image:: _static/Interface/2.Octopus_Option.png
 
 .. csv-table::
-   :header: "Option","Discription"
-   :widths: 10,35
+   :header: "No","Name","Discription"
+   :widths: 1,8,37
 
-   ``Latest genome version``, Use the latest genome.
-   ``Analyze the data in succession``, Skips already analyzed the samples.
-   ``Omit Process``,Omit the selected process. (Trimming and Sort)
-   ``CPU(Thread)``,Set the CPU to use.
-   ``Strand(RNA)``,Set the library strand for RNA-Seq.
-   ``Use the full parameter for each tool``,Use the full parameter.
-   ``Remove Files``,Delete selected files after each process analysis for HDD free space.
+   1,``Main option``,A window where you can set basic options for analysis.
+   2,``Remove Files``,Delete selected files after each process analysis for HDD free space.
+
 
 
 Full parameter

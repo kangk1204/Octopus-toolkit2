@@ -33,7 +33,7 @@ Or Command (Download ~ Run) ::
 
 * After completing the Requirement installation.
 
-.. image:: _static/Complete_Installing_Requirement.png
+.. image:: _static/Error/Err007_Complete_Installing_Requirement.png
 
 Java Virtual Machine(VM) heap memory limited
 --------------------------------------------
