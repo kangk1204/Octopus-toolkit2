@@ -1,0 +1,402 @@
+==========
+User Guide
+==========
+
+Octopus-toolkit can analyze data already published on NCBI or stored on your computer.
+
+* ``Public data`` : The NGS data uploaded to NCBI.
+* ``Private data`` : The NGS data stored on the user's computer. (Data obtained through a sequencing machine or downloaded directly in the web)
+
+Also, Octopus-toolkit can analyze further analysis such as ``Peak Calling``, ``Drawing Graph``, and ``Visualization`` after analyzing the public data or private data.
+
+The basic analysis of Octopus-toolkit uses public data.
+
+* ``NGS data processing``
+
+.. image:: _static/Guide/0.NGS_data_processing.png
+
+The analysis using Octopus-toolkit is based on the process from preprocessing to visualization. You can analyze the further analysis after the completion of the visualization process. 
+
+Public data
+^^^^^^^^^^^
+
+Quick Start
+___________
+
+.. note::
+    1. Enter the GEO accession number or click the open button to load GEO accession number list.
+    2. Click the Run button.
+    3. Choose the option you want to use in the Octopus Option.
+    4. Click the Run button in the Octopus Option.
+
+Start analyzing public data
+___________________________
+
+.. image:: _static/Guide/1.Public_Data_Input.png
+
+To analyze the public data, enter the GEO (Gene Expression Omnibus) Accession number or load the GEO Accession number list file.
+
+* Input : ``GEO Accession number`` ::
+
+   GSExxx : Each Series(Study) record is assigned a unique and stable GEO accession number.
+   GSMxxx : Each Sample record is assigned a unique and stable GEO accession number.
+
+* Input : ``GEO Accession number list`` (:download:`example.list<_templates/GEO_Accession_number.list>`)
+
+
+1. Enter the GEO accession number or click the open button to load GEO accession number list.
+2. Click the Run button.
+
+.. _octopus_option:
+
+Octopus option
+______________
+
+You can use the options provided by Octopus-toolkit as well as the tools used by each process.
+
+.. image:: _static/Guide/2.Octopus_Option.png
+
+.. csv-table::
+   :header: "Option","Decription"
+   :widths: 10,35
+
+   ``Latest genome version``, Use the latest genome.
+   ``Analyze the data in succession``, Skips already analyzed the samples.
+   ``Omit Process``,Omit the selected process. (Trimming and Sort)
+   ``CPU(Thread)``,Set the CPU to use.
+   ``Strand(RNA)``,Set the library strand for RNA-Seq.
+   ``Use the full parameter for each tool``,Use the full parameter.
+   ``Edit Button``,Go to the Full parameter option window.
+   ``Remove Files``,Delete selected files after each process analysis for HDD free space.
+
+* ``Latest genome version``
+
+Octopus-toolkit can analyze for Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, and Canis lupus familaris.
+
+.. list-table:: Available analysis genome version
+   :widths: 10 10
+   :header-rows: 1
+
+   * - Organism
+     - Genome version
+   * - Homo sapiens
+     - hg38, hg19, hg18
+   * - Mus musculus
+     - mm10, mm9
+   * - Drosophila melanogaster
+     - dm6, dm3
+   * - Saccharomyces cerevisiae
+     - sacCer3
+   * - Canis lupus familaris
+     - canFam3
+
+The latest genome version uses the latest version of the genome for analysis. If you don't select this option, Octopus-toolkit uses the following genome version for analysis. ::
+
+ * Latest genome (O) : hg38, mm10, dm6, sacCer3, canFam3
+ * Latest genome (X) : hg19, mm9, dm3, sacCer3, canFam3
+
+* ``Analyze the data in succession``
+
+When analyzing a GSE accession number that has a lot of sample data, you may have to shut down the computer during analysis for a variety of reasons. For example, if you stop analyzing after 8 samples of 10 samples have been analyzed, and later analyze again, you will have to analyze again from the beginning.(First sample) 
+
+To solve this issue, Octopus-toolkit saves analysis information of the sample in the log file after the analysis of one sample is completed.
+
+If you select analyze the data in succession, you can skip the already analyzed samples.
+
+If you have already analyzed the sample, but you want to reanalyze it with other options, Don't select analyze the data in succession.
+
+* ``Omit process``
+
+The omit process allows you to skip and analyze the selected process during the entire analysis process. You can shorten the overall analysis time by omitting these processes.
+
+In the trimming process, If all reads have bad quality, there is a possibility that all reads are deleted. Octopus-toolkit will analyze the original raw data(Fastq) when all reads are deleted due to bad quality after trimming.
+
+Also, If all reads are higher than the trimming cutoff (quality, adapt), you can skip to the 
+trimming process.
+
+In the sorting process, The alignment process in Octopus-toolkit provides you with a bam format file and a sorted.bam file that sorts it.
+
+Sorted.bam files can't be used for visualization , peak calling, and graph function after alignment process. It is used only when confirming the bam file directly via IGV tool.
+(The IGV process basically uses the bigWig format file, which is the output file of Visualization)
+
+However, the reason for creating sorted.bam file in Octopus-toolkit is that many NGS tools use the sorted.bam file as input for further analysis.
+
+So, If you don't need a sorted.bam file you can skip this sorting process to save time.
+
+* ``CPU(Thread)``
+
+Octopus-toolkit can select the CPU to your computer for analysis. (Default : 8)
+
+* ``Strand(RNA)``
+
+Strand is the library's strand information needed to analyze RNA-Seq data.
+
+Octopus-toolkit extracts information from samples in the GEO dataset when analyzing public data. However, information about strand is not well provided in GEO datasets.
+
+So, when you want to analyze the RNA-Seq data, you can set the strand specific library or non-strand library via this option. (Default : Unstrand)
+
+You can select either non-strand library or the strand-specific library such as FR-Firststrand, FR-Secondstrand using this option.
+
+* ``Use the full parameter for each tool``
+
+Use the full parameter for each tool (Checkbox) allows you to select the full option of the tool used in each analysis.
+
+When you select it, the Edit button is enabled. You can go to the Full parameter option window via the Edit button.
+
+Follow the link for full parameter details : :ref:`Full Parameter<full_parameter>`
+
+
+* ``Edit Button``
+
+The Edit button will be active when you select Use the full parameter for each tool. If you click the Edit button, the Full parameter optinos window will appear.
+
+* ``Remove Files``
+
+The data generated in the NGS analysis process has capacity over KiloByte to GigaByte, and your computer needs a lot of free space to store it. However, all the generated data is not needed for you.
+The generated data except for the main data for further analysis is deleted after each process by the your selection.
+
+.. list-table::
+   :widths: 10 10 10
+   :header-rows: 1
+
+   * - Option
+     - Extension
+     - Description
+   * - ``SRA``
+     - sra
+     - Compressed raw data downloaded from NCBI. (Sequence Read Archive)
+   * - ``Fastq``
+     - fastq or fq
+     - Raw data converted during preprocessing. (A short read sequence file)
+   * - ``Fastqc``
+     - html or text
+     - Output generated during Quality Check. (output of FastQC)
+   * - ``Trimming``
+     - fastq or fq
+     - Output generated during Trimming. (Trimmed raw file(Fastq))
+   * - ``BAM``
+     - bam
+     - Output generated during Alignment. (Mapped read to the genome)
+   * - ``Sorted_Bam``
+     - bam
+     - Output generated during Sortring. (Sorted mapped read)
+
+3. Choose the option you want to use in the Octopus Option.
+4. Click the Run button in the Octopus Option. 
+
+Run
+___
+
+
+* Analysis screen of Octopus-toolkit (Public data analysis)
+
+.. image:: _static/Guide/3.Octopus-toolkit_run_public.png
+
+
+Private data
+^^^^^^^^^^^^
+
+Quick Start
+___________
+
+.. note::
+    1. Select Analysis -> Private Data in the Menu bar.
+    2. Select the folder where the raw data is stored or select raw data stored in your computer.
+    3. Add information about each sample in the private table.
+    4. Click the Run button in the private table.
+    5. choose the option you want to use in the Octopus option.
+    6. Click the Run button in the Octopus Option.
+
+Start analyzing private data
+____________________________
+
+.. image:: _static/Guide/4.Private_Start.png
+
+Unlike public data analysis, private data analysis does not download SRA file from NCBI. This analysisonly uses the raw data stored on your computer.
+
+Private data analysis uses the Fastq format file and the gzip-compressed Fastq.gz format file as input.
+
+.. note::
+    * Raw data : Sample ``.fastq`` or Sample ``.fq``
+    * compressed Raw data : Sample ``.fastq.gz`` or Sample ``.fq.gz``
+    * Single-End data : Sample ``.fastq`` (or fq, fastq.gz, fq.gz)
+    * Paired-End data : Sample ``_1.fastq``, Sample ``_2.fastq``
+
+For Paired-End data, distinguish between ``_1.fastq`` and ``_2.fastq`` in the same sample name.
+
+1. To analyze the private data, select ``Analysis`` -> ``Private Data`` in the menu bar.
+2. Select the ``folder`` where the raw data is stored or select ``raw data`` stored in your computer.
+
+Octopus-toolkit examines the selected raw data or folder and selects only the data that matches the input format and outputs it to the private table.
+
+Private table
+_____________
+
+.. image:: _static/Guide/5.Private_Table.png
+
+Octopus-toolkit does not know the sample information about your private data. So you need to add information about the samples you want to analyze.
+
+Octopus-toolkit checks the name of the selected raw data to create an initial table. Paired-End data creates a table by separating ``_1.fastq`` and ``_2.fastq`` format from data of the ``same name``.
+
+If the selected data is not displayed in the table, refer to the data format of the above note and change the data name.
+
+First, select a sample in the table to enter information. Insert information about the selected sample by selecting it from the table option below.
+
+.. csv-table::
+   :header: "Option","Decription"
+   :widths: 10,20
+
+   ``Genome``,Select the sample's genome.
+   ``Seq type``,Select the sample's seq type.
+   ``Multi-Lane``,Select samples sequenced by Multi-Lane.
+   ``Strand``,Select the sample's strand.
+
+* ``Genome``
+
+The available genome in Octopus-toolkit is:
+
+.. list-table::
+   :widths: 8 10
+   :header-rows: 1
+
+   * - Species
+     - Genome version
+   * - ``Homo sapiens``
+     - ``hg38`` (Dec.2013, GRCh38), ``hg19`` (Feb.2009,GRCh37), ``hg18`` (Mar.2006 NCBI36)
+   * - ``Mus musculus``
+     - ``mm10`` (Dec.2011 GRCm38), ``mm9`` (July.2007 NCBI37)
+   * - ``Drosophila melanogaster``
+     - ``dm6`` (Aug.2014 BDGP Release 6+ ISO1 MT), ``dm3`` (Apr.2006 BDGP R5)
+   * - ``Saccharomyces cerevisiae``
+     - ``sacCer3`` (Apr.2011 SacCer_Apr2011)
+   * - ``Canis lupus familaris``
+     - ``canFam3`` (Sep.2011 Broad CanFam3.1)
+
+.. _seq_type:
+
+* ``Seq type``
+
+Octopus-toolkit can analyze ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, Dnase-Seq and Mnase-Seq.
+
+* ``Multi-Lane``
+
+When sequencing through a sequencing machine, Multi-Lane means that raw data is extracted by dividing into several lanes rather than 1 lane.
+
+Most multi-lane data have the following filenames. ::
+
+    Sample.L001.fastq, Sample.L002.fastq, Sample.L003.fastq ... Sample.L008.fastq
+
+To set multi-lane information, all multi-lane sample data should be selected with the same number of multi-lane values.
+
+If you want to know more information, please refer to the tutorial site. Multi-Lane tutorial Link
+
+* ``Strand``
+
+The strand provided by Octopus-toolkit is a library strand of two types.
+
+1. Non-strand library : ``Unstrand`` (Default)
+2. Strand specific library : ``FR-Firststrand``, ``FR-secondstrand``
+
+To add this option, the Seq type of the sample to be selected is RNA-Seq.
+
+3. Add information about each sample in the private table.
+4. Click the Run button in the private table.
+
+Octopus option
+______________
+
+Octopus option is the same as public data analysis. Please refer to public data analysis. (:ref:`Octopus option<octopus_option>`)
+
+Run
+___
+
+* Analysis screen of Octopus-toolkit (Private data analysis)
+
+.. image:: _static/Guide/6.Octopus-toolkit_run_private.png
+
+Peak Calling
+^^^^^^^^^^^^
+
+Quick Start
+___________
+
+.. note::
+    1. Select Analysis -> Peak Calling in the Menu bar.
+    2. Select the resulting folder generated by analyzing public data or private data.
+    3. Add information about each sample in the peak calling table.
+    4. Click the Run button in the private table.
+    
+Start analyzing peak calling
+____________________________
+
+.. image:: _static/Guide/7.Peak_Calling_Start.png
+
+The peak calling is the process of identifying the region of the mapped read to the genome.
+Peak calling process of Octopus-toolkit can't perform RNA-Seq analysis in NGS-Seq.
+
+Peak calling will detect the region of the read mapped on the genome, so you need to complete the alignment process in advance. Therefore, in order to use peak calling, you must complete at least one sample of the data analysis. (Public or Private)
+
+Peak calling table
+__________________
+
+.. image:: _static/Guide/8.Peak_Calling_Table.png
+
+The Peak calling table consists of a table that stores sample information, a sample input window, and a table option window.
+
+To use the peak calling, select the sample you want to analyze in the sample window and click the insert button. And then, Add Control and Style information for the selected sample After selecting the inserted sample.
+
+If Control data associated with the sample exist in the analyzed result, Octopus-toolkit will not automatically identify the Control data, so you will need to add Control information for the sample.
+
+* ``Control``
+
+* ``Style``
+
+
+Graph
+^^^^^
+
+Quick Start
+___________
+
+.. note::
+    1. Select Analysis -> Graph in the Menu bar.
+
+Start analyzing Graph
+_____________________
+
+.. image:: _static/Guide/9.Graph_Start.png
+
+Visualization
+^^^^^^^^^^^^^
+
+Quick Start
+___________
+
+.. note::
+    1. Select Analysis -> IGV in the Menu bar.
+    2. Select the resulting folder generated by analyzing public data or private data.
+    3. In the sample window, select the sample you want to analyze and click insert
+    4. Check that all genomes match in the IGV table.
+    5. If the genomes don't match, select the genome to be analyzed from the table option.
+    6. Click the Run button.
+
+Start analyzing Graph
+_____________________
+
+.. image:: _static/Guide/10.IGV_Start.png
+
+The IGV function is a process of visualizing analyzed data through IGV, a visualization analysis tool. 
+
+IGV uses the bigWig format file of the analyzed sample. Therefore, in order to use IGV function, you must complete public data or private data analysis.
+
+1. Select Analysis -> IGV in the Menu bar.
+2. Select the resulting folder generated by analyzing public data or private data.
+
+
+Output
+^^^^^^
+
+.. _full_parameter:
+
+Full Parameter
+^^^^^^^^^^^^^^
