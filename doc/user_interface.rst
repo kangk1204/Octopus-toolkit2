@@ -1,12 +1,11 @@
-==============
-User Interface
-==============
+================
+4.User Interface
+================
 
+4-1.Main UI
+^^^^^^^^^^^
 
-Main UI
-^^^^^^^
-
-The image is the main screen of Octopus-toolkit
+* The image is the main screen of Octopus-toolkit
 
 .. image:: _static/Interface/1.main.png
 
@@ -24,8 +23,8 @@ The image is the main screen of Octopus-toolkit
    6,``Detail note``,Detail note can be checked on the analysis process status through the progress bar.
    7,``Running log``,The running log displays the time record and analysis status for the entire analysis process.
 
-Menu Bar
-^^^^^^^^
+4-2.Menu Bar
+^^^^^^^^^^^^
 
 * The functions of the menu bar in Octopus-toolkit are described below.
 
@@ -43,10 +42,10 @@ Menu Bar
    ,``About Octopus-toolkit``, Information about Octopus-toolkit
     
 
-Octopus Option
-^^^^^^^^^^^^^^
+4-3.Octopus Option
+^^^^^^^^^^^^^^^^^^
 
-The image is the option of Octopus-toolkit. 
+* The image is the option of Octopus-toolkit. 
 
 .. image:: _static/Interface/2.Octopus_Option.png
 
@@ -59,8 +58,8 @@ The image is the option of Octopus-toolkit.
 
 
 
-Full parameter
-^^^^^^^^^^^^^^
+4-4.Full parameter
+^^^^^^^^^^^^^^^^^^
 
 * The following image shows Full parameter window.
 
@@ -74,8 +73,9 @@ Full parameter
    2,``Paremeter window``,This window allows you to set the Full parameter of the process you selected
    3,``Button``,You can apply or initialize the option using each button.
 
-Private Table
-^^^^^^^^^^^^^
+4-5.Private Table
+^^^^^^^^^^^^^^^^^
+
 If you have raw data(Fastq), the private Table is a setup window for analyzing your data.
 
 When private data used, only you knows the information of the sample, so you must select the sample information.
@@ -102,8 +102,8 @@ When private data used, only you knows the information of the sample, so you mus
      - ``Button``
      - You can use each button to load new private data, initialize the configured table information, and start analyzing the data.
 
-Peak Calling Table
-^^^^^^^^^^^^^^^^^^
+4-6.Peak Calling Table
+^^^^^^^^^^^^^^^^^^^^^^
 
 Peak Calling table is a setting window for detecting the region of the mapped read to the genome after analyzing the public and private data.
 
@@ -121,8 +121,8 @@ Peak Calling excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octopus
    4,``Information window``,This option window allows you to select the control data and type associated with the selected sample.
    5,``Button``,Each button can be used to initialize the information of the set sample and start data analysis.
 
-Graph Table
-^^^^^^^^^^^
+4-7.Graph Table
+^^^^^^^^^^^^^^^
 
 Graph table is a setting window for drawing heat map and line plot of samples based on detected region.
 
@@ -140,8 +140,8 @@ Graph function excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octop
    4,``Sample selection window``,This window allows you to select the sample to draw the graph.
    5,``Option``,This window allows you to select the TSS region and the number of BINs.
 
-IGV Table
-^^^^^^^^^
+4-8.IGV Table
+^^^^^^^^^^^^^
 
 IGV table is a setting window for visualizing the selected sample through the visualization tool. (IGV, `Integrative Genomics Viewer <http://software.broadinstitute.org/software/igv/home>`_).
 

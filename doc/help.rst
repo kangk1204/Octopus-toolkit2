@@ -1,7 +1,7 @@
 
-====
-Help
-====
+======
+9.Help
+======
 
 If you're have trouble please email Octopustoolkit@gmail.com
 
@@ -11,8 +11,8 @@ For ``quick readability``, we recommend the following ``email title``.
 
     [Question-Type] Title of Question Contents
 
-Example
-^^^^^^^
+9-1.Example
+^^^^^^^^^^^
 
 * [Octopus-toolkit] What is the latest version of Octopus-toolkit?
 

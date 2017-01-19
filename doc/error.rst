@@ -1,11 +1,11 @@
 .. _error:
 
-==========
-Error Code
-==========
+============
+7.Error Code
+============
 
-Summary
--------
+7-1.Summary
+-----------
 
 .. csv-table::
    :header: "Error ID","Description"
@@ -20,8 +20,8 @@ Summary
     :ref:`Err007<err_007>`,Some analytics tools are not installed.
     :ref:`Err008<err_008>`,The password you entered does not match.
 
-Detail
-------
+7-2.Detail
+----------
 
 .. _err_001:
 

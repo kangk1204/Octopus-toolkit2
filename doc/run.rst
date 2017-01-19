@@ -1,12 +1,12 @@
-===
-Run
-===
+=====
+2.Run
+=====
 
 .. note::
     ``Requirements`` must be installed on a computer before running the Octopus-toolkit. (:ref:`Installation <requirement>`)
 
-How to run the Octopus-toolkit
-------------------------------
+2-1.How to run the Octopus-toolkit
+----------------------------------
 
 * Download `Octopus-toolkit <https://github.com/kangk1204/Octopus/archive/master.zip>`_ and uncompress to the ``folder`` where you want it to be installed.
 * Open the terminal application and type the command below ::
@@ -35,8 +35,8 @@ Or Command (Download ~ Run) ::
 
 .. image:: _static/Error/Err007_Complete_Installing_Requirement.png
 
-Java Virtual Machine(VM) heap memory limited
---------------------------------------------
+2-2.Java Virtual Machine(VM) heap memory limited
+------------------------------------------------
 
 Tools that analyze NGS require a large amount of memory. (Recommend : ``32+`` Gb RAM).
 

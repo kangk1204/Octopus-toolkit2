@@ -49,6 +49,7 @@ Table of contents
 
    installation
    run
+   folder
    user_interface
    guide
    tutorial

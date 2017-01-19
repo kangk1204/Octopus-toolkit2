@@ -1,6 +1,6 @@
-==========
-User Guide
-==========
+============
+5.User Guide
+============
 
 Octopus-toolkit can analyze data already published on NCBI or stored on your computer.
 
@@ -17,8 +17,10 @@ The basic analysis of Octopus-toolkit uses public data.
 
 The analysis using Octopus-toolkit is based on the process from preprocessing to visualization. You can analyze the further analysis after the completion of the visualization process. 
 
-3rd party tools used in Octopus-toolkit
-_______________________________________
+.. _3rd_party_tool:
+
+5-1.3rd party tools used in Octopus-toolkit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
 
@@ -76,8 +78,8 @@ Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
      -
 
 
-Public data
-^^^^^^^^^^^
+5-2.Public data
+^^^^^^^^^^^^^^^
 
 Quick Start
 ___________
@@ -257,8 +259,8 @@ ___
 .. image:: _static/Guide/3.Octopus-toolkit_run_public.png
 
 
-Private data
-^^^^^^^^^^^^
+5-3.Private data
+^^^^^^^^^^^^^^^^
 
 Quick Start
 ___________
@@ -378,8 +380,8 @@ ___
 
 .. image:: _static/Guide/6.Octopus-toolkit_run_private.png
 
-Peak Calling
-^^^^^^^^^^^^
+5-4.Peak Calling
+^^^^^^^^^^^^^^^^
 
 Quick Start
 ___________
@@ -452,8 +454,8 @@ Please select a style option that meets your analysis needs.
 3. Add information about each sample in the peak calling table.
 4. Click the Run button in the peak calling table.
 
-Graph
-^^^^^
+5-5.Graph
+^^^^^^^^^
 
 Quick Start
 ___________
@@ -520,8 +522,8 @@ The Number of BINs that the Octopus-toolkit provides to you are 50,100 and 200.
 3. set the TSS region and Bin size in the Graph table.
 4. Click the Run button in the Graph table.
 
-Visualization
-^^^^^^^^^^^^^
+5-6.Visualization
+^^^^^^^^^^^^^^^^^
 
 Quick Start
 ___________
@@ -572,10 +574,250 @@ ___
 
 Unlike other functions in Octopus-toolkit, the IGV tool runs separately from Octopus-toolkit. You can upload more data directly from the IGV, and can set IGV's options.
 
-Output
-^^^^^^
+.. _output:
+
+5-7.Output
+^^^^^^^^^^
 
 .. _full_parameter:
 
-Full Parameter
-^^^^^^^^^^^^^^
+5-8.Full Parameter
+^^^^^^^^^^^^^^^^^^
+
+Full parameter provides options for 3rd party tools for analyzing NGS data in Octopus-toolkit.
+
+The 3rd party tools used in Octopus-toolkit : :ref:`3rd party tools<3rd_party_tool>`
+
+Preprocessing
+_____________
+
+Preprocessing is the process of downloading NGS data from NCBI or converting SRA format file to Fastq format file.
+The 3rd party tools used in preprocessing are Aspera and SRAToolkit(fastq-dump)
+
+* **Transfer rate**
+
+    ``MAX-RATE`` : MAX transfer rate (Only Integer)
+
+    ``MIN-RATE`` : MIN transfer rate (Only Integer)
+
+    ``Overwrite`` : Overwrite-Method, Always(Default), Never, Older, Diff
+
+* **Convert Sra to Fastq (Filtering)**
+
+    ``MIN-Read Length`` : Filter by sequence length >= <Value> (Only Integer)
+    
+    ``Aligned or unaligned reads`` : Dump only aligned sequence or unaligned sequences, NotUse(Default), Both, Aligned, Unaligned
+
+    ``Quality conversion`` (offset) : Offset to use for quality conversion, 33(Default), 64
+
+    ``Dump biological reads(Only)`` : Dump only biological reads, No(Default)
+
+QC & Trimming
+_____________
+
+QC & Trimming is the process of measuring the quality of the reads and trimming the adapter sequence and low-quality reads.
+The 3rd party tools used in QC & Trimming are FastQC and Trimmomatic.
+
+* **Determined quality of DNA Sequence**
+
+    ``K-Mer`` : Specifies the length of Kmer to look for in the Kmer content module, Specified Kmer length must be between 2 and 10. Default length is 7 if not specified.
+
+    ``Allocated memory`` : Set the momory available on your computer for Quality check. Provides a measure of currently available memory . (Octopus-toolkit option)
+
+* **Trimmed DNA sequence data**
+
+    ``Illumina adapt Sequence`` : Cut adapter and other illumina-specific sequences from the read.
+
+    ``Seed mismatches`` : Specifies the maximum mismatch count which will still allow a full match to be performed
+
+    ``Palindrome clip threshold`` : Specifies how accurate the match between the two 'adapter ligated' reads must be for PE palindrome read alignment.
+
+    ``Simple clip threshold`` : Specifies how accurate the match between any adapter etc. sequence must be against a read.
+
+    ``Window size`` : specifies the number of bases to average across
+
+    ``Average quality`` : Specifies the average quality required.
+
+    ``LEADING`` : Specifies the minimum quality required to keep a base.
+
+    ``TRAILING`` : Specifies the minimum quality required to keep a base.
+
+    ``HEADCROP`` : The number of bases to keep, from the start of the read.
+
+    ``TAILCROP`` : The number of bases to remove from the start of the read.
+
+    ``Minimum length of reads to be kept`` : Specifies the minimum length of reads to be kept.
+
+Alignment
+_________
+
+Alignment is the process of mapping reads to the reference genome.
+The 3rd party tool used in Alignment is Hisat2.
+
+* **Input**
+
+    ``Skip N read`` : Skip the first <int> reads/pairs in the input (none)
+
+    ``Stop after aligning N reads`` : Stop after first <int> reads/pairs (no limit)
+
+    ``Trim N bases 5' end`` : Trim <int> bases from 5'/left end of reads (0)
+
+    ``Trim N bases 3' end`` : Trim <int> bases from 3'/right end of reads (0)
+
+* **Scoring**
+
+    ``Ambiguous read penalty`` : Penalty for non-A/C/G/Ts in read/ref
+
+    ``Mismatch penalty`` : Max and min penalties for mismatch; lower qual = lower penalty <2,6>
+
+    ``Soft-Clipping penalty`` : Max and min penalties for soft-clipping; lower qual = lower penalty <1,2>
+
+    ``Read gap penalty`` : Read gap open, extend penalties (5,3)
+
+    ``Reference gap penalty`` : Reference gap open, extend penalties (5,3)
+
+* **Alignment**
+
+    ``Ignore all quality values`` : Treat all quality values as 30 on Phred scale (no)
+
+    ``Do not align reverse of read`` : Do not align forward (original) version of read (no)
+
+    ``Do not align forward of read`` : Do not align reverse-complement version of read (no)
+
+* **Spliced alignment**
+
+    ``Do not spliced alignment`` : Disable spliced alignment
+
+    ``Canonical`` : Penalty for a canonical splice site (0)
+
+    ``Non-canonical`` : Penalty for a non-canonical splice site (12)
+
+    ``MIN-Length`` : Minimum intron length (20)
+
+    ``MAX-Length`` : Maximum intron length (500000)
+
+Visualization-TagDirectory
+__________________________
+
+To analyze data using Homer, you need to make all useful information about the sample into the Tag directory.
+Visualization-TagDirectory is the process of creating this Tag Directory.
+The 3rd party tool used in TagDirectory is Homer.
+
+* **Create tag directory**
+
+    ``Fragment-Length`` : (Set estimated fragment length - given: use read lengths), By default treats the sample as a single read ChIP-Seq experiment
+
+    ``Maximum tags per bp`` : Maximum tags per bp, default: no maximum
+
+    ``Flip the strands of each read`` : Flip strand of each read, i.e. might want to use with some RNA-seq
+
+    ``Length of the read to keep`` : Filter reads with lengths outside this range
+
+Visualization-MakeBigWig
+________________________
+
+MakeBigWig is the process of creating bigWig format file which is Visualization file using TagDirectory.
+The 3rd party tool used in MakeBigWig is Homer.
+
+* **Make visualization data**
+
+    ``Size of the bigWig files`` : Size of file, when gzipped, default: 1e10, i.e. no reduction
+
+    ``Fragment Length`` : Approximate fragment length, default: auto
+
+    ``Resolution`` : Resolution, in bp, of file, default: 1, ``avg`` report average coverage if resolution is larger than 1bp, default: max is reported
+
+    ``Tags per bp to count`` : Minimum and maximum tags per bp to count, default: no limit
+
+    ``Plot negative values`` : Plot negative values, i.e. for - strand transcription
+
+* **Normalization**
+
+    ``Normalize the total number of reads`` : Total number of tags to normalize experiment to, default: 1e7
+
+    ``Set the standard length`` : Expected length of fragment to normalize to [0=off], default: 100
+
+PeakCalling-ChIP-Seq/Histone
+____________________________
+
+PeakCalling is the process of detecting the region of the mapped read to the genome.
+The 3rd party tool used in PeakCalling is Homer.
+
+* **ChIP-Seq/Histone**
+
+    ``Peak size`` : Peak size, default: 0
+
+    ``MIN-Distance`` : Minimum distance between peaks, default: 0 (peak size x2)
+
+    ``Genome Size`` : Set effective mappable genome size, default: 2e9
+
+    ``Fragment Length`` : Approximate fragment length, default: auto
+
+    ``Input Fragment Length`` : Approximate fragment length of input tags, default: auto
+
+    ``Tag`` : Maximum tags per bp to count, 0 = no limit, default: auto
+
+    ``Input tag`` : Maximum tags per bp to count in input, 0 = no limit, default: auto
+
+    ``Tag count to normalize`` : Tag count to normalize to, default 10000000
+
+    ``Region Resolution`` : Extends start/stop coordinates to cover full region considered "enriched" (YES), ``Resolution`` number of fractions peaks are divided in when extending 'regions', def: 4
+
+PeakCalling-Peak Filter
+_______________________
+
+* **Peak Filter**
+
+    ``Fold Enrichment(Input)`` : Fold enrichment over input tag count, default: 4.0
+
+    ``Poisson p-value threshold(Input)`` : Poisson p-value threshold relative to input tag count, default: 0.0001
+
+    ``Fold Enrichment(Local)`` : Fold enrichment over local tag count, default: 4.0
+
+    ``Poisson p-value threshold(Local)`` : Poisson p-value threshold relative to local tag count, default: 0.0001
+
+    ``Fold Enrichment(Unique Tag)`` : Fold enrichment limit of expected unique tag positions, default: 2.0
+
+    ``Local Size(Local tag)`` : Region to check for local tag enrichment, default: 10000
+
+    ``Input Size(Input tag)`` : Size of region to search for control tags, default: 0
+
+    ```False Discovery Rate`` : False discovery rate, default = 0.001
+
+    ``Poisson p-value cutoff`` : Set poisson p-value cutoff, default: 0.001
+
+    ``Set # of tags`` : Set # of tags to define a peak, default: 25
+
+    ``Set # of normalized tags`` : Set # of normalized tags to define a peak, by default uses 1e7 for norm
+
+PeakCalling-Other analysis
+__________________________
+
+* **MethylC-Seq/BS-Seq**
+
+    ``Find Region`` : Find unmethylated/methylated regions, default: -unmethyC
+
+    ``Methyl Threshold`` : Methylation threshold of regions, default: avg methylation/2
+
+    ``Min cytosine per Methyl`` : Minimum number of cytosines per methylation peak, default: 6
+
+* **Gro-Seq**
+
+    ``TSS Size`` : Size of region for initiation detection/artifact size, default: 250
+
+    ``Min-body Size`` : Size of regoin for transcript body detection, default: 1000
+
+    ``TSS-fold enrichment`` : Fold enrichment for new initiation dectection, default: 4.0
+
+    ``Body-fold enrichment`` : Fold enrichment for new transcript dectection, default: 4.0
+
+    ``End-fold enrichment`` : End transcript when levels are this much less than the start, default: 10.0
+
+    ``Fragment Length`` : Approximate fragment length, default: 150
+
+    ``Confidence P-value`` : Confidence p-value: 1.00e-05
+
+    ``Pseudo Tag Count`` : Pseudo tag count, default: 2.0
+
+    ``Minimum initial read depth`` : Minimum initial read depth for transcripts, default: auto
+

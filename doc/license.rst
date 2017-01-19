@@ -1,6 +1,6 @@
-=======
-License
-=======
+=========
+8.License
+=========
 
 GNU GENERAL PUBLIC LICENSE
 
