@@ -46,7 +46,7 @@ Table of contents
 .. toctree::
    :maxdepth: 2
 
-
+   quick_start
    installation
    run
    folder
