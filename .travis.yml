@@ -1,0 +1,15 @@
+
+language: java
+<<<<<<< HEAD
+<<<<<<< HEAD
+jdk : 
+    - oraclejdk8
+
+=======
+jdk:
+  - oraclejdk8
+>>>>>>> b7bcefd4549a4ce0e45113cb54a95415eee6ae88
+=======
+jdk:
+  - oraclejdk8
+>>>>>>> b7bcefd4549a4ce0e45113cb54a95415eee6ae88
