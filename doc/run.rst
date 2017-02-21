@@ -18,11 +18,11 @@
 
 Or Command (Download ~ Run) ::
 
-    wget https://github.com/kangk1204/Octopus/archive/master.zip -O Octopus-master.zip
-    unzip Octopus-master.zip
-    cd Octopus-master/
+    wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
+    unzip Octopus-toolkit.zip
+    cd Octopus-toolkit/
     java -jar Octopus-toolkit.jar
-
+    
 * Not installed Requirement. (Java 8 version) : (:ref:`Err007-1<err_007>`) 
 
 .. image:: _static/Error/Err007_Not_Install_Java.png
