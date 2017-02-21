@@ -8,7 +8,7 @@
 .. note::
     ``Requirements`` must be installed on a computer before running the Octopus-toolkit.
 
-Download Link : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.jar>`_)
+Download Link : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`_)
 
 .. _requirement:
 

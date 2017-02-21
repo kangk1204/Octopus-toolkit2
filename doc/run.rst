@@ -8,7 +8,7 @@
 2-1.How to run the Octopus-toolkit
 ----------------------------------
 
-* Download `Octopus-toolkit (:download:`Octopus-toolkit<_templates/Octopus-toolkit.jar>`) and uncompress to the ``folder`` where you want it to be installed.
+* Download `Octopus-toolkit (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress to the ``folder`` where you want it to be installed.
 * Open the terminal application and type the command below ::
 
     cd /Path/
