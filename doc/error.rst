@@ -126,7 +126,7 @@ Among this information, Octopus-toolkit refers the ``Organism``, ``Library strat
    * - DataSet
      - Description
    * - Organism
-     - Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, Canis lupus familaris
+     - Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, Canis lupus familaris, Arabidopsis thaliana
    * - Library Strategy
      - ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, Dnase-Seq, Mnase-Seq
    * - Instrument Model
