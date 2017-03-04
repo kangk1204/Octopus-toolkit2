@@ -21,7 +21,7 @@ Hardware/Software Requirement
 Minimum Memory (RAM):
 
 * ``32Gb`` memory for RNA-Seq.
-* ``8Gb`` memory for Others (ChIP,Gro,Mnase,Dnase,MeDIP)
+* ``8Gb`` memory for Others (ChIP,ATAC,Mnase,Dnase,MeDIP)
 
 Operating System:
 
