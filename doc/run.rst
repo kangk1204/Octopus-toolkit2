@@ -8,6 +8,8 @@
 2-1.How to run the Octopus-toolkit
 ----------------------------------
 
+Octopus-toolkit provides users with video related to Octopus-toolkit installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
+
 * Download (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress to the ``folder`` where you want it to be installed.
 * Open the terminal application and type the command below ::
 

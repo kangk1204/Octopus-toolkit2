@@ -7,8 +7,7 @@ We provide you with run commands for each OS for fast execution.
 0-1. Installation Movie
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Add youtube url
-
+Octopus-toolkit provides users with video related to Octopus-toolkit installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
 
 0-2. Ubuntu, Mint
 ^^^^^^^^^^^^^^^^^
