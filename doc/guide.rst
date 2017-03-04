@@ -280,7 +280,7 @@ ____________________________
 
 .. image:: _static/Guide/4.Private_Start.png
 
-Unlike public data analysis, private data analysis does not download SRA file from NCBI. This analysisonly uses the raw data stored on your computer.
+Unlike public data analysis, private data analysis does not download SRA file from NCBI. This analysis only uses the raw data stored on your computer.
 
 Private data analysis uses the Fastq format file and the gzip-compressed Fastq.gz format file as input.
 

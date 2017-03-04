@@ -1,0 +1,15 @@
+# OS : Ubuntu, Mint
+# Requirement Installation
+
+# Java (openjdk-8-jdk)
+sudo apt-get install openjdk-8-jdk
+
+# Library and Pacakges
+sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential r-base
+
+# Download Octopus-toolkit and Run 
+
+wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
+unzip Octopus-toolkit.zip
+cd Octopus-toolkit/
+java -jar Octopus-toolkit.jar
