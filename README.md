@@ -17,20 +17,21 @@ Operating System
 ======================================================
 
 ## Ubuntu, Mint (Ubuntu 16.04, Mint 18)
-## Java
-$ sudo apt-get install openjdk-8-jdk
+Java
+- $ sudo apt-get install openjdk-8-jdk
 
-## Library
-$ sudo apt-get install zlib1g-dev
-$ sudo apt-get install libpng12-dev
-$ sudo apt-get install libncurses5-dev
-$ sudo apt-get install build-essential
+Library
+- $ sudo apt-get install zlib1g-dev
+- $ sudo apt-get install libpng12-dev
+- $ sudo apt-get install libncurses5-dev
+- $ sudo apt-get install build-essential
 
 OR 
-$ sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential
 
-## R
-$ sudo apt-get install r-base
+- $ sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential
+
+R
+- $ sudo apt-get install r-base
 
 ======================================================
 
