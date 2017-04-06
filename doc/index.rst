@@ -13,7 +13,7 @@ Octopus-toolkit is a user friendly Chip-Seq and RNA-Seq analysis tool. It automa
 
 Download
 --------
-* Latest Version : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`)
+* Latest Version (2.0.0) : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) 
 
 Hardware/Software Requirement
 -----------------------------
