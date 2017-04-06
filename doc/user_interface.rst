@@ -41,7 +41,6 @@
    ,``Error Code``,Go to the Octopus-toolkit :ref:`Error code<error>` site.
    ,``About Octopus-toolkit``, Information about Octopus-toolkit
     
-
 4-3.Octopus Option
 ^^^^^^^^^^^^^^^^^^
 
@@ -54,7 +53,9 @@
    :widths: 1,8,37
 
    1,``Main option``,A window where you can set basic options for analysis.
-   2,``Remove Files``,Delete selected files after each process analysis for HDD free space.
+   2,``RNA-Seq option``,Set information for RNA-Seq analysis.
+   3,``Compression option``,Compresses the analyzed data for HDD free space.
+   4,``Remove Files``,Delete selected files after each process analysis for HDD free space.
 
 
 

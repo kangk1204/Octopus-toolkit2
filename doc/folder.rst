@@ -16,19 +16,19 @@ Octopus-toolkit creates 5 main folders when you run the program.
      - Sub Folder
      - Description
    * - ``Index``
-     - Reference, Hisat2
-     - Reference data for analysis and Hisat2 indexing file for alignment are stored.
+     - Reference, Hisat2, STAR
+     - Reference data for analysis and alignment tools indexing file for alignment are stored.
    * - ``Log``
      - Command, Run
      - The used command for analysis and the log of the running information are stored.
    * - ``Result``
-     - GSE_Folder, P_Folder, G
+     - GEO_Folder, P_Folder
      - The result files analyzed by user are stored.
    * - ``Script``
      - 
      - Create and save the required script file during analysis.
    * - ``Tools``
-     - analysis tools
+     - Analysis tools
      - Save the 3rd party tools used by Octopus-toolkit for analysis.
 
 3-1.Index-Reference

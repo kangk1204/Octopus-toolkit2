@@ -13,10 +13,8 @@ Octopus-toolkit provides users with video related to Octopus-toolkit installatio
 * Download (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress to the ``folder`` where you want it to be installed.
 * Open the terminal application and type the command below ::
 
-    cd /Path/
+    cd Octopus-toolkit/
     java -jar Octopus-toolkit.jar
-
-* Path : The ``folder`` where Octopus-toolkit is installed.
 
 Or Command (Download ~ Run) ::
 
@@ -24,6 +22,7 @@ Or Command (Download ~ Run) ::
     unzip Octopus-toolkit.zip
     cd Octopus-toolkit/
     java -jar Octopus-toolkit.jar
+
     
 * Not installed Requirement. (Java 8 version) : (:ref:`Err007-1<err_007>`) 
 

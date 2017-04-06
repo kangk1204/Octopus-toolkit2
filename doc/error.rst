@@ -159,6 +159,14 @@ The data generated in the NGS analysis process has capacity over KiloByte to Gig
 
 To solve this issue, if the capacity of data to be analyzed is large or the number of samples is large, Please ``prepare enough free space and analyze again``.
 
+* File system monitor (Up to ``2GB`` HDD free space)
+
+.. image:: _static/Error/Err005_File_System_Monitor.png
+
+* Octopus-toolkit Running Information
+
+.. image:: _static/Error/Err005_Running_info.png
+
 If you have an error related to ``Err005`` or have any question, Please contact us at the address below.
 
 Contact us : Octopustoolkit@gmail.com
@@ -191,9 +199,21 @@ NCBI provides raw data of published sample through ``FTP server`` to user. If th
 
 To solve this issue, you connects directly to the FTP server of NCBI.
 
+* ``Error006-1`` example : `GSM1675769 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1675769>`_
+
+.. image:: _static/Error/Err006-1_Example.png
+
 If you can connect to the FTP server, download the manually published sample.
 
+* NCBI Ftp server is running.(``Success``)
+
+.. image:: _static/Error/Err006-1_Success.png
+
 But the server is closed or samples are not downloaded, please contact the NCBI because it is an issue for the NCBI.
+
+* NCBI Ftp server is closed.(``Fail``)
+
+.. image:: _static/Error/Err006-1_Fail.png
 
 If the above method works normally, please try Octopus-toolkit again.
 
@@ -320,6 +340,10 @@ Err008
 * ``Password`` : This is the password used to log in to your computer.
 
 Please check your password again and try again.
+
+* Wrong Password (Example : My password = ktm123)
+
+.. image:: _static/Error/Err008_Wrong_Password.png
 
 If you have an error related to ``Err008`` or have any question, Please contact us at the address below.
 

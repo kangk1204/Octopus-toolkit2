@@ -17,11 +17,11 @@ Download Link : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`)
 
 To run Octopus-toolkit, you must have a version of ``Java 8`` (JDK, Java Development ToolKit) or higher installed on a computer.
 
-* Ubuntu, Mint ::
+* Ubuntu, Mint (``Up to Ubuntu 16.04, Mint18`` )::
 
     sudo apt-get install openjdk-8-jdk
 
-* Fedora ::
+* Fedora (``Up to Fedora 25`` )::
 
     sudo yum install java-1.8.0-openjdk
 

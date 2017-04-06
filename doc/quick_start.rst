@@ -21,8 +21,6 @@ Octopus-toolkit provides users with video related to Octopus-toolkit installatio
    cd Octopus-toolkit/
    java -jar Octopus-toolkit.jar
 
-
-
 0-3. Fedora
 ^^^^^^^^^^^
 
@@ -33,6 +31,5 @@ Octopus-toolkit provides users with video related to Octopus-toolkit installatio
     wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
    unzip Octopus-toolkit.zip
    cd Octopus-toolkit/
-   java -jar Octopus-toolkit.jar
-
+   java -jar Octopus-toolkit_2.0.0.jar
 
