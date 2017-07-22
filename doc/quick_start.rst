@@ -2,18 +2,19 @@
 0.Quick Start
 =============
 
-We provide you with run commands for each OS for fast execution.
+To use the Octopus-toolkit right away, please follow these tutorials:
 
-0-1. Installation Movie
-^^^^^^^^^^^^^^^^^^^^^^^
+0-1. Installation Movie Clip
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Octopus-toolkit provides users with video related to Octopus-toolkit installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
+Tutorial for installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
 
-0-2. Ubuntu, Mint
-^^^^^^^^^^^^^^^^^
+0-2. Ubuntu, Mint (We highly recommend Ubuntu)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Commands (:download:`Quick_Start(Ubuntu,mint).txt<_templates/Quick_Start(Ubuntu,mint).txt>`):: 
-
+   
+   sudo apt-get update
    sudo apt-get install openjdk-8-jdk
    sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential r-base
    wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
@@ -26,10 +27,32 @@ Octopus-toolkit provides users with video related to Octopus-toolkit installatio
 
 * Commands (:download:`Quick_Start(Fedora).txt<_templates/Quick_Start(Fedora).txt>`):: 
 
+   sudo yum update
    sudo yum install java-1.8.0-openjdk
    sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ R
     wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
    unzip Octopus-toolkit.zip
    cd Octopus-toolkit/
    java -jar Octopus-toolkit_2.0.0.jar
+
+
+0-4. Quick Run
+^^^^^^^^^^^^^^
+
+Example Gse list file (:download:`Example_GSE_List.txt<_templates/Example_GSE_List.txt>`)
+
+* ``A`` : Click the Open button GSE48685 in the input text area.
+* ``B`` : Select the ``Example_GSE_List.txt`` file.
+
+.. image:: _static/Quick/1.Quick_run.png
+
+* ``C`` : Click the Run button.
+* ``D`` : Select the options to analyze and click the RUN button. (Option : Defalut)
+
+.. image:: _static/Quick/2.Quick_run.png
+
+* Finally, Octopus-toolkit will automatically analyze massive data. You just have to wait for the results.
+
+.. image:: _static/Quick/3.Quick_run.png
+
 

@@ -1,5 +1,11 @@
 # Octopus-toolkit
 ======================================================
+## 0.Octopus-toolkit Homepage
+======================================================
+
+- Homepage : http://octopus-toolkit2.readthedocs.io/en/latest/
+
+======================================================
 ## 1.Hardware/Software Requirement
 ======================================================
 
@@ -64,7 +70,6 @@ R
 ## 4. Contact us
 ======================================================
 
-- Homepage : http://octopus-toolkit2.readthedocs.io/en/latest/
 - Help : http://octopus-toolkit2.readthedocs.io/en/latest/help.html
 - E-mail : Octopustoolkit@gmail.com
 

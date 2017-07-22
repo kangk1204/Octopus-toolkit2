@@ -1,15 +1,11 @@
 Octopus-toolkit
 ===============
 
-Octopus-Browser, Octopus-toolkit
+Octopus-toolkit
 
-<2016-12-11 13:23:45 by Prof. Keunsoo Kang, Taemook Kim in kangklab>
+<2017-04-06 17:02:12 by Prof. Keunsoo Kang, Taemook Kim in the Kangklab>
 
-Most of the current NGS analysis tools are developed to run on a Linux environment. The limitation of the current tools is that they are command line tools rather than GUIs.
-
-Octopus-toolkit can allow biologist and other researchers to run NGS analysis without understanding of computation behind the tools.
-
-Octopus-toolkit is a user friendly Chip-Seq and RNA-Seq analysis tool. It automatically downloads tools for Chip-Seq and RNA-Seq, and some reference genomes. It also automatically runs all the selected analysis of inputted GSE accession number.
+Octopus-toolkit is a stand-alone application for retrieving and processing large sets of next-generation sequencing (NGS) data with a single step. Octopus-toolkit is an automated set-up-and-analysis pipeline utilizing the Aspera, SRA Toolkit, bwtool, Samtools FastQC, Trimmomatic, HISAT2, STAR, and HOMER applications. All the applications will be installed on the user’s computer when the program starts. Upon the installation, it can automatically retrieve original files (.SRA) of various data sets, including ChIP-seq, ATAC-seq, DNase-seq, MeDIP-seq, MNase-seq, and RNA-seq, from the gene expression omnibus data repository. The downloaded files can then be sequentially processed to generate BAM and BigWig files, which are used for advanced analyses and visualization. Currently, it can process NGS data from popular model genomes such as, human (Homo sapiens), mouse (Mus musculus), dog (Canis lupus familiaris), Fruit fly (Drosophila melanogaster), Zebrafish (Danio rerio), Arabidopsis (Arabidopsis thaliana), and budding yeast (Saccharomyces cerevisiae) genomes. With the processed files from Octopus-toolkit, the meta-analysis of various data sets, motif searches for DNA-binding proteins, and the identification of differentially expressed genes and/or protein-binding sites can be easily conducted with few commands by users. Octopus-toolkit can allow biologist and other researchers to run NGS analysis without understanding of computation behind the tools.
 
 Download
 --------
@@ -21,16 +17,17 @@ Hardware/Software Requirement
 Minimum Memory (RAM):
 
 * ``32Gb`` memory for RNA-Seq.
-* ``8Gb`` memory for Others (ChIP,ATAC,Mnase,Dnase,MeDIP)
+* ``8Gb`` memory for Others (ChIP,ATAC,MNase,DNase,MeDIP)
 
 Operating System:
 
 * 32-64bit Linux, 64bit Window.
 
-Operating System Version:
+Operating System Version (tested):
 
-* Linux : Ubuntu (``16.04``), Fedora (``25``), Mint (``18``)
-* Window : Win (``7``), Win (``8``), Win (``10``)
+* Linux : Ubuntu (``16.04``)
+* Fedora (``25``)
+* Mint (``18``)
 
 Program development
 -------------------

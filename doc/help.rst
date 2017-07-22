@@ -3,26 +3,26 @@
 9.Help
 ======
 
-If you're have trouble please email Octopustoolkit@gmail.com
+If you have any questions, please send an email to the following address: Octopustoolkit@gmail.com
 
-For ``quick readability``, we recommend the following ``email title``.
+When sending an email, please include the following text in the title.
 
 * ``Recommend`` ::
 
-    [Question-Type] Title of Question Contents
+    [Question-Type] Title
 
 9-1.Example
 ^^^^^^^^^^^
 
 * [Octopus-toolkit] What is the latest version of Octopus-toolkit?
 
-* [Error] How to resolve about Err001?
+* [Error] How to resolve the Err001?
 
 * [Question] Is the Octopus-toolkit capable of ChIP-Seq analysis?
 
-* [Request] Can you add the mouse genome version 8 (mm8)?
+* [Request] Can you add a previous mouse genome version (mm8)?
 
-* Etc
+* [Etc] What is your name?
 
 
 

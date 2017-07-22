@@ -5,46 +5,46 @@
 4-1.Main UI
 ^^^^^^^^^^^
 
-* The image is the main screen of Octopus-toolkit
+* The image below is the main UI of Octopus-toolkit
 
 .. image:: _static/Interface/1.main.png
 
-* The explanation of the each part is as follows.
+* The description of each part as follows.
 
 .. csv-table::
    :header: "No","Name","Description"
    :widths: 1,10,44
 
-   1,``Menu Bar``,Mune bar provides the user with the necessary functions and methods for analysis.
-   2,``Input text area``,The input test area allows you to enter the published GEO accession number you want to analyze.
-   3,``Summary note``,The summary note displays brief information about tha analysis process and errors.
-   4,``Open and Run``,Open and Run can load the GEO accession number list and start analysis using Run buttion.
-   5,``Full parameter``,The full parameter can be set for parameters to be used in each analysis process.
-   6,``Detail note``,Detail note can be checked on the analysis process status through the progress bar.
-   7,``Running log``,The running log displays the time record and analysis status for the entire analysis process.
+   1,``Menu Bar``,Functions such as Private analysis (your data).
+   2,``Input``,Input GEO accession number (GSE or GSM) or a text file containing GEO accession numbers (one GSE or GSM per line).
+   3,``Status``,brief information regarding steps and errors.
+   4,``Open and Run``,Run the anlaysis.
+   5,``Full parameters``,Setting up the parameters for each tool.
+   6,``Progress bar``,Progress bar.
+   7,``Running information``,Status window
 
 4-2.Menu Bar
 ^^^^^^^^^^^^
 
-* The functions of the menu bar in Octopus-toolkit are described below.
+* Details below.
 
 .. csv-table::
    :header: "Menu","Sub Menu","Description"
    :widths: 10, 10,35
 
-   File,``Exit``, Close Octopus-toolkit
-   Analysis,``Private Data``,NGS analysis using private data.
-   ,``Peak Calling``,Find the region of peak mapped on the genome.
-   ,``Graph``,Draw the Heatmap and Line Plot.
+   File,``Exit``, Exit the Octopus-toolkit
+   Analysis,``Private Data``,Analyze your data
+   ,``Peak Calling``,Find peaks (enriched regions) for ChIP-seq MNase-seq MeDIP-seq and ATAC-seq with HOMER.
+   ,``Graph``,Draw the Heatmap and Line Plot from the output.
    ,``IGV``,Visualization using IGV (`Integrative Genomics Viewer <http://software.broadinstitute.org/software/igv/home>`_)
-   Help,``Manual(Tutorial)``,Go to the Octopus-toolkit manual site.
-   ,``Error Code``,Go to the Octopus-toolkit :ref:`Error code<error>` site.
-   ,``About Octopus-toolkit``, Information about Octopus-toolkit
+   Help,``Manual(Tutorial)``,Go to the Octopus-toolkit manual page.
+   ,``Error Code``,Go to the Octopus-toolkit :ref:`Error code<error>` page.
+   ,``Homepage``, Go to the Octopus-toolkit homepage
     
 4-3.Octopus Option
 ^^^^^^^^^^^^^^^^^^
 
-* The image is the option of Octopus-toolkit. 
+* Octopus-toolkit options
 
 .. image:: _static/Interface/2.Octopus_Option.png
 
@@ -52,17 +52,17 @@
    :header: "No","Name","Description"
    :widths: 1,8,37
 
-   1,``Main option``,A window where you can set basic options for analysis.
-   2,``RNA-Seq option``,Set information for RNA-Seq analysis.
-   3,``Compression option``,Compresses the analyzed data for HDD free space.
-   4,``Remove Files``,Delete selected files after each process analysis for HDD free space.
+   1,``Main option``,Main options.
+   2,``RNA-Seq option``,Options for RNA-seq data only.
+   3,``Compression option``,To save disk space.
+   4,``Remove Files``,Delete selected intermediate files after each process.
 
 
 
-4-4.Full parameter
-^^^^^^^^^^^^^^^^^^
+4-4.Full parameters
+^^^^^^^^^^^^^^^^^^^
 
-* The following image shows Full parameter window.
+* The following image shows Full parameters window.
 
 .. image:: _static/Interface/3.Full_parameter.png
 
@@ -70,16 +70,16 @@
    :header: "No","Name","Description"
    :widths: 1,8,37
 
-   1,``Analysis tree``,The Window shows the analysis process and you can select the desired process
-   2,``Paremeter window``,This window allows you to set the Full parameter of the process you selected
-   3,``Button``,You can apply or initialize the option using each button.
+   1,``Analysis tree``,Select one of steps
+   2,``Paremeter window``,Change parameters for the process you selected
+   3,``Apply``,You can apply or reset the option.
 
 4-5.Private Table
 ^^^^^^^^^^^^^^^^^
 
-If you have raw data(Fastq), the private Table is a setup window for analyzing your data.
+You can analyze your own data (Fastq) using Octopus-toolkit (Analysis - Private Data). The private Table is a setup window for your data.
 
-When private data used, only you knows the information of the sample, so you must select the sample information.
+To analyze your own data, you must select appropriate information as follows.
 
 .. image:: _static/Interface/4.Private_analysis.png
 
@@ -92,23 +92,23 @@ When private data used, only you knows the information of the sample, so you mus
      - Description
    * - 1
      - ``Help``
-     - Go to the tutorial. (How to use the private table)
+     - Go to the tutorial page.
    * - 2
      - ``Private table``
-     - The table can confirm the information of the set private data.
+     - Files with related information.
    * - 3
-     - ``Information window``
-     - The option window is used to set the information of the private data that is loaded.
+     - ``Setup``
+     - The option window is used to set appropriate information needed for processing given files.
    * - 4
-     - ``Button``
-     - You can use each button to load new private data, initialize the configured table information, and start analyzing the data.
+     - ``Apply``
+     - You can apply or reset the option.
 
 4-6.Peak Calling Table
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Peak Calling table is a setting window for detecting the region of the mapped read to the genome after analyzing the public and private data.
+You can identify peaks using the Peak Calling function. You have to select appropriate options for each file from the setting window.
 
-Peak Calling excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octopus-toolkit.
+RNA-seq data will not be applied.
 
 .. image:: _static/Interface/5.Peak_calling.png
 
@@ -116,18 +116,18 @@ Peak Calling excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octopus
    :header: "No","Name","Description"
    :widths: 10, 10,35
 
-   1,``Help``,Go to the tutorial. (How to use the peak calling table)
-   2,``Peak calling table``,The table can confirm the information for the set data for peak calling.
-   3,``Sample selection window``,This window allows you to select the sample to analyze the region of the mapped read and control data
-   4,``Information window``,This option window allows you to select the control data and type associated with the selected sample.
-   5,``Button``,Each button can be used to initialize the information of the set sample and start data analysis.
+   1,``Help``,Go to the tutorial.
+   2,``Set up table``,Parameters for peak calling
+   3,``Files``,Select files for analysis
+   4,``Setup``,Select appropriate options for given files
+   5,``Apply``,You can apply or reset the parameters
 
 4-7.Graph Table
 ^^^^^^^^^^^^^^^
 
-Graph table is a setting window for drawing heat map and line plot of samples based on detected region.
+To draw heatmap and line plots with the identified regions.
 
-Graph function excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octopus-toolkit.
+RNA-seq data will not be applied.
 
 .. image:: _static/Interface/6.Graph.png
 
@@ -135,16 +135,16 @@ Graph function excludes RNA-Seq among the NGS-Seqs that can be analyzed in Octop
    :header: "No","Name","Description"
    :widths: 10, 10,35
 
-   1,``Help``,Go to the tutorial. (How to use the graph table)
-   2,``Annotation``,Select the peak region that will be the base to draw the heat map and line.
-   3,``Graph table``,The table can confirm the information for the set data for graph function.
-   4,``Sample selection window``,This window allows you to select the sample to draw the graph.
-   5,``Option``,This window allows you to select the TSS region and the number of BINs.
+   1,``Help``,Go to the tutorial.
+   2,``Annotation``,Choose a peak file.
+   3,``Samples``,Status window
+   4,``Sample bigWig files``,Select bigWig files of samples you want to draw over the identified regions in the peak file.
+   5,``Option``,Defin the range (bp) relate to the center of peaks.
 
 4-8.IGV Table
 ^^^^^^^^^^^^^
 
-IGV table is a setting window for visualizing the selected sample through the visualization tool. (IGV, `Integrative Genomics Viewer <http://software.broadinstitute.org/software/igv/home>`_).
+You can visualize your data with bigWig files via IGV (IGV, `Integrative Genomics Viewer <http://software.broadinstitute.org/software/igv/home>`_).
 
 .. image:: _static/Interface/7.IGV.png
 
@@ -152,8 +152,8 @@ IGV table is a setting window for visualizing the selected sample through the vi
    :header: "No","Name","Description"
    :widths: 10, 10,35
 
-   1,``Help``,Go to the tutorial. (How to use the igv table)
-   2,``IGV table``,The table can confirm the information for the set data for visualizing samples.
-   3,``Sample selection window``,This window allows you to select the sample for visualizing samples.
-   4,``Option``,This window allows you to select the genome information.
+   1,``Help``,Go to the tutorial.
+   2,``Samples``,Status window.
+   3,``Sample bigWig files``,Select bigWig files for visualization.
+   4,``Genome``,Choose the reference genome.
 

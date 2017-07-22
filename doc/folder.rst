@@ -1,10 +1,10 @@
-========================
-3.Octopus-toolkit folder
-========================
+==================================
+3.Octopus-toolkit output directory
+==================================
 
-Octopus-toolkit creates 5 main folders when you run the program.
+Octopus-toolkit creates five directories when you run the program.
 
-* Octopus-toolkit main folder.
+* Octopus-toolkit main directory.
 
 .. image:: _static/Folder/1.Main_folder.png
 
@@ -17,19 +17,19 @@ Octopus-toolkit creates 5 main folders when you run the program.
      - Description
    * - ``Index``
      - Reference, Hisat2, STAR
-     - Reference data for analysis and alignment tools indexing file for alignment are stored.
+     - Reference genome sequence and annotation files for analysis and alignment tools.
    * - ``Log``
      - Command, Run
-     - The used command for analysis and the log of the running information are stored.
+     - Log file containing commands used for analysis.
    * - ``Result``
-     - GEO_Folder, P_Folder
-     - The result files analyzed by user are stored.
+     - GSE_Folder, P_Folder
+     - The output files.
    * - ``Script``
      - 
-     - Create and save the required script file during analysis.
+     - Scripts used for analysis.
    * - ``Tools``
      - Analysis tools
-     - Save the 3rd party tools used by Octopus-toolkit for analysis.
+     - Store the 3rd party tools used by Octopus-toolkit.
 
 3-1.Index-Reference
 ^^^^^^^^^^^^^^^^^^^
@@ -38,18 +38,18 @@ Octopus-toolkit creates 5 main folders when you run the program.
 
 .. image:: _static/Folder/2.Reference_folder.png
 
-The reference folder contains various information about the genome for analysis.
+The reference folder contains several reference files required for analysis.
 
-Before starting each process, Octopus-toolkit inspects the data of the genome needed for analysis and automatically installs the insufficient data.
+Before starting each process, Octopus-toolkit checks the folder whether the reference files are prepared. If not, it automatically prepare the files.
 
 3-2.Index-Hisat2
 ^^^^^^^^^^^^^^^^
 
 .. image:: _static/Folder/3.Hisat2_folder.png
 
-The reference genome should be indexed at least once before proceeding with the alignment. The Hisat2 folder contains data indexed the reference genome using the Hisat2 tool.
+The reference genome sequence file should be indexed at least once before proceeding the alignment step. The folder contains indexed genome sequence files used by the Hisat2 tool.
 
-Octopus-toolkit inspects the index file of the genome before running the alignment and runs the indexing process if it does not exist.
+Octopus-toolkit inspects the index file of the genome before running the alignment process and runs the indexing step if it does not exist.
 
 3-3.Log-Command
 ^^^^^^^^^^^^^^^
@@ -58,9 +58,9 @@ Octopus-toolkit inspects the index file of the genome before running the alignme
 
 .. image:: _static/Folder/4.Command_folder.png
 
-The Command folder contains files that stored the commands used in Octopus-toolkit during analysis. 
+The Command directory contains log files containing commands used during the analysis. 
 
-The file name is created based on the date when the analysis started. (:download:`2016_Dec_06.cmd.txt<_templates/2016_Dec_06.cmd.txt>`)
+The file name is created based on the date. (:download:`2016_Dec_06.cmd.txt<_templates/2016_Dec_06.cmd.txt>`)
 
 3-4.Log-Run
 ^^^^^^^^^^^
@@ -69,9 +69,9 @@ The file name is created based on the date when the analysis started. (:download
 
 .. image:: _static/Folder/5.Run_folder.png
 
-The Run folder contains files that stored running information recorded in the Octopus-toolkit during analysis.
+The Run directory contains log files containing running information recorded during analysis.
 
-The file name is created based on the date when the analysis started. (:download:`2016_Dec_06.run.txt<_templates/2016_Dec_06.run.txt>`)
+The file name is created based on the date. (:download:`2016_Dec_06.run.txt<_templates/2016_Dec_06.run.txt>`)
 
 3-5.Result
 ^^^^^^^^^^
@@ -80,13 +80,13 @@ The file name is created based on the date when the analysis started. (:download
 
 .. image:: _static/Folder/6.Result_folder.png
 
-The Result folder stores the output of all processes analyzed using Octopus-toolkit.
+The Result folder stores the output of Octopus-toolkit.
 
-The analyzed result folder name using the public data is GEO accession number you entered. Conversely, the result folder name of Private data begins with `P_.`
+The folder name is based on GEO accession number you entered. For the private data, the folder name begins with `P_.`
 
-The Graph folder stores the drawn Heatmap and Lineplot using the Graph function. 
+The Graph folder stores Heatmaps and Lineplots when you run the Graph function. 
 
-The output of processes in the Result folder is : :ref:`Output Link<output>`
+The detailed information regarding the output can be founded : :ref:`Output Link<output>`
 
 3-6.Script
 ^^^^^^^^^^
@@ -95,7 +95,7 @@ The output of processes in the Result folder is : :ref:`Output Link<output>`
 
 .. image:: _static/Folder/7.Script_folder.png
 
-The Script folder stores the script file for analyzing NGS data in Octopus-toolkit.
+The Script folder stores the script files used by Octopus-toolkit.
 
 3-7.Tools
 ^^^^^^^^^
@@ -104,7 +104,6 @@ The Script folder stores the script file for analyzing NGS data in Octopus-toolk
 
 .. image:: _static/Folder/8.Tools_folder.png
 
-The Tools is the folder where the 3rd party tools are installed to analyze NGS data.
+The Tools directory contains binary versions of 3rd party tools used in the Octopus-toolkit.
 
-Octopus-toolkit inspects in this folder whether or not the analysis tool is installed.
 

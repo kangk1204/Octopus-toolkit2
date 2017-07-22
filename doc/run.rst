@@ -8,10 +8,10 @@
 2-1.How to run the Octopus-toolkit
 ----------------------------------
 
-Octopus-toolkit provides users with video related to Octopus-toolkit installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
+Please follow the movie clip (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
 
 * Download (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress to the ``folder`` where you want it to be installed.
-* Open the terminal application and type the command below ::
+* Open the terminal application (cmd) and type the command below ::
 
     cd Octopus-toolkit/
     java -jar Octopus-toolkit.jar
@@ -24,24 +24,24 @@ Or Command (Download ~ Run) ::
     java -jar Octopus-toolkit.jar
 
     
-* Not installed Requirement. (Java 8 version) : (:ref:`Err007-1<err_007>`) 
+* No Java installation could be found. (Java 8 version) : (:ref:`Err007-1<err_007>`) 
 
 .. image:: _static/Error/Err007_Not_Install_Java.png
 
-* Not installed Requirement. (Libraries in system) : (:ref:`Err007-1<err_007>`) 
+* No prerequisite were found. (Libraries in system) : (:ref:`Err007-1<err_007>`) 
 
 .. image:: _static/Error/Err007_Not_Install_Libraries.png
 
-* After completing the Requirement installation.
+* Password for permission
 
 .. image:: _static/Error/Err007_Complete_Installing_Requirement.png
 
 2-2.Java Virtual Machine(VM) heap memory limited
 ------------------------------------------------
 
-Tools that analyze NGS require a large amount of memory. (Recommend : ``32+`` Gb RAM).
+Octopus-toolkit requires at least 8 Gb (32 Gb memory for processing human/mouse RNA-seq) (Recommend : ``32+`` Gb RAM).
 
-If you get errors related to running out of memory on your computer, should increase the heap memory of the Java Virtual Machine. 
+If you get errors related to running out of memory, please increase the heap memory of the Java Virtual Machine. 
 
 * If your memory is less than 16Gb::
 
