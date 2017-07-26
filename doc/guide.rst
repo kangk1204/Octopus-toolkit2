@@ -339,10 +339,10 @@ The following genomes are available in the Octopus-toolkit:
    * - ``Canis lupus familaris``
      - ``canFam3`` (Sep.2011 Broad CanFam3.1)
    * - ``Arabidopsis thaliana``
-     - ``tair10``
+     - ``tair10`` 
    * - ``Danio rerio``
-     - ``danRer10``
-   * - ``Caenorhabditis elegans``
+     - ``danRer10`` (Sep.2014 GRCz10)
+   * - ``Caenorhabditis elegans`` (Feb.2013 WBcel235)
      - ``ce11``
 
 
