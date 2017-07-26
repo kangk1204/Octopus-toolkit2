@@ -39,19 +39,19 @@ Tutorial for installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=
 0-4. Quick Run
 ^^^^^^^^^^^^^^
 
-Example Gse list file (:download:`Example_GSE_List.txt<_templates/Example_GSE_List.txt>`)
+Example GSE file (:download:`Example_GSE_List.txt<_templates/Example_GSE_List.txt>`)
 
-* ``A`` : Click the Open button GSE48685 in the input text area.
+* ``A`` : Click the OPEN button.
 * ``B`` : Select the ``Example_GSE_List.txt`` file.
 
 .. image:: _static/Quick/1.Quick_run.png
 
-* ``C`` : Click the Run button.
-* ``D`` : Select the options to analyze and click the RUN button. (Option : Defalut)
+* ``C`` : Click the RUN button.
+* ``D`` : Set parameters. Then, click the RUN button.
 
 .. image:: _static/Quick/2.Quick_run.png
 
-* Finally, Octopus-toolkit will automatically analyze massive data. You just have to wait for the results.
+* Octopus-toolkit will sequentialy download and process the data specified in the list file. The analysis may take some time.
 
 .. image:: _static/Quick/3.Quick_run.png
 

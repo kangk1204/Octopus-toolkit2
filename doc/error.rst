@@ -11,16 +11,18 @@
    :header: "Error ID","Description"
    :widths: 10, 35
 
-    :ref:`Err001<err_001>`,Octopus-toolkit can't access web page.
-    :ref:`Err002<err_002>`,This GEO accession number is not exist.
-    :ref:`Err003<err_003>`,Experiment type not supported by Octopus-toolkit.
-    :ref:`Err004<err_004>`,Dataset not supported by Octopus-toolkit.
-    :ref:`Err005<err_005>`,Your Hard Disk(HDD) space is not enough for analysis.
-    :ref:`Err006<err_006>`,This Error occurred during the analysis process.
+    :ref:`Err001<err_001>`,Octopus-toolkit cannot access the web page.
+    :ref:`Err002<err_002>`,Incorrect GEO accession number.
+    :ref:`Err003<err_003>`,The experiment type cannot be handled with Octopus-toolkit.
+    :ref:`Err004<err_004>`,The data cannot be processed.
+    :ref:`Err005<err_005>`,Not enough disk space.
+    :ref:`Err006<err_006>`,Related to each processing step.
     :ref:`Err007<err_007>`,Some analytics tools are not installed.
     :ref:`Err008<err_008>`,The password you entered does not match.
     :ref:`Err009<err_009>`,Octopus-toolkit can't read/write files from your computer.
     :ref:`Err010<err_010>`,The number of Paired-End data does not match.
+	
+If you have any questions, Please contact us at Octopustoolkit@gmail.com
 
 7-2.Detail
 ----------
@@ -30,164 +32,144 @@
 Err001
 ^^^^^^
 
-Octopus-toolkit connects to NCBI (`National Center for Biotechnology Information <https://www.ncbi.nlm.nih.gov/>`_) to obtain the sample information.
+Octopus-toolkit attempts to access the NCBI server (`National Center for Biotechnology Information <https://www.ncbi.nlm.nih.gov/>`_) to obtain sample information.
 
-If ``the network of your computer is not connected``, or ``the server of the NCBI is closed``, you will not get the sample information
+If ``your network connection is unstable``, or ``the NCBI server is tempararily unavailable``, Octopus-toolkit cannot get information for GSE and/or GSM.
 
-First, ``check the network connection status`` of your computer. If there is no problem with the network connection, ``connect to the`` `NCBI <https://www.ncbi.nlm.nih.gov/>`_ and check that the server is operating normally.
+First, ``check the network connection`` of your computer. If it is ok, please ``check the`` `NCBI <https://www.ncbi.nlm.nih.gov/>`_ and whether the server is operating normally.
 
-If both of the above statuses are normal, the connection to the NCBI has been ``timed out`` to obtain the sample information. It is ``temporary phenomenon``, so try again later.
+If the above cannot solve the problem, the connection to the NCBI may be ``timed out`` due to unknown reasons. Please re-run the Octopus-toolkit later (``temporary phenomenon``).
 
-If you have an error related to ``Err001``, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_002:
 
 Err002
 ^^^^^^
 
-Octopus-toolkit obtains sample information through the GEO (Gene Expression Omnibus) accession number entered.
+Octopus-toolkit obtains sample information from the GEO (gene expression omnibus) website.
 
 
 * ``GEO Accession Number`` ::
 
-   GSExxx : Each Series(Study) record is assigned a unique and stable GEO accession number.
-   GSMxxx : Each Sample record is assigned a unique and stable GEO accession number.
+   A GSExxx is a unique GEO accession number assigned to a study.
+   A GSMxxx is a unique GEO accession number assigned to a sample. A single GSE (study) can have a number of GSM (samples).
 
-You can only use the accession number registered in GEO, and ``Err002`` error occurs when entering accession number of ``unregistered`` or ``wrong format``.
+Octopus-toolkit can only process registered GSE or GSM ids in GEO. ``Err002`` occurs when you put ``unregistered`` accession ids or ``misspelled accession ids``.
 
-* Not exist GEO accession number (Input : ``GSE999999``)
+* Unregistered GSE id (Input : ``GSE999999``)
 
 .. image:: _static/Error/Err002_Not_Exist.png
 
-* Wrong GEO accession number format (Input : ``ChIP-Seq``)
+* Misspelled or incorrect accession number (Input : ``ChIP-Seq``)
 
 .. image:: _static/Error/Err002_Wrong_Accession_Number.png
 
-Please ``check again`` if GEO has the accession number of the sample registered.
-If you have an error related to ``Err002``, Please contact us at the address below.
+Please ``check the GEO accession number`` whether it is registered in the GEO.
 
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_003:
 
 Err003
 ^^^^^^
 
-NCBI offers a variety of study types such as expression profiling by array(``Array data``) and genome binding/occupancy profiling by high throughput sequencing(``NGS data``). (`Study type <https://www.ncbi.nlm.nih.gov/geo/summary/?type=series>`_)
+There are many different types of next-generation sequencing (NGS) data. As defined by NCBI (``NGS data`` - `Study type <https://www.ncbi.nlm.nih.gov/geo/summary/?type=series>`_), genome binding/occupancy profiling by high throughput sequencing indicates ChIP-seq data.
 
-Octopus-toolkit supports analysis of both ``expression profiling by high throughput sequencing`` and ``genome binding/occupancy profiling by high throughput sequencing`` in NGS data.
+Octopus-toolkit currently supports the following types of NGS data. Other NGS types will be skipped.
+``expression profiling by high throughput sequencing`` (RNA-seq)
+``genome binding/occupancy profiling by high throughput sequencing`` (ChIP-seq / MNase-seq / ATAC-seq / MeDIP-seq / DNase-seq)
 
-(Other NGS study types will be added later.)
+(Other NGS types will be added later)
 
-You check the ``experiment type`` of the GEO accession number you entered. ``GSE`` number except GSM is available. You access the GSE accession number you entered the page. (Ex : `GSE79452 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE79452>`_)
+You can check ``experiment type`` of given GEO accession number through the website. (ex: `GSE79452 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE79452>`_)
 
 * Experiment Type
 
 .. image:: _static/Error/Err003_Experiment_Type.png
 
-GSE number including multiple types must include either expression profiling by high throughput sequencing or genome binding/occupancy profiling by high throughput sequencing.
-
-If you have an error related to ``Err003``, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_004:
 
 Err004
 ^^^^^^
 
-When uploading raw data of sample to NCBI, various information about sample data is registered together. The dataset for GSM number provides useful information for users to use published data.
+Not all data in the GEO can be processed with the Octopus-toolkit. Octopus-toolkit check the following information before processing it.
+``Organism``, ``Library strategy``, ``Instrument model``, and ``FTP Address(SRA Experiment)``). (Important)
 
-Among this information, Octopus-toolkit refers the ``Organism``, ``Library strategy``, ``Instrument model``, ``FTP Address(SRA Experiment)``). (Important)
-
-* DataSet for GSM accession number (Ex : `GSE79452 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE79452>`_) 
+* DataSet for GSE79452 (Ex : `GSE79452 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE79452>`_) 
 
 .. image:: _static/Error/Err004_GSM_Info.png
 
-``Err004`` errors are divided into 4 details below. 
+``Err004`` is divided into the following four subcategories.
 
 .. csv-table::
     :header: "Sub Error ID","Description"
     :widths: 10, 35
 
-    ``Err004-1``,Can not supported Organism
-    ``Err004-2``,Can not supported Library Strategy. (NGS-Seq)
-    ``Err004-3``,Can not supported Instrument Model. (ILLUMINA)
-    ``Err004-4``,Not exist FTP address of raw data. (SRA format)
+    ``Err004-1``,The organism is not supported.
+    ``Err004-2``,The experiment type is not supported (for example Exome-seq).
+    ``Err004-3``,The instrument is not supported. Octopus-toolkit can only process data generated by Illumina instrument.
+    ``Err004-4``,Raw data (.sra) is currently unavailable (probably newly registered data).
 
-``Err004`` displays errors for unsupported data by Octopus-toolkit. The data supported by Octopus-toolkit from ``Err004-1`` to ``Err004-3`` is shown below.
+``Err004`` is related to unsupported data by Octopus-toolkit. The following data is currently handled with Octopus-toolkit.
 
 .. list-table::
    :widths: 15 30
    :header-rows: 1
 
-   * - DataSet
+   * - Type
      - Description
    * - Organism
-     - Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, Canis lupus familaris, Arabidopsis thaliana
+     - Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, Canis lupus familaris, Arabidopsis thaliana, Danio rerio, Caenorhabditis elegans
    * - Library Strategy
-     - ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, Dnase-Seq, Mnase-Seq
+     - ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, DNase-Seq, MNase-Seq
    * - Instrument Model
-     - Illumina Hiseq (Data generated by Illumina)
+     - Illumina GA/HiSeq/MiSeq (Illumina)
 
 
-``Err004-4`` error mean that information about the sample has uploaded, but the raw data is not uploaded to GEO, Please contact uploader of the sample to resolve this issue.
+``Err004-4`` indicates that data has been registered in the GEO, but the raw data (.sra) has not been released yet. Therefore, please check the availability of raw files.
 
 * ``Error004-4`` example : `GSM1675769 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1675769>`_
 
 .. image:: _static/Error/Err004-4_Example.png
 
-* Not exist FTP Address of raw data (SRA format)
+* No raw files (.sra).
 
 .. image:: _static/Error/Err004-4_Not_Exist_Page.png
 
-Please check again the information that Octopus-toolkit supports.
-If you have an error related to ``Err004``, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_005:
 
 Err005
 ^^^^^^
 
-NGS analysis allows users to get a lot of information and data about the parts of interest. 
+This error is related to disk space. To reslove this issue, please make ``enough free space`` and re-run the analysis.
 
-The data generated in the NGS analysis process has capacity over KiloByte to GigaByte, and your computer needs a lot of ``free space`` to store it.
-
-To solve this issue, if the capacity of data to be analyzed is large or the number of samples is large, Please ``prepare enough free space and analyze again``.
-
-* File system monitor (Up to ``2GB`` HDD free space)
+* Check you hard disk space.
 
 .. image:: _static/Error/Err005_File_System_Monitor.png
 
-* Octopus-toolkit Running Information
+* Status window.
 
 .. image:: _static/Error/Err005_Running_info.png
 
-If you have an error related to ``Err005`` or have any question, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_006:
 
 Err006
 ^^^^^^
 
-``Err006`` errors are divided into 6 details
+``Err006`` is divided into six subcategories.
 
 .. csv-table::
     :header: "Sub Error ID","Description"
     :widths: 10, 40
 
-    :ref:`Err006-1<err_006-1>`,Can not ``access`` NCBI's FTP server.
-    :ref:`Err006-2<err_006-2>`,Incorrect input file(``SRA``) or Fastq-dump error used to ``convert`` the raw file.
-    :ref:`Err006-3<err_006-3>`,Incorrect input file(``Fastq``) or Error occurred during ``Quality Check``
-    :ref:`Err006-4<err_006-4>`,Incorrect input file(``Fastq``) or Error occurred during ``Trimming``.
-    :ref:`Err006-5<err_006-5>`,The number of mapped reads is small or an error occurred during ``Mapping``.
-    :ref:`Err006-6<err_006-6>`,An error occurred during ``Sorting``.
+    :ref:`Err006-1<err_006-1>`,Cannot ``access`` NCBI's FTP server.
+    :ref:`Err006-2<err_006-2>`,File converting error from .sra to .fastq using ``fastq-dump``.
+    :ref:`Err006-3<err_006-3>`,Related to the .fastq file while checking the quality using ``FastQC``. 
+    :ref:`Err006-4<err_006-4>`,No input file (.fastq) for ``Trimming``.
+    :ref:`Err006-5<err_006-5>`,Related to the ``Mapping`` step.
+    :ref:`Err006-6<err_006-6>`,Related to the ``Sorting`` step (BAM file).
 
 
 .. _err_006-1:
@@ -284,99 +266,74 @@ If all reads are removed by ``bad quality``, Octopus-toolkit will use the non-tr
 Err006-5
 ________
 
-``Err006-5`` is caused by the following causes.
+``Err006-5`` is related to the following causes.
 
 * The input file (``non_trimmed Fastq``, ``Trimmed Fastq``) does not exist.
-* A large number of reads are trimmed. (``Bad quality``, ``High threshold`` of quality)
-* The number of mapped reads is too small. (Less than 2 MegaByte)
-* Select a ``genome`` that does not match the sample.
+* A large number of reads are trimmed due to ``bad sequencing quality`` or ``high threshold used``.
+* Too few mapped reads (Less than 2 MegaByte).
 
-You should check input file (``non-trimmed, trimmed fastq``), ``Read count``, ``file capacity`` for mapping and try the analysis again.
+You should check input file (``non-trimmed and trimmed fastq files``), ``read count``, ``file size after timming``.
 
-If the above method does not work, please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_006-6:
 
 Err006-6
 ________
 
-``Err006-6`` means the input file (Bam, mapped fastq) does not exist, or the number of mapped reads is too small.
+``Err006-6``: BAM (mapped) file does not exist or the number of mapped reads is too small.
 
-You should check ``input file``, ``mapped reads count`` and try the analysis again.
+You should check ``input file`` and ``BAM file``.
 
-If the above method does not work, please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_007:
 
 Err007
 ^^^^^^
 
-``Err007`` indicates that the ``requirements`` and ``analysis tools`` required to use Octopus-toolkit are not installed on your computer.
+``Err007`` is related to the installation step.
 
-To use the Octopus-toolkit, your computer must complete installing both ``Requirement(Err007-1)`` and ``analysis tools(Err007-2)``.
+To use the Octopus-toolkit, your must follow the installation procedure completely: ``Requirement(Err007-1)`` and ``analysis tools(Err007-2)``.
 
-* :ref:`Requirement <requirement>` : The library that you need to install yourself before run Octopus-toolkit.(By User)
-* Analysis tools : Tools installed automatically by Octopus-toolkit after run Octopus-toolkit.(By Program)
+* :ref:`Requirement <requirement>` : Library files must be installed.
+* Analysis tools : Tools that are installed automatically by Octopus-toolkit. If the installation procedure was interuppted, please remove the Octopus-toolkit directory and rerun it.
 
-``Homer`` may be in the list when you run Octopus-toolkit after the installation is completed normally. Unlike other tools, Homer loads some files from the Homer's homepage for installation. Therefore, if Homer's homepage does not work properly, it may not be installed.
+Octopus-toolkit download files from the ``HOMER`` website. If the website (http://homer.ucsd.edu/homer/) is unavailable, ``Err007`` can occur.
 
-Although the Homer's homepage works normally Homer is on the list, please contact us at the address below.
-
-If the analysis tool's name is listed in the list after the analysis tool is installed automatically or Octopus-toolkit not works, please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_008:
 
 Err008
 ^^^^^^
 
-``Err008`` indicates that the password entered by you is not match.
+``Err008`` is related to password issue.
 
-* ``Password`` : This is the password used to log in to your computer.
+* ``Password`` : You must enter your password once during the installtion step.
 
-Please check your password again and try again.
+Please check your password and try again.
 
-* Wrong Password (Example : My password = ktm123)
+* When you enter incorrect password (Example : My password = ktm123)
 
 .. image:: _static/Error/Err008_Wrong_Password.png
 
-If you have an error related to ``Err008`` or have any question, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_009:
 
 Err009
 ^^^^^^
 
-``Err009`` indicates that the script file can not be generated for analysis or the analyzed result can not be read on your computer.
+``Err009`` is related to script files generated by Octopus-toolkit. If this happens, please rerun it later.
 
-Please check the files and try analysis using Octopus-toolkit again.
-
-If you have an error related to ``Err009`` or have any question, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
 
 .. _err_010:
 
 Err010
 ^^^^^^
 
-``Err010`` indicates that the number of Paired-End samples does not match when doing a merge on the same sample in the public analysis.
+``Err010`` indicates that the number of files (paired-end sample) does not match when merging.
 
-If there are several SRA files in one GSM, Octopus-toolkit will merge the data and analyze it.
+If there are several SRA files in one sample (GSM), Octopus-toolkit will merge them.
 
-Paired-End data consists of Sample1_1 and Sample1_2. For these data, the number of Forward and Reverse must match.
+Paired-end data must have two files, Sample1_1.fastq and Sample1_2.fastq.
 
-If the number of data does not match, you can modify the data yourself and perform the private analysis. But, please let us know as much as possible because the direct modifying can be complicated.
-
-If you have an error related to ``Err010`` or have any question, Please contact us at the address below.
-
-Contact us : Octopustoolkit@gmail.com
-
+If if fails, this error occurs.
 

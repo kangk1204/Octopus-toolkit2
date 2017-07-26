@@ -2,27 +2,30 @@
 5.User Guide
 ============
 
-Octopus-toolkit can analyze data already published on NCBI or stored on your computer.
+Octoput-toolkit can analyze a number of publicly available next-generation sequencing (NGS) data with a single step.
+In addition, you can also analyze your own data (.fastq) using the same analysis pipeline that is provided by the Octopus-toolkit.
 
-* ``Public data`` : The NGS data uploaded to NCBI.
-* ``Private data`` : The NGS data stored on the user's computer. (Data obtained through a sequencing machine or downloaded directly in the web)
+* ``Supported NGS types`` : RNA-seq, ChIP-seq, ATAC-seq, DNase-seq, MeDIP-seq, and MNase-seq
+* ``Public data`` : NGS data released from gene expression omnibus (GEO).
+* ``Private data`` : NGS data stored in your computer (.fastq or .fastq.gz)
 
-Also, Octopus-toolkit can analyze further analysis such as ``Peak Calling``, ``Drawing Graph``, and ``Visualization`` after analyzing the public data or private data.
+Octopus-toolkit provides several additional functions for further analysis.
+* ``Peak Calling`` : Identification of read enriched regions (.bed)
+* ``Drawing Graph`` : Drawing line plot and heatmap on specified regions (.bed)
+* ``Visualization`` : Explore genome with bigWig files through IGV
 
-The basic analysis of Octopus-toolkit uses public data.
+Basically, Octopus-toolkit processes NGS data by the following steps.
 
 * ``NGS data processing``
 
 .. image:: _static/Guide/0.NGS_data_processing.png
-
-The analysis using Octopus-toolkit is based on the process from preprocessing to visualization. You can analyze the further analysis after the completion of the visualization process. 
 
 .. _3rd_party_tool:
 
 5-1.3rd party tools used in Octopus-toolkit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
+Octopus-toolkit utilizes the following 3rd party tools during the process.
 
 .. list-table::
    :widths: 10 10 10 10
@@ -31,13 +34,13 @@ Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
    * - NGS Process
      - Function
      - 3rd party tool
-     - Sub-tool
+     - Sub-tools
    * - ``Preprocessing``
-     - Download SRA file from NCBI
+     - Download SRA files from NCBI
      - ``Aspera``
      - ascp
    * - 
-     - Convert SRA to Fastq
+     - Convert SRA files to Fastq files
      - ``SRAToolkit``
      - fastq-dump
    * - ``Quality check``
@@ -45,7 +48,7 @@ Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
      - ``FastQC``
      - fastqc
    * - ``Trimming``
-     - Trimming for adapter sequence and low-quality reads
+     - Trimming for adapter sequence and portions of low-quality reads
      - ``Trimmomatic``
      - 
    * - ``Alignment``
@@ -53,19 +56,19 @@ Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
      - ``Hisat2``, ``STAR``
      - hisat2-build, STAR
    * - 
-     - Mapping the reads to the reference genome
+     - Mapping reads to the reference genome
      - ``Hisat2``, ``STAR``
      - hisat2-align, STAR
    * - ``Visualization``
-     - Create a visualization file
+     - Create bigWig files for visualization
      - ``Homer``
      - makeTagDirectory,makeUCSCFile,analyzeRepeats
    * - ``Peak calling``
-     - Detect mapped read to genome
+     - Detect enriched regions by mapped reads
      - ``Homer``
      - findPeak, pos2bed,annotatePeaks
    * - ``Graph``
-     - Calculate the value of bigWig for a specific region
+     - Calculate normalized values from bigWig files
      - ``Bwtool``
      - matrix
    * - 
@@ -73,7 +76,7 @@ Octopus-toolkit uses the following 3rd party tools to analyze NGS data.
      - ``R``
      - pheatmap, ggplot2
    * - ``IGV``
-     - Use IGV tool for visualization
+     - Explore the genome with processed data (bigWig files)
      - ``IGV``
      -
 
@@ -85,32 +88,33 @@ Quick Start
 ___________
 
 .. note::
-    1. Enter the GEO accession number or click the open button to load GEO accession number list.
+    1. Enter a GEO (Gene Expression Omnibus) accession number or click the open button to load a list of GEO accession numbers.
     2. Click the Run button.
-    3. Choose the option you want to use in the Octopus Option.
-    4. Click the Run button in the Octopus Option.
+    3. Select appropriate options you want to use.
+    4. Click the Run button to begin the analysis.
 
 Work flow
 _________
 
 .. image:: _static/Guide/13.analysis_workflow2.png
 
-Start analyzing public data
-___________________________
+To analyze a single or a set of publicly available NGS data from GEO.
+_____________________________________________________________________
 
 .. image:: _static/Guide/1.Public_Data_Input.png
 
-To analyze the public data, enter the GEO (Gene Expression Omnibus) Accession number or load the GEO Accession number list file.
+Please enter a single GEO Accession number or open a text file containing GEO Accession numbers.
 
 * Input : ``GEO Accession number`` ::
 
-   GSExxx : Each Series(Study) record is assigned a unique and stable GEO accession number.
-   GSMxxx : Each Sample record is assigned a unique and stable GEO accession number.
+   GSExxx : Each GSE (study) record is assigned to a single study which contains at least a NGS data (GSM).
+   GSMxxx : Each GSM (sample) record is assigned to a single NGS data.
 
 * Input : ``GEO Accession number list`` (:download:`example.list<_templates/GEO_Accession_number.list>`)
 
 
-1. Enter the GEO accession number or click the open button to load GEO accession number list.
+1. Enter a single GEO accession number or click the open button to load a list GEO accession numbers.
+
 2. Click the Run button.
 
 .. _octopus_option:
@@ -118,7 +122,7 @@ To analyze the public data, enter the GEO (Gene Expression Omnibus) Accession nu
 Octopus option
 ______________
 
-You can use the options provided by Octopus-toolkit as well as the tools used by each process.
+You can change a number of parameters provided by Octopus-toolkit or the integrated tools.
 
 .. image:: _static/Guide/2.Octopus_Option.png
 
@@ -126,17 +130,17 @@ You can use the options provided by Octopus-toolkit as well as the tools used by
    :header: "Option","Decription"
    :widths: 10,35
 
-   ``Latest genome version``, Use the latest genome.
-   ``Analyze the data in succession``, Skips already analyzed the samples.
-   ``Omit Process``,Omit the selected process. (Trimming and Sort)
-   ``CPU(Thread)``,Set the CPU to use.
-   ``Use the full parameter for each tool``,Use the full parameter.
-   ``Edit Button``,Go to the Full parameter option window.
-   ``Strand(RNA)``,Set the library strand for RNA-Seq.
-   ``RNA-Seq alignment tools``,Set the alignment tools for alignment to genome.
+   ``Latest genome version``, Use the latest genome rather than the genome used for the study.
+   ``Skip the completed samples``, Skip the samples that have already been analyzed.
+   ``Omit process``,Omit the selected processes such as trimming and sorting steps.
+   ``CPU(Thread)``,Set the number of CPUs to use.
+   ``Adjust all parameters for each step``,Change full parameters in each step.
+   ``Edit``,Open the Full parameter option window.
+   ``Strand (RNA)``,Set the library strand for RNA-Seq.
+   ``Alignment tool for RNA-seq``,Set the alignment tool for RNA-seq.
    ``Fastq -> Fastq.gz``,Compress Fastq to Fastq.gz.
    ``Bam -> CRAM``, Compress Bam to CRAM.
-   ``Remove Files``,Delete selected files after each process analysis for HDD free space.
+   ``Remove Files``,Delete selected intermediate files once each process completed to save space.
 
 * ``Latest genome version``
 
@@ -160,80 +164,68 @@ Octopus-toolkit can analyze for Homo sapiens, Mus musculus, Drosophila melanogas
      - canFam3
    * - Arabidopsis thaliana
      - tair10
+   * - Danio rerio
+     - danRer10
+   * - Caenorhabditis elegans
+     - ce11
 
-The latest genome version uses the latest version of the genome for analysis. If you don't select this option, Octopus-toolkit uses the following genome version for analysis. ::
+The latest genome version uses the latest version of the geonme for analysis. If you don't select this option, Octopus-toolkit uses the genome defined by submitter.
 
- * Latest genome (O) : hg38, mm10, dm6, sacCer3, canFam3, tair10
- * Latest genome (X) : hg19, mm9, dm3, sacCer3, canFam3, tair10
+ * Latest genome (O) : hg38, mm10, dm6, sacCer3, canFam3, tair10, danRer10, ce11
+ * Latest genome (X) : hg19, mm9, dm3, sacCer3, canFam3, tair10, danRer10, ce11
 
-* ``Analyze the data in succession``
+* ``Skip the completed samples``
 
-When analyzing a GSE accession number that has a lot of sample data, you may have to shut down the computer during analysis for a variety of reasons. For example, if you stop analyzing after 8 samples of 10 samples have been analyzed, and later analyze again, you will have to analyze again from the beginning.(First sample) 
+While analyzing a number of GSE/GSM data, you can stop the analysis and resume it later.
 
-To solve this issue, Octopus-toolkit saves analysis information of the sample in the log file after the analysis of one sample is completed.
+Octoput-toolkit will skip the samples that have been analyzed completely.
 
-If you select analyze the data in succession, you can skip the already analyzed samples.
-
-If you have already analyzed the sample, but you want to reanalyze it with other options, Don't select analyze the data in succession.
+Although you have the samples that have been analyzed completely, but you want to reanalyze it again, please do not check this option.
 
 * ``Omit process``
 
-The omit process allows you to skip and analyze the selected process during the entire analysis process. You can shorten the overall analysis time by omitting these processes.
+The omit process allows you to skip the trimming step and/or the sorting step. This shorten the anaysis time.
 
-In the trimming process, If all reads have bad quality, there is a possibility that all reads are deleted. Octopus-toolkit will analyze the original raw data(Fastq) when all reads are deleted due to bad quality after trimming.
+In the trimming process, if all reads have bad sequencing quality, all reads could be discarded. Octopus-toolkit will analyze the original raw data (.fastq) in this case by skipping the trimming step.
 
-Also, If all reads are higher than the trimming cutoff (quality, adapt), you can skip to the 
-trimming process.
-
-In the sorting process, The alignment process in Octopus-toolkit provides you with a bam format file and a sorted.bam file that sorts it.
-
-Sorted.bam files can't be used for visualization , peak calling, and graph function after alignment process. It is used only when confirming the bam file directly via IGV tool.
-(The IGV process basically uses the bigWig format file, which is the output file of Visualization)
-
-However, the reason for creating sorted.bam file in Octopus-toolkit is that many NGS tools use the sorted.bam file as input for further analysis.
-
-So, If you don't need a sorted.bam file you can skip this sorting process to save time.
+In the sorting process, BAM file will be sorted by using Samtools. In general, many applications uses sorted BAM files. If you are not interested in analyzing the sorted BAM files, you can skip this process.
 
 * ``CPU(Thread)``
 
-Octopus-toolkit can select the CPU to your computer for analysis. (Default : Maximum your PC)
+You can set the number of CPUs for analysis. (Default : Maximum number of cores depending on your computer)
 
-* ``Use the full parameter for each tool``
+* ``Adjust all parameters for each step``
 
-Use the full parameter for each tool (Checkbox) allows you to select the full option of the tool used in each analysis.
+You can adjust many parameters for each stop. Check the box and click the Edit button. The parameter window will pop up.
 
-When you select it, the Edit button is enabled. You can go to the Full parameter option window via the Edit button.
+Please follow the link in details : :ref:`Full Parameter<full_parameter>`
 
-Follow the link for full parameter details : :ref:`Full Parameter<full_parameter>`
+* ``Edit``
 
-* ``Edit Button``
+When you click the Edit button, the parameter window will appear.
 
-The Edit button will be active when you select Use the full parameter for each tool. If you click the Edit button, the Full parameter optinos window will appear.
+* ``Strand (RNA)``
 
-* ``Strand(RNA)``
+The strand option allows you to choose whether or not to take the stranded information into account. This is only available for stranded-specific RNA-seq.
 
-Strand is the library's strand information needed to analyze RNA-Seq data.
-
-Octopus-toolkit extracts information from samples in the GEO dataset when analyzing public data. However, information about strand is not well provided in GEO datasets.
-
-So, when you want to analyze the RNA-Seq data, you can set the strand specific library or non-strand library via this option. (Default : Unstrand)
+Octopus-toolkit extracts information from the GEO website when analyzing the public data. However, stranded-specific information of RNA-seq is not well documented. Therefore, this may or may not be applicable depending on the data.
 
 You can select either non-strand library or the strand-specific library such as FR-Firststrand, FR-Secondstrand using this option.
 
 * ``RNA-Seq alignment tools``
 
-You can select the tool to be used during the alignment process in RNA-Seq alignment tools.
+You can select an alignment tool to be used during the alignment process for RNA-seq: HISAT2 or STAR.
 
-RAM for alignment uses Hisat2 less than STAR, but alignment speed STAR faster.
+HISAT2 uses less memory (RAM) than STAR, but STAR is generally faster than HISAT2.
 
-* ``Fastq->Fastq.gz``and ``Bam->CRAM``
+* ``Fastq->Fastq.gz`` or ``Bam->CRAM``
 
-You can compress the analyzed data for HDD free space by selecting this option.
+You can compress intermediate files to save your disk space.
 
 * ``Remove Files``
 
-The data generated in the NGS analysis process has capacity over KiloByte to GigaByte, and your computer needs a lot of free space to store it. However, all the generated data is not needed for you.
-The generated data except for the main data for further analysis is deleted after each process by the your selection.
+Each step creates intermediate files which may or may not be used. If you want to further analyze the processed data, you might want to keep those intermediate files.
+If not, you can remove intermediate files (up to few hundread gigabytes) by selecting the boxes in the Reomve Files window. 
 
 .. list-table::
    :widths: 10 10 10
@@ -261,14 +253,16 @@ The generated data except for the main data for further analysis is deleted afte
      - bam
      - Output generated during Sortring. (Sorted mapped read)
 
-3. Choose the option you want to use in the Octopus Option.
-4. Click the Run button in the Octopus Option. 
+3. Set the paramters and options.
+
+4. Click the Run button to begin the anlaysis.
+
 
 Run
 ___
 
 
-* Analysis screen of Octopus-toolkit (Public data analysis)
+* Progress bar and status window (GSM1385578).
 
 .. image:: _static/Guide/3.Octopus-toolkit_run_public.png
 
@@ -280,21 +274,21 @@ Quick Start
 ___________
 
 .. note::
-    1. Select Analysis -> Private Data in the Menu bar.
-    2. Select the folder where the raw data is stored or select raw data stored in your computer.
-    3. Add information about each sample in the private table.
+    1. Select the analysis tab -> Select the Private Data function in the Menu bar.
+    2. Select raw files (.fastq) in your computer.
+    3. Add appropriate information for each sample in the private table.
     4. Click the Run button in the private table.
-    5. choose the option you want to use in the Octopus option.
-    6. Click the Run button in the Octopus Option.
 
-Start analyzing private data
-____________________________
+Analyzing your data (private data)
+__________________________________
 
 .. image:: _static/Guide/4.Private_Start.png
 
-Unlike public data analysis, private data analysis does not download SRA file from NCBI. This analysis only uses the raw data stored on your computer.
+Unlike the public data analysis, private data analysis does not require the converting step (.sra to .fastq).
 
-Private data analysis uses the Fastq format file and the gzip-compressed Fastq.gz format file as input.
+Input files can be fastq (.fastq or .fq) files or compressed fastq (.fastq.gz or .fq.gz) files.
+
+Files must be follow the rules below.
 
 .. note::
     * Raw data : Sample ``.fastq`` or Sample ``.fq``
@@ -302,38 +296,31 @@ Private data analysis uses the Fastq format file and the gzip-compressed Fastq.g
     * Single-End data : Sample ``.fastq`` (or fq, fastq.gz, fq.gz)
     * Paired-End data : Sample ``_1.fastq``, Sample ``_2.fastq``
 
-For Paired-End data, distinguish between ``_1.fastq`` and ``_2.fastq`` in the same sample name.
-
-1. To analyze the private data, select ``Analysis`` -> ``Private Data`` in the menu bar.
-2. Select the ``folder`` where the raw data is stored or select ``raw data`` stored in your computer.
-
-Octopus-toolkit examines the selected raw data or folder and selects only the data that matches the input format and outputs it to the private table.
+Octopus-toolkit only loads files that match the above rules.
 
 Private table
 _____________
 
 .. image:: _static/Guide/5.Private_Table.png
 
-Octopus-toolkit does not know the sample information about your private data. So you need to add information about the samples you want to analyze.
+Octopus-toolkit requires appropriate sample information for each file. You need to specify the required information.
 
-Octopus-toolkit checks the name of the selected raw data to create an initial table. Paired-End data creates a table by separating ``_1.fastq`` and ``_2.fastq`` format from data of the ``same name``.
+If any of the selected files does not appear in the list, please check file name and format of your files.
 
-If the selected data is not displayed in the table, refer to the data format of the above note and change the data name.
-
-First, select a sample in the table to enter information. Insert information about the selected sample by selecting it from the table option below.
+You must specify the following information for each sample.
 
 .. csv-table::
    :header: "Option","Decription"
    :widths: 10,20
 
-   ``Genome``,Select the sample's genome.
-   ``Seq type``,Select the sample's seq type.
-   ``Multi-Lane``,Select samples sequenced by Multi-Lane.
-   ``Strand``,Select the sample's strand.
+   ``Genome``,Select the genome.
+   ``Seq type``,Select the experimental type such as ChIP-seq.
+   ``Multi-Lane``,Set the Multi-lane option.
+   ``Strand``,Select the strand strategy if applicable.
 
 * ``Genome``
 
-The available genome in Octopus-toolkit is:
+The following genomes are available in the Octopus-toolkit:
 
 .. list-table::
    :widths: 8 10
@@ -353,46 +340,46 @@ The available genome in Octopus-toolkit is:
      - ``canFam3`` (Sep.2011 Broad CanFam3.1)
    * - ``Arabidopsis thaliana``
      - ``tair10``
+   * - ``Danio rerio``
+     - ``danRer10``
+   * - ``Caenorhabditis elegans``
+     - ``ce11``
+
 
 .. _seq_type:
 
 * ``Seq type``
 
-Octopus-toolkit can analyze ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, Dnase-Seq and Mnase-Seq.
+Octopus-toolkit supports the following experimenatal types: 
+ChIP-Seq, RNA-Seq, MeDIP-Seq, ATAC-Seq, DNase-Seq and MNase-Seq.
 
 * ``Multi-Lane``
 
-When sequencing through a sequencing machine, Multi-Lane means that raw data is extracted by dividing into several lanes rather than 1 lane.
+A single sample can be obtained from muliple lanes in a sequencing instrument. In this case, files from multe lanes can be merged by setting the same number in the Multi-Lane column.
 
-Most multi-lane data have the following filenames. ::
+Multi-lane files generally have the following filenames. ::
 
     Sample.L001.fastq, Sample.L002.fastq, Sample.L003.fastq ... Sample.L008.fastq
 
-To set multi-lane information, all multi-lane sample data should be selected with the same number of multi-lane values.
-
-If you want to know more information, please refer to the tutorial site. Multi-Lane tutorial Link
+To merge the above files, you must set the Multi-Lane columns in the files to the same number.
 
 * ``Strand``
 
-The strand provided by Octopus-toolkit is a library strand of two types.
+This option is to set the library strategy for RNA-seq.
 
-1. Non-strand library : ``Unstrand`` (Default)
-2. Strand specific library : ``FR-Firststrand``, ``FR-secondstrand``
+1. Unstranded library : ``Unstrand`` (Default)
+2. Strand-specific library : ``FR-Firststrand`` or ``FR-secondstrand``
 
-To add this option, the Seq type of the sample to be selected is RNA-Seq.
 
-3. Add information about each sample in the private table.
-4. Click the Run button in the private table.
-
-Octopus option
+Options
 ______________
 
-Octopus option is the same as public data analysis. Please refer to public data analysis. (:ref:`Octopus option<octopus_option>`)
+Options for private analysis is the same as public data analysis. Please refer to the public data analysis. (:ref:`Octopus option<octopus_option>`)
 
 Run
 ___
 
-* Analysis screen of Octopus-toolkit (Private data analysis)
+* Snapshots (Private data analysis)
 
 .. image:: _static/Guide/6.Octopus-toolkit_run_private.png
 
@@ -403,44 +390,37 @@ Quick Start
 ___________
 
 .. note::
-    1. Select Analysis -> Peak Calling in the Menu bar.
-    2. Select the resulting folder generated by analyzing public data or private data.
-    3. Add information about each sample in the peak calling table.
-    4. Click the Run button in the peak calling table.
+    1. Select the Analysis tab -> Click the Peak Calling function in the Menu bar.
+    2. Select the output folder (Result/GSExxxxx) in the Result directory which is generated by Octopus-toolkit.
+    3. Add information of each sample in the peak calling table.
+    4. Click the Run button.
     
-Start analyzing peak calling
+Peak calling anlaysis
 ____________________________
 
 .. image:: _static/Guide/7.Peak_Calling_Start.png
 
-The peak calling is the process of identifying the region of the mapped read to the genome.
-Peak calling process of Octopus-toolkit can't perform RNA-Seq analysis in NGS-Seq.
+The purpose of the peak calling anlaysis is to identify regions enriched by mapped reads.
 
-Peak calling will detect the region of the read mapped on the genome, so you need to complete the alignment process in advance. Therefore, in order to use peak calling, you must complete at least one sample of the data analysis. (Public or Private)
+In order to perform the peak calling analysis, you must have the Octopus-toolkit output folders.
 
-1. Select Analysis -> Peak Calling in the Menu bar.
-2. Select the resulting folder generated by analyzing public data or private data.
+1. Select the Analysis tab -> Click the Peak Calling function in the Menu bar.
+2. Select output directories generated by the Octopus-toolkit.
 
 Peak calling table
 __________________
 
 .. image:: _static/Guide/8.Peak_Calling_Table.png
 
-The Peak calling table consists of a table that stores sample information, a sample input window, and a table option window.
-
-To use the peak calling, select the sample you want to analyze in the sample window and click the insert button. And then, Add Control and Style information for the selected sample After selecting the inserted sample.
-
-If Control data associated with the sample exist in the analyzed result, Octopus-toolkit will not automatically identify the Control data, so you will need to add Control information for the sample.
+To run the peak calling analysis, please select output folders (Result/GSExxxxx). Then, fill in the blanks using the Table Option functions.
 
 * ``Control``
 
-To use Input or IgG seqeuencing related to sample, as a control, this option allows you to select Input or IgG sequencing. (Recommended)
-
-Control information can be selected only for the sample included in the resulting folder.
+If available, please select an appropriate control (IgG or input) per sample to filter out the background noise. (Recommended)
 
 * ``Style``
 
-Peak calling process has specific analysis method about seq type of each sample.
+Based on experimental types, you can select a predefined paramter (by HOMER) for the Peak calling process.
 
 .. list-table::
    :widths: 10 10 20
@@ -464,8 +444,8 @@ Peak calling process has specific analysis method about seq type of each sample.
 
 Please select a style option that meets your analysis needs.
 
-3. Add information about each sample in the peak calling table.
-4. Click the Run button in the peak calling table.
+3. Add appropriate information for each sample in the private table.
+4. Click the Run button in the private table.
 
 5-5.Graph
 ^^^^^^^^^
@@ -474,66 +454,62 @@ Quick Start
 ___________
 
 .. note::
-    1. Select Analysis -> Graph in the Menu bar.
-    2. Select the resulting folder generated by analyzing public data or private data.
-    3. set the TSS region and Bin size in the Graph table.
-    4. Click the Run button in the Graph table.
+    1. Select the Analysis tab -> Click the Graph function in the Menu bar.
+    2. Select output folders (Result/GSExxxxx). Multiple output folders can be selected.
+    3. Set the range of transcription start site (TSS) region and BIN size in the Graph table.
+    4. Click the Run button.
 
 Start analyzing Graph
 _____________________
 
 .. image:: _static/Guide/9.Graph_Start.png
 
-The Graph process is a step that extracts data for a specific region given by the user in the visualization file (bigWig format) and draws the heatmap and line plot using the extracted values.
+The Graph function is to draw average signal pattern on specificed regions which are given by the user. Signals are extracted from bigWig (normalized to ten million mapped reads) files.
 
-Because the graph process uses the bigWig format file to calculate the value for a given region(bed format file) by the user, you must complete the processing of the previous steps for at least one sample.
+If you would like to draw plots on peaks, you need to complete the peak calling analysis for a sample of your interest.
 
 * ``Previous steps`` : Public data or Private data analysis -> Peak Calling.
 
-1. Select Analysis -> Graph in the Menu bar.
-2. Select the resulting folder generated by analyzing public data or private data.
+1. Select the Analysis tab -> Click the Graph function in the Menu bar.
+2. Select output folders generated by either Public analysis or Private analysis.
 
 Graph table
 ___________
 
 .. image:: _static/Guide/10.Graph_Table.png
 
-To draw graphs, Octopus-toolkit requires a bigWig format file and a bed format file.
+To draw graphs, Octopus-toolkit requires bigWig (signal) files, which are generated by either Public anlaysis or Private analysis. 
 
 * ``bigWig`` : Output of the Public data or Private data analysis.
-* ``bed`` : Output of the Peak calling.
+* ``bed`` : Output of the Peak calling analysis.
 
-In the loaded data, bed format file is saved annotation option, and bigWig format file is saved in sample window.
 
-To use Graph, you select a specific region to be analyzed in the annotation information for calculating value. And then, select the sample you want to analyze in the sample window and click the insert button. 
+
+Finally, hit the Run button.
+The output (plots) will be stored in the Graph directory under the Result folder.
 
 * ``Annotation(bed)``
 
-The annotation (bed) option can be selected from the Promoter.bed provided by Octopus-toolkit and the bed file analyzed by the user in the peak calling process.
-
-
-The Table option gives you a choice of additional options to calculate a specific region using the bigWig format file.
+First, select loci (.bed) of your interest from the Annotation (bed) function.
+Second, select samples (.bigWig) of your interest from the Sample list.
 
 * ``TSS Region``
 
-This option is used to calculate the distance of a regularly-sized from the locus of the selected annotation file.You can select the distance between upstream and downstream from a specific region.
-dd
-The unit for this option is basepair.(BP)
+Third, set appropriate paramters from the Table option.
+The unit for this option is basepair (bp).
 
 .. image:: _static/Guide/14.TSS-Region.png
 
-The TSS-regions that the Octopus-toolkit provides to you are 1000,2000,5000 and 10000.
+The default ranges of TSS-regions are 1000, 2000, 5000 and 10000 bp.
 
 * ``Number of BINs``
 
-The region selected in the TSS region option is divided into n bin and the region is averaged. By selecting the Bin value, Octopus-toolkit automatically calculates the size of each region. 
+The region selected in the TSS region option is divided into n (number of BINs) BINs
 
-If the value of the selected Bin value is large, you can draw a smoother line plot.
+The lager the bin size, the smoother the graph can be drawn.
 
-The Number of BINs that the Octopus-toolkit provides to you are 50,100 and 200.
-
-3. set the TSS region and Bin size in the Graph table.
-4. Click the Run button in the Graph table.
+3. set the TSS region and BIN size in the Graph table.
+4. Click the Run button.
 
 5-6.Visualization
 ^^^^^^^^^^^^^^^^^
@@ -542,11 +518,11 @@ Quick Start
 ___________
 
 .. note::
-    1. Select Analysis -> IGV in the Menu bar.
-    2. Select the resulting folder generated by analyzing public data or private data.
-    3. In the sample window, select the sample you want to analyze and click insert
-    4. Check that all genomes match in the IGV table.
-    5. If the genomes don't match, select the genome to be analyzed from the table option.
+    1. Select the Analysis tab -> Click the IGV function in the Menu bar.
+    2. Select output folders (Result/GSExxxxx) of your interest.
+    3. In the sample window, select samples and then, click the Insert button.
+    4. Check see if all genomes are the same. Only data in the same genome can be loaded into the IGV.
+    5. Set the same genome in the Table option.
     6. Click the Run button.
 
 Start analyzing IGV
@@ -554,12 +530,12 @@ _____________________
 
 .. image:: _static/Guide/10.IGV_Start.png
 
-The IGV function is a process of visualizing analyzed data through IGV, a visualization analysis tool. 
+The IGV function is a process of visualizing analyzed data through IGV, a visualization tool. 
 
-IGV uses the bigWig format file of the analyzed sample. Therefore, in order to use IGV function, you must complete at least one sample of the data analysis. (Public or Private)
+IGV uses bigWig files. 
 
-1. Select Analysis -> IGV in the Menu bar.
-2. Select the resulting folder generated by analyzing public data or private data.
+1. Select the Analysis tab -> Click the IGV function in the Menu bar.
+2. Select output folders (Result/GSExxxxx) of your interest.
 
 IGV table
 _________
@@ -568,14 +544,11 @@ _________
 
 * ``Genome``
 
-Genome information shows the genome of the samples inserted into the IGV table.
+Genome information shows the genome of the samples.
 
-First, select the sample to be visualized using IGV and insert it into the IGV table.
-So, If a different genome is added as shown in the table above, you must select a reference genome among several genomes.
-
-3. In the sample window, select the sample you want to analyze and click insert
-4. Check that all genomes match in the IGV table.
-5. If the genomes don’t match, select the genome to be analyzed from the table option.
+3. In the sample window, select samples and then, click the Insert button.
+4. Check see if all genomes are the same. Only data in the same genome can be loaded into the IGV.
+5. Set the same genome in the Table option.
 6. Click the Run button.
 
 Run
@@ -585,18 +558,18 @@ ___
 
 .. image:: _static/Guide/12.IGV_Run.png
 
-Unlike other functions in Octopus-toolkit, the IGV tool runs separately from Octopus-toolkit. You can upload more data directly from the IGV, and can set IGV's options.
+Unlike other tools integrated in Octopus-toolkit, the IGV tool runs separately from the Octopus-toolkit.
 
 .. _output:
 
-5-7.Output
-^^^^^^^^^^
+5-7.Output (important!)
+^^^^^^^^^^^^^^^^^^^^^^^
 
-The output file generated by each process is shown below.
+The output files generated by each process are as follows:
 
 .. image:: _static/Guide/15.Process_output.png
 
-* In the result folder
+* In the Result folder
 
 .. image:: _static/Guide/16.Result_in_folder.png
 
@@ -611,11 +584,11 @@ The output file generated by each process is shown below.
    * - ``00_Fastq``
      - Preprocessing,Trimming
      - ``fastq``, ``Trim.fastq``
-     - Save the raw read file and trimmed raw read file.
+     - Save the raw file and trimmed file.
    * - ``00_SRA``
      - Preprocessing
      - ``sra``
-     - Save compressed raw read file downloaded from NCBi
+     - Store the SRA file downloaded from NCBi
    * - ``01_Fastqc``
      - Quality check
      - ``html``, ``txt``
@@ -623,27 +596,27 @@ The output file generated by each process is shown below.
    * - ``02_Bam``
      - Alignment
      - ``bam``, ``sorted.bam``, ``bai``
-     - Save the result data of Alignment and sorting.
+     - Save the Alignment and sorted files.
    * - ``03_RNA_RPKM_Count``
      - Normalization
      - ``RPKM``, ``Count``
-     - Save the calculated RPKM and read count for the RNA-Seq data.
+     - Save the calculated RPKM and raw read count tables for the RNA-Seq data.
    * - ``03_Tag``
-     - Visualization
+     - Downstream (motif) analyses by HOMER
      - ``Tag folder``
-     - Save the Tag folders created by Homer tool.
+     - Save the Tag folders created by the Homer tool.
    * - ``04_BigWig``
      - Visualization
      - ``bigWig``
-     - Save the result of the Visualization
+     - Save the bigWig files for visualization
    * - ``05_Analysis``
      - Peak Calling,Annotation
      - ``bed``, ``annotation``
-     - Save the Bed and Annotation files.
+     - Save the peak (.bed) and annotation files.
    * - ``GSE57617.txt``
-     - Preprocessing~Visualization
+     - Log file
      - ``txt``
-     - Sample.txt is a file that stores the analysis status and information of the data.
+     - Sample.txt is a file that stores the analysis status and information.
 
 5-8.File Naming
 ^^^^^^^^^^^^^^^
@@ -651,22 +624,22 @@ The output file generated by each process is shown below.
 .. image:: _static/Guide/17.File_Name.png
 
 * ``Yellow`` : GSM Accession number
-    It is created only for public data.
+    Only for the public data.
 
 * ``Red`` : ChIP-Seq_L1-WT-H3K4me3-rep2
-    Sample file name. (Title)
+    Sample file name (title) defined on the GEO website.
 
-* ``Blue`` : CH
+* ``Blue`` : Experimental types described below.
 
 .. list-table::
    :widths: 10 10 10 10 10 10
    :header-rows: 1
 
-   * - NGS-Seq
+   * - Experimental types
      - Abbreviation
-     - NGS-Seq
+     - Experimental types
      - Abbreviation
-     - NGS-Seq
+     - Experimental types
      - Abbreviation
    * - ChIP-Seq
      - ``CH``
@@ -676,37 +649,37 @@ The output file generated by each process is shown below.
      - ``ME``
    * - ATAC-Seq
      - ``AT``
-     - Dnase-Seq
+     - DNase-Seq
      - ``DN``
-     - Mnase-Seq
+     - MNase-Seq
      - ``MN``
 
-* ``Green`` : SE
+* ``Green`` : Sequencing strategy
     SE : Single-End, PE : Paired-End
 
-* ``Pink`` : mm10
+* ``Pink`` : Reference genome
     Reference Genome
 
-* ``Gray`` : ht2
+* ``Gray`` : Alignment tool
     RNA-Seq alignment tools. (ht2 : Hisat2, str: STAR)
 
-* ``Puple`` : bigWig
+* ``Puple`` : File extension
     Output Format
 
 .. _full_parameter:
 
-5-9.Full Parameter
+5-9.All Parameters
 ^^^^^^^^^^^^^^^^^^
 
-Full parameter provides options for 3rd party tools for analyzing NGS data in Octopus-toolkit.
+You can adjust the parameters of 3rd party tools integrated into the Octopus-toolkit.
 
 The 3rd party tools used in Octopus-toolkit : :ref:`3rd party tools<3rd_party_tool>`
 
 Preprocessing
 _____________
 
-Preprocessing is the process of downloading NGS data from NCBI or converting SRA format file to Fastq format file.
-The 3rd party tools used in preprocessing are Aspera and SRAToolkit(fastq-dump)
+In the preprocessing step, Octopus-toolkit downloads selected NGS data from NCBI and converting the downloaded (.sra) files to FASTQ files.
+The 3rd party tools used in the preprocessing step are Aspera and SRAToolkit(fastq-dump)
 
 * **Transfer rate**
 
@@ -729,7 +702,7 @@ The 3rd party tools used in preprocessing are Aspera and SRAToolkit(fastq-dump)
 QC & Trimming
 _____________
 
-QC & Trimming is the process of measuring the quality of the reads and trimming the adapter sequence and low-quality reads.
+QC & Trimming is the process of assessing the quality of the reads. If bad sequencing quality are detected, portions of low-quality reads are trimmed.
 The 3rd party tools used in QC & Trimming are FastQC and Trimmomatic.
 
 * **Determined quality of DNA Sequence**
@@ -765,7 +738,7 @@ The 3rd party tools used in QC & Trimming are FastQC and Trimmomatic.
 Alignment-Hisat2
 ________________
 
-Alignment is the process of mapping reads to the reference genome.
+Alignment is the process of mapping reads to a reference genome.
 The 3rd party tool used in Alignment is Hisat2.
 
 * **Input**
@@ -814,7 +787,7 @@ Alignment-STAR
 ________________
 
 Alignment is the process of mapping reads to the reference genome.
-The 3rd party tool used in Alignment is STAR.
+The 3rd party tool used in Alignment is STAR (RNA-Seq only).
 
 * **Alignment**
 
@@ -837,8 +810,7 @@ The 3rd party tool used in Alignment is STAR.
 Visualization-TagDirectory
 __________________________
 
-To analyze data using Homer, you need to make all useful information about the sample into the Tag directory.
-Visualization-TagDirectory is the process of creating this Tag Directory.
+Visualization-TagDirectory is the process of creating Tag directories.
 The 3rd party tool used in TagDirectory is Homer.
 
 * **Create tag directory**
@@ -854,7 +826,7 @@ The 3rd party tool used in TagDirectory is Homer.
 Visualization-MakeBigWig
 ________________________
 
-MakeBigWig is the process of creating bigWig format file which is Visualization file using TagDirectory.
+MakeBigWig is the process of creating bigWig files from the Tag directories.
 The 3rd party tool used in MakeBigWig is Homer.
 
 * **Make visualization data**
@@ -878,7 +850,7 @@ The 3rd party tool used in MakeBigWig is Homer.
 PeakCalling-ChIP-Seq/Histone
 ____________________________
 
-PeakCalling is the process of detecting the region of the mapped read to the genome.
+PeakCalling is the process of detecting enriched regions (peaks) by mapped reads.
 The 3rd party tool used in PeakCalling is Homer.
 
 * **ChIP-Seq/Histone**
