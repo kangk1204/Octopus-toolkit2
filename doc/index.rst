@@ -53,6 +53,7 @@ Table of contents
    error
    license
    help
+   window
 
 ..
 
