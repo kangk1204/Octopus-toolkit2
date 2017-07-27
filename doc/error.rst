@@ -142,7 +142,7 @@ Not all data in the GEO can be processed with the Octopus-toolkit. Octopus-toolk
 Err005
 ^^^^^^
 
-This error is related to disk space. To reslove this issue, please make ``enough free space``(more than 10Gb) and re-run the analysis.
+This error is related to disk space. To reslove this issue, please make ``enough free space`` (more than 10Gb) and re-run the analysis.
 
 * Check you hard disk space.
 

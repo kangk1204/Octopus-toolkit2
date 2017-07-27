@@ -133,7 +133,7 @@ public class UI_Octopus_Option extends JFrame {
 		option_panel.add(latest_chbx);
 		latest_chbx.setBackground(Color.WHITE);
 		
-		JCheckBox continue_chbx = new JCheckBox("Analyze the data in succession.");
+		JCheckBox continue_chbx = new JCheckBox("Skip the completed samples");
 		continue_chbx.setSelected(true);
 		continue_chbx.setBounds(10, 55, 354, 23);
 		option_panel.add(continue_chbx);
@@ -180,7 +180,7 @@ public class UI_Octopus_Option extends JFrame {
 		option_panel.add(cpu_txt);
 		cpu_txt.setColumns(10);
 		
-		JCheckBox fullOption_chbx = new JCheckBox("Use the full parameter for each tool.");
+		JCheckBox fullOption_chbx = new JCheckBox("Adjust all parameters for each step.");
 		fullOption_chbx.setBackground(Color.WHITE);
 		fullOption_chbx.setBounds(10, 180, 290, 23);
 		option_panel.add(fullOption_chbx);
@@ -210,19 +210,19 @@ public class UI_Octopus_Option extends JFrame {
 		getContentPane().add(rnaoption_panel);
 		rnaoption_panel.setLayout(null);
 		
-		JLabel rnaAlignTool_lbl = new JLabel("RNA-Seq alignment tools : ");
+		JLabel rnaAlignTool_lbl = new JLabel("Alignment tool for RNA-seq : ");
 		rnaAlignTool_lbl.setBounds(10, 63, 205, 15);
 		rnaoption_panel.add(rnaAlignTool_lbl);
 		
 		JRadioButton hisat2_btn = new JRadioButton("Hisat2");
-		hisat2_btn.setBounds(200, 59, 80, 23);
+		hisat2_btn.setBounds(212, 59, 80, 23);
 		rnaoption_panel.add(hisat2_btn);
 		hisat2_btn.setSelected(true);
 		hisat2_btn.setBackground(Color.WHITE);
 		bg.add(hisat2_btn);
 		
 		JRadioButton star_btn = new JRadioButton("STAR (Fast)");
-		star_btn.setBounds(282, 59, 110, 23);
+		star_btn.setBounds(286, 59, 110, 23);
 		rnaoption_panel.add(star_btn);
 		star_btn.setBackground(Color.WHITE);
 		bg.add(star_btn);

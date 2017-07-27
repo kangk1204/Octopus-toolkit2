@@ -171,7 +171,7 @@ public class Visualization {
 			calcTotalRPKM("Count",tagDir);
 		}
 
-		System.out.println("Complete analysis.");
+		System.out.println("Completed.");
 		ds.getMainUI().setRunningPrograss(false);
 		ds.getMainUI().setProgress(100,"Complete : "+ds.getGSMInfo()[0]);
 		

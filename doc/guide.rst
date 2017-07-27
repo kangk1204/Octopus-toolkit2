@@ -342,8 +342,8 @@ The following genomes are available in the Octopus-toolkit:
      - ``tair10`` 
    * - ``Danio rerio``
      - ``danRer10`` (Sep.2014 GRCz10)
-   * - ``Caenorhabditis elegans`` (Feb.2013 WBcel235)
-     - ``ce11``
+   * - ``Caenorhabditis elegans``
+     - ``ce11`` (Feb.2013 WBcel235)
 
 
 .. _seq_type:
