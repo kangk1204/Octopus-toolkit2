@@ -9,7 +9,16 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 
 Download
 --------
-* Latest Version (2.0.0) : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) 
+Latest Version (2.0.1) : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 08/23/2017
+
+  - Version(``2.0.1``) is a minor release with the following changes.
+  - change 3rd party tools to be installed without password.
+  - When analysis is completed/failed, notify the path of results in a terminal window.
+  - changed source code of Octopus-toolkit to make maintenance easier.
+  - changed User Interface(UI) of the installation progressbar.
+
+
+Beta Version (2.0.0), release 07/29/2017
 
 Hardware/Software Requirement
 -----------------------------
