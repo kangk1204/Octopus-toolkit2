@@ -36,9 +36,10 @@ public class Main_Process {
 			String[] dir = {"/Result/" +  ds.getGSE()};
 			if(ds.getGSM().size() > 0){
 				cf.makeDirectory(dir);
-				ds.setLogAnalyzeInfo();
-				
+				ds.setLogAnalyzeInfo();	
 			}
+			ds.setAnalysisPath(ds.getPath()+"/Result/"+ds.getGSE()+"/");
+			
 			for (int i = 0; i < ds.getGSM().size(); i++) {
 					ds.getErrLog().initErr();
 					cnt++;
@@ -46,6 +47,7 @@ public class Main_Process {
 					// (Latest Genome CheckBox)
 					parse.getGSMInfo(ds.getGSM().get(i), ds.getLatest());
 					ds.setRunGSM("");
+					
 					
 					if (parse.getCheckGSMFlag() == true && ds.getGSMInfo()[0] != null) {
 						if(checkAnalzedData() == false){
@@ -62,6 +64,7 @@ public class Main_Process {
 
 						// check remain Hdd capacity (Up to 2Gb)
 						if (cf.checkHDDCapacity() == true) {
+							
 							pre.use_Aspera();
 							if (cf.checkStepPass()) {
 								System.out.println("Step (Aspera) : Err006-1");
@@ -184,6 +187,9 @@ public class Main_Process {
 					System.out.println(ds.getSubRunLog().get(i)[0]+" : "+ ds.getSubRunLog().get(i)[1]);
 					ds.writeLogRun(ds.getSubRunLog().get(i)[0]+" : "+ ds.getSubRunLog().get(i)[1]+"\n", true);
 				}
+				
+				System.out.println("The Path of Results : "+ds.getAnalysisPath()+inputGSE+".txt (Log)");
+				
 			}else if(ds.getAnalyzeFlag() == true){
 				System.out.println("The analysis for ["+inputGSE.replace(" ", "")+"] has been completed but the following samples were terminated. Please see the log file : ");
 				if(!ds.getErrLog().getAccessPage().equals("")){
@@ -195,8 +201,13 @@ public class Main_Process {
 				}else{
 					System.out.println(inputGSE.replace(" ", ""));
 				}
+				
+				System.out.println("The Path of Results : "+ds.getAnalysisPath()+inputGSE+".txt (Log)");
+			
 			}else{
 				System.out.println("The analysis for ["+inputGSE.replace(" ", "")+"] has been completed successfully.");
+				System.out.println("The Path of Results : "+ds.getAnalysisPath());
+				
 			}
 			
 		}else{
@@ -213,6 +224,7 @@ public class Main_Process {
 			System.out.println("\nStart analysis. ("+ds.getGSE()+")");
 			
 			for(int i = 0; i < ds.getPrivateData().size(); i++){
+					ds.setAnalysisPath(ds.getPath()+"/Result/"+ds.getResultDirName()+"/");
 					ds.getErrLog().initErr();
 					cnt++;
 					ds.initGSMInfo();
@@ -249,8 +261,12 @@ public class Main_Process {
 					System.out.println(ds.getSubRunLog().get(j)[0]+" : "+ ds.getSubRunLog().get(j)[1]);
 					ds.writeLogRun(ds.getSubRunLog().get(j)[0]+" : "+ ds.getSubRunLog().get(j)[1]+"\n", true);
 				}
+				
+				System.out.println("The Path of Results : "+ds.getAnalysisPath()+ds.getGSE()+".txt (Log)");
+
 			}else{
 				System.out.println("The analysis for ["+ds.getGSE()+"] has been completed successfully.");
+				System.out.println("The Path of Results : "+ds.getAnalysisPath());
 			}
 		}
 		

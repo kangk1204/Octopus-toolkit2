@@ -83,7 +83,7 @@ public class HeatmapPlot {
 					+ "bwtool_output\n");
 			
 			
-			fw.write("Rscript "+spacePath+"Tools/SubTool/makeGraph.R "+resultPath+" "+ds.getBinNum()+" "+ds.getTssRegion()+" "+cal_bin +" "+labelName+"\n");
+			fw.write("Rscript "+spacePath+"Tools/SubTool/makeGraph.R "+resultPath+" "+ds.getBinNum()+" "+ds.getTssRegion()+" "+cal_bin +" "+spacePath+"Tools/Rlib "+labelName+"\n");
 			
 			// Log
 			writeTableLog(bedName,labelName,genome);
@@ -91,7 +91,7 @@ public class HeatmapPlot {
 			ds.writeLogCmd(spacePath + "Tools/Bwtool/bwtool matrix " + ds.getTssRegion() + ":" + ds.getTssRegion()
 					+ " -tiled-averages=" + cal_bin + " " + bedPath + " " + bigWigCmd.replace(" ", "\\ ") + " " + resultPath
 					+ "bwtool_output\n");
-			ds.writeLogCmd("Rscript "+spacePath+"Tools/SubTool/makeGraph.R "+resultPath+" "+ds.getBinNum()+" "+ds.getTssRegion()+" "+cal_bin +" "+labelName+"\n\n");
+			ds.writeLogCmd("Rscript "+spacePath+"Tools/SubTool/makeGraph.R "+resultPath+" "+ds.getBinNum()+" "+ds.getTssRegion()+" "+cal_bin +" "+spacePath+"Tools/Rlib "+labelName+"\n\n");
 			
 			fw.flush();
 			fw.close();

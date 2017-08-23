@@ -22,6 +22,14 @@ To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
 
+* Ubuntu (``14.04``)::
+
+    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo apt-get update
+    sudo apt-get install openjdk-8-jdk
+    sudo update-alternatives --config java
+    sudo update-alternatives --config javac
+
 * Fedora (``Up to Fedora 25`` )::
 
     sudo yum update
@@ -56,7 +64,21 @@ OR ::
 
     sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential
 
-1-4.Fedora
+If Ubuntu version is ``14.04``, you must install the following libraries: ``liblzma-dev``, ``libbz2-dev``
+
+* ``liblzma-dev`` ::
+
+    sudo apt-get install liblzma-dev
+
+* ``libbz2-dev`` ::
+ 
+    sudo apt-get install libbz2-dev
+
+OR ::
+  
+    sudo apt-get install liblzma-dev libbz2-dev
+
+1-5.Fedora
 ----------
 
 To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``
@@ -85,16 +107,28 @@ OR ::
 
     sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++
 
-1-5.Graph
+.. _graph:
+
+1-6.Graph
 ---------
 
 To draw heatmap and Line plot, ``R (3.1)`` or higher version of it must be installed on your computer.
 
-* Ubuntu, Mint ::
+* Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
 
     sudo apt-get install r-base
 
-* Fedora ::
+* Ubuntu (``14.04``)::
+
+    sudo apt-get update
+    sudo apt-get install r-base
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+    sudo add-apt-repository ppa:marutter/rdev
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install r-base
+
+* Fedora (``Up to Fedora 25`` )::
 
     sudo yum install R
 

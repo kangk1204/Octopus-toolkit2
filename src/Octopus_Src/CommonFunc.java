@@ -151,27 +151,6 @@ public class CommonFunc {
 		}
 	}
 
-	public boolean searchPackage(String path, String pack) {
-		boolean flag = false;
-		File f = new File(path);
-		File list[] = f.listFiles();
-
-		if (list != null) {
-
-			for (int i = 0; i < list.length; i++) {
-				if (list[i].isDirectory()) {
-					if (list[i].getName().equals(pack)) {
-						flag = true;
-						break;
-					} else {
-						flag = searchPackage(list[i].getPath(), pack);
-					}
-				}
-			}
-		}
-		return flag;
-	}
-
 	public void openDialog_File(JTextField text) {
 		// Public
 		// GSE or GSM List File.

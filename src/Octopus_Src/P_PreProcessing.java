@@ -26,7 +26,6 @@ public class P_PreProcessing {
 		
 		cf.makeDirectory(fold);
 
-		ds.setAnalysisPath(ds.getPath()+"/Result/"+ds.getResultDirName()+"/");
 	}
 	
 	public void checkInputTable(){

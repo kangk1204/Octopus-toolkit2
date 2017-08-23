@@ -19,14 +19,12 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import Octopus_UI.UI_Octopus;
-import Octopus_UI.UI_Password;
 import Octopus_UI.UI_ProgressBar;
 
 public class CheckProgram {
 	private DataSet ds;
 	private CommonFunc cf;
 	private ArrayList<String> toolList;
-	private UI_Password ui_pw;
 	private UI_Octopus ui;
 	private UI_ProgressBar prBar;
 	
@@ -62,9 +60,8 @@ public class CheckProgram {
 			// Download, Installation
 			ds.writeLogRun("Installing programs for analysis.\n",true);
 
-			ui_pw = new UI_Password(ds, cf, "CheckProgram");
-			ui_pw.setVisible(true);
-			
+			installTool(true);
+
 		}else{
 			prBar.setVisible(false);
 			JOptionPane.showMessageDialog(null, "Octopus-toolkit is ready.", "Check Program",JOptionPane.INFORMATION_MESSAGE);
@@ -85,21 +82,10 @@ public class CheckProgram {
 		ArrayList<String> tool_check = new ArrayList<String>();
 		int cnt = 1;
 		
-		String whoami_cmd[] = {"whoami"};
-		
-		String whoami = cf.shellCmd(whoami_cmd);
-
 		for (int i = 0; i < tool_list.length; i++) {
-			String find_cmd[] = {"find","/home/" + whoami.replace("\n", "") + "/.aspera/","-name",tool_list[i]};
-			String find_cmd2[] = {"find",ds.getPath() + "/Tools/","-name",tool_list[i]};
+			String find_cmd[] = {"find",ds.getPath() + "/Tools/","-name",tool_list[i]};
 						
-			if (i == tool_list.length - 1) {
-				String checkAspera = cf.shellCmd(find_cmd);
-				if (checkAspera.equals("") || checkAspera.contains("No such file or directory")) {
-					tool_check.add("Aspera");
-				}
-			}
-			 else if (cf.shellCmd(find_cmd2).equals("")) {
+			if (cf.shellCmd(find_cmd).equals("")) {
 				if (i < 7) {
 					tool_check.add("Homer");
 				} else if (i == 7) {
@@ -120,6 +106,8 @@ public class CheckProgram {
 					tool_check.add("Hisat2");
 				} else if (i == 19){
 					tool_check.add("STAR");
+				} else if (i == 20){
+					tool_check.add("Aspera");
 				}
 			}
 		}
@@ -149,10 +137,7 @@ public class CheckProgram {
 	public void installTool(boolean btnFlag) {
 		
 		if(btnFlag == true){
-
-			System.out.println(ds.getOS());
 			
-			ui_pw.setVisible(false);
 			prBar.setVisible(true);
 			if(ds.getOS().equals("Fedora")){
 				prBar.setSize(300,95);	
@@ -221,10 +206,8 @@ public class CheckProgram {
 		else if (tool.equals("Aspera")) {
 			String aspera_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/aspera.zip","-O",path + "/Tools/aspera.zip","-o",path	+ "/Script/Downlog"};
 			String aspera_cmd2[] = {"unzip","-o",path + "/Tools/aspera.zip","-d",path + "/Tools/"};
-			String aspera_cmd3[] = {"sh",path + "/Tools/aspera.sh"};
 			cf.shellCmd(aspera_cmd);
 			cf.shellCmd(aspera_cmd2);
-			cf.shellCmd(aspera_cmd3);
 			new File(path+"Tools/aspera.zip").delete();
 		} else if (tool.equals("Fastqc")) {
 			String fastqc_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/FastQC.zip","-O",path + "/Tools/FastQC.zip","-o",path	+ "/Script/Downlog"};
@@ -263,13 +246,18 @@ public class CheckProgram {
 						"munsell_0.4.3", "labeling_0.3", "RColorBrewer_1.1-2", "scales_0.4.1", "gtable_0.2.0",
 						"pheatmap_1.0.8", "stringi_1.1.2", "magrittr_1.5", "stringr_1.1.0", "digest_0.6.10",
 						"reshape2_1.4.2", "lazyeval_0.2.0","assertthat_0.1","tibble_1.2","ggplot2_2.2.0" };
-				String packageCmd = "echo "+ds.getPassword()+" | sudo -S R CMD INSTALL";
+				
+				String dir[] = {"Tools/Rlib"};
+				cf.makeDirectory(dir);
+				
+				String packageCmd = "";
+				
 				for (int i = 0; i < rPackage.length; i++) {
-					packageCmd = packageCmd + " " + spacePath + "/Tools/" + rPackage[i] + ".tar.gz";
+					packageCmd = "R CMD INSTALL "+spacePath + "/Tools/" + rPackage[i] + ".tar.gz --library="+spacePath+"/Tools/Rlib\n";
+					fw.write(packageCmd + "\n");
+					fw.flush();
 				}
 
-				// ubuntu
-				fw.write(packageCmd + "\n");
 
 				for (int i = 0; i < rPackage.length; i++) {
 					fw.write("rm " + spacePath + "/Tools/" + rPackage[i] + ".tar.gz\n");
@@ -321,14 +309,14 @@ public class CheckProgram {
 				fw.write("unzip -o " + spacePath + "/Tools/libbeato.zip -d " + spacePath + "/Tools/\n");
 				
 				fw.write("cd " + spacePath + "/Tools/libbeato/\n");
-				fw.write("./configure\n");
+				fw.write("./configure --prefix="+spacePath + "/Tools/libbeato CFLAGS=\"-g -O0 -I"+spacePath + "/Tools/libbeato/include\" LDFLAGS=-L"+spacePath + "/Tools/libbeato/lib\n");
 				fw.write("make\n");
-				fw.write("echo "+ds.getPassword()+" | sudo -S make install\n");
+				fw.write("make install\n");
 				fw.write("cd " + spacePath + "/Tools/Bwtool/\n");
-				fw.write("./configure\n");
+				fw.write("./configure --prefix="+spacePath + "/Tools/libbeato CFLAGS=\"-g -O0 -I"+spacePath + "/Tools/libbeato/include\" LDFLAGS=-L"+spacePath + "/Tools/libbeato/lib\n");
 				fw.write("make\n");
-				fw.write("echo "+ds.getPassword()+" | sudo -S make install\n");
-			
+				fw.write("make install\n");
+				
 				fw.write("rm " + spacePath + "/Tools/Bwtool.zip\n");
 				fw.write("rm " + spacePath + "/Tools/libbeato.zip*\n");
 				fw.close();
@@ -352,7 +340,7 @@ public class CheckProgram {
 				fw.write("cd " + spacePath + "/Tools/Samtools/\n");
 				fw.write("./configure\n");
 				fw.write("make\n");
-				fw.write("echo "+ds.getPassword()+" | sudo -S make install\n");
+				fw.write("make install DESTDIR="+spacePath+"/Tools/Samtools/\n");
 				fw.write("rm " + spacePath + "/Tools/Samtools.zip*\n");
 	
 				fw.close();
@@ -401,24 +389,13 @@ public class CheckProgram {
 		String pack[] = { "colorspace", "dichromat", "Rcpp", "plyr", "munsell", "labeling", "RColorBrewer",
 				"scales", "gtable", "pheatmap", "stringi", "magrittr", "stringr", "digest", "reshape2","lazyeval","assertthat","tibble",
 				"ggplot2" };
-		boolean checkPackFlag = false;
-		String whoami_cmd[] = {"whoami"};
-		String whoami = cf.shellCmd(whoami_cmd);
-
+		boolean checkPackFlag = true;
+		
 		for (int i = 0; i < pack.length; i++) {
-			checkPackFlag = cf.searchPackage("/home/" + whoami.replace("\n", "") + "/R/", pack[i]);
-			if (checkPackFlag == false) {
-				checkPackFlag = cf.searchPackage("/usr/local/lib/R/", pack[i]);
-				if(checkPackFlag == false){
-					checkPackFlag = cf.searchPackage("/usr/lib64/R/library/", pack[i]);	
-				}else{
-					break;
-				}
-			} else {
-				break;
-			}
+			File f = new File(ds.getPath()+"/Tools/Rlib/"+pack[i]);
 			
-			if (checkPackFlag == false) {
+			if(!f.exists()){
+				checkPackFlag = false;
 				break;
 			}
 		}

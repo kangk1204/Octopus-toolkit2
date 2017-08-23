@@ -12,10 +12,11 @@ Download
 Latest Version (2.0.1) : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 08/23/2017
 
   - Version(``2.0.1``) is a minor release with the following changes.
-  - change 3rd party tools to be installed without password.
+  - Change 3rd party tools to be installed without password.
   - When analysis is completed/failed, notify the path of results in a terminal window.
-  - changed source code of Octopus-toolkit to make maintenance easier.
-  - changed User Interface(UI) of the installation progressbar.
+  - Changed source code of Octopus-toolkit to make maintenance easier.
+  - Changed User Interface(UI) of the installation progressbar.
+  - Added Ubuntu 14.04, Refer to :ref:`"How to install libraries" <requirement>`, :ref:`"How to install R" <graph>` 
 
 
 Beta Version (2.0.0), release 07/29/2017
@@ -34,7 +35,7 @@ Operating System:
 
 Operating System Version (tested):
 
-* Linux : Ubuntu (``16.04``)
+* Linux : Ubuntu (``16.04``, highly recommend),(``14.04``)
 * Fedora (``25``)
 * Mint (``18``)
 

@@ -1,8 +1,6 @@
 # OS : Ubuntu, Mint
 # Requirement Installation
 
-# 
-
 # Java (openjdk-8-jdk)
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
@@ -16,3 +14,33 @@ wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit
 unzip Octopus-toolkit.zip
 cd Octopus-toolkit/
 java -jar Octopus-toolkit.jar
+
+
+### Ubuntu Version(14.04)
+
+# Java (openjdk-8-jdk)
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
+
+# Library and Pacakges
+sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential liblzma-dev libbz2-dev
+
+# R Package
+sudo apt-get update
+sudo apt-get install r-base
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+sudo add-apt-repository ppa:marutter/rdev
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install r-base
+
+# Download Octopus-toolkit and Run 
+
+wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
+unzip Octopus-toolkit.zip
+cd Octopus-toolkit/
+java -jar Octopus-toolkit.jar
+

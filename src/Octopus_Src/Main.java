@@ -12,7 +12,7 @@ public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.0";
+		String version = "2.0.1";
 		System.out.println("[Octopus-toolkit."+version+"]");
 		newVersion = version;
 		
@@ -31,6 +31,12 @@ public class Main {
 				cf.shellCmd(decompressCmd);
 				cf.shellCmd(mvCmd1);
 				cf.shellCmd(mvCmd2);
+				
+				File f = new File(ds.getPath()+"/Tools/SubTool/makeGraph.R");
+				if(f.exists()){
+					f.delete();
+				}
+				
 				JOptionPane.showMessageDialog(null, "Downloading the latest version of Octopus-toolkit.\nPlease rerun the Octopus-toolkit.", "Octopus-toolkit", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(0);
 			}
@@ -105,9 +111,16 @@ public class Main {
 
 		System.out.println("[Checking to see if the necessary applications are installed to run the program]");
 		
+		int ubuntuVersion = 16;
 		for(int i = 0; i < result_cmd.length; i++){
 			if(result_cmd[i].contains("Ubuntu")){
 				ds.setOS("Ubuntu");
+				for(int j = 0; j < result_cmd.length; j++){
+					if(result_cmd[j].contains("VERSION_ID=\"14.04")){
+						ubuntuVersion = 14;
+						break;
+					}
+				}
 				break;
 			}else if(result_cmd[i].contains("Mint")){
 				ds.setOS("Mint");
@@ -162,9 +175,17 @@ public class Main {
 			String ubuntuListCmd[] = {"dpkg","-l"};
 			String resultList =cf.shellCmd(ubuntuListCmd);
 			String tmpTable[] = resultList.split("\n");
-			String requiredTool[] = {"zlib1g-dev","libpng12-dev","libncurses5-dev","g++"};
+			String requiredTool[] = {"zlib1g-dev","libpng12-dev","libncurses5-dev","g++","liblzma-dev","libbz2-dev"};
 			
-			for(int i = 0; i < requiredTool.length; i++){
+			int toolLen = 0;
+	
+			if(ubuntuVersion == 16){
+				toolLen = requiredTool.length-2;
+			}else{
+				toolLen = requiredTool.length;				
+			}
+			
+			for(int i = 0; i < toolLen; i++){
 				boolean checkFlag = false;
 				for(int j = 0; j < tmpTable.length; j++){
 					if(tmpTable[j].contains(requiredTool[i])){
@@ -182,8 +203,12 @@ public class Main {
 						lib_name = lib_name + "libncurses : sudo apt-get install libncurses5-dev\n";
 					}else if(requiredTool[i].equals("g++")){
 						lib_name = lib_name + "g++ : sudo apt-get install build-essential\n";
+					}else if(requiredTool[i].equals("liblzma-dev")){
+						lib_name = lib_name + "liblzma : sudo apt-get install liblzma-dev\n";
+					}else if(requiredTool[i].equals("libbz2-dev")){
+						lib_name = lib_name + "libbz2 : sudo apt-get install libbz2-dev\n";
 					}
-				}
+				}	
 			}
 		}
 		

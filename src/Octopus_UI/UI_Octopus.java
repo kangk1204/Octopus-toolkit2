@@ -46,9 +46,8 @@ public class UI_Octopus extends JFrame implements WindowListener{
 	CheckProgram cp;
 	Main_Process mp;
 	UI_Tool_Option ui_tool;
-	UI_Password ui_pw;
 	private JTextField input_TextField;
-	private Boolean guide_Flag = false;
+	private Boolean guide_Flag = true;
 		
 	private JLabel prBar_Lbl;
 	private JLabel simple_Lbl;
@@ -365,8 +364,18 @@ public class UI_Octopus extends JFrame implements WindowListener{
 					} else {
 						if (cp.checkRPackage() == false) {
 
-							ui_pw = new UI_Password(ds, cf,"Graph");
-							ui_pw.setVisible(true);
+							Thread auto = new Thread() {
+								public void run() {
+									setRunningPrograss(true);
+									ui_g = new UI_Graph_Table(ds, cf);
+									setProgress(65,"Installed : R Packages");
+									setRunningPrograss(true);
+									cp.downLoadTool("R", ds.getPath());
+								
+								}
+							};
+							
+							auto.start();
 						
 						}else{
 							cf.openDialog_Dir("Graph");
@@ -456,7 +465,6 @@ public class UI_Octopus extends JFrame implements WindowListener{
 		}
 	}
 	public void setRunInfoWindowLog(String str) {
-
 		String preStr = editor.getText().replace("\n ", "");
 		String htmlStr1[] = preStr.split("<body>   ");
 		String htmlStr2[] = htmlStr1[1].split(" </body>");
@@ -543,7 +551,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 	public void setToolOptionVisible(){
 		ui_tool.setVisible(false);
 	}
-	public void setPasswordVisible(boolean btn){
+	/*public void setPasswordVisible(boolean btn){
 		ui_pw.setVisible(false);
 			if(btn == true){ //true : OK
 				
@@ -560,7 +568,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 				
 				auto.start();
 			}
-	}
+	}*/
 
 	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub
@@ -620,11 +628,11 @@ public class UI_Octopus extends JFrame implements WindowListener{
 			public void mouseClicked(MouseEvent e) {
 				if(guide_Flag == false){
 					windowSetSize(390, 530);
-					guide_Lbl.setText("▲ Detail");
+					guide_Lbl.setText("▼ Detail");
 					guide_Flag = true;
 				}else{
 					windowSetSize(390, 105);
-					guide_Lbl.setText("▼ Detail");
+					guide_Lbl.setText("▲ Detail");
 					guide_Flag = false;
 				}
 				
