@@ -35,8 +35,8 @@ Operating System:
 
 Operating System Version (tested):
 
-* Linux : Ubuntu (``16.04``, highly recommend),(``14.04``)
-* Fedora (``25``)
+* Linux : Ubuntu (``14.04``),(``16.04``, highly recommend)
+* Fedora (``22``),(``25``)
 * Mint (``18``)
 
 Program development
@@ -64,6 +64,7 @@ Table of contents
    license
    help
    window
+   3rd_party_version
 
 ..
 

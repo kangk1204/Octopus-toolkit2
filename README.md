@@ -16,7 +16,7 @@ Minimum Memory (RAM)
 Operating System
 - 64bit Linux
 - Operating System Version:
-- Linux : Ubuntu (16.04),(14.04), Fedora (25), Mint (18)
+- Linux : Ubuntu (14.04),(16.04, highly recommend), Fedora (22),(25), Mint (18)
 
 ======================================================
 ## 2.Requirement
@@ -82,10 +82,12 @@ Library
 - $ sudo yum install libpng12-devel.x86_64
 - $ sudo yum install ncurses-devel.x86_64
 - $ sudo yum install gcc-c++
+- $ sudo yum install bzip2-devel
+- $ sudo yum install xz-devel
 
 OR
 
-- $ sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++
+- $ sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ bzip2-devel xz-devel
 
 R
 - $ sudo yum install R

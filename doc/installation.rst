@@ -81,7 +81,7 @@ OR ::
 1-5.Fedora
 ----------
 
-To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``
+To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``, ``libbz2``, ``liblzma``
 
 * ``zlib-devel`` ::
 
@@ -103,9 +103,17 @@ To run the Octopus-toolkit, you must install the following libraries: ``zlib``, 
 
     sudo yum install gcc-c++
 
+* ``libbz2`` ::
+
+    sudo yum install bzip2-devel
+
+* ``liblzma`` ::
+
+    sudo yum install xz-devel
+
 OR ::
 
-    sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++
+    sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ bzip2-devel xz-devel
 
 .. _graph:
 

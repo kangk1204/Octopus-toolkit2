@@ -29,11 +29,11 @@ Tutorial for installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=
 
    sudo yum update
    sudo yum install java-1.8.0-openjdk
-   sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ R
+   sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ bzip2-devel xz-devel R
     wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
    unzip Octopus-toolkit.zip
    cd Octopus-toolkit/
-   java -jar Octopus-toolkit_2.0.0.jar
+   java -jar Octopus-toolkit.jar
 
 
 0-4. Quick Run
