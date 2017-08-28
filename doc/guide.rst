@@ -2,7 +2,7 @@
 5.User Guide
 ============
 
-Octoput-toolkit can analyze a number of publicly available next-generation sequencing (NGS) data with a single step.
+Octoput-toolkit can analyze a number of publicly available next-generation sequencing (NGS) data in with a single step.
 In addition, you can also analyze your own data (.fastq) using the same analysis pipeline that is provided by the Octopus-toolkit.
 
 * ``Supported NGS types`` : RNA-seq, ChIP-seq, ATAC-seq, DNase-seq, MeDIP-seq, and MNase-seq
@@ -140,11 +140,11 @@ You can change a number of parameters provided by Octopus-toolkit or the integra
    ``Alignment tool for RNA-seq``,Set the alignment tool for RNA-seq.
    ``Fastq -> Fastq.gz``,Compress Fastq to Fastq.gz.
    ``Bam -> CRAM``, Compress Bam to CRAM.
-   ``Remove Files``,Delete selected intermediate files once each process completed to save space.
+   ``Remove Files``,Delete selected intermediate files once each process is completed to save space.
 
 * ``Latest genome version``
 
-Octopus-toolkit can analyze for Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, and Canis lupus familaris.
+Octopus-toolkit can analyze the genomes of Homo sapiens, Mus musculus, Drosophila melanogaster, Saccharomyces cerevisiae, and Canis lupus familaris.
 
 .. list-table:: Available analysis genome version
    :widths: 10 10
@@ -169,7 +169,7 @@ Octopus-toolkit can analyze for Homo sapiens, Mus musculus, Drosophila melanogas
    * - Caenorhabditis elegans
      - ce11
 
-The latest genome version uses the latest version of the geonme for analysis. If you don't select this option, Octopus-toolkit uses the genome defined by submitter.
+The latest genome version uses the latest version of the genome for analysis. If you don't select this option, Octopus-toolkit uses the genome defined by submitter.
 
  * Latest genome (O) : hg38, mm10, dm6, sacCer3, canFam3, tair10, danRer10, ce11
  * Latest genome (X) : hg19, mm9, dm3, sacCer3, canFam3, tair10, danRer10, ce11
@@ -180,15 +180,15 @@ While analyzing a number of GSE/GSM data, you can stop the analysis and resume i
 
 Octoput-toolkit will skip the samples that have been analyzed completely.
 
-Although you have the samples that have been analyzed completely, but you want to reanalyze it again, please do not check this option.
+If you have the samples that have been analyzed completely and you want to analyze it again, please do not check this option.
 
 * ``Omit process``
 
-The omit process allows you to skip the trimming step and/or the sorting step. This shorten the anaysis time.
+The omit process allows you to skip the trimming step and/or the sorting step. This shortens the anaysis time.
 
-In the trimming process, if all reads have bad sequencing quality, all reads could be discarded. Octopus-toolkit will analyze the original raw data (.fastq) in this case by skipping the trimming step.
+During the trimming process, all reads will be discarded if all of the reads have bad sequencing quality. Octopus-toolkit will analyze the original raw data (.fastq) in this case by skipping the trimming step.
 
-In the sorting process, BAM file will be sorted by using Samtools. In general, many applications uses sorted BAM files. If you are not interested in analyzing the sorted BAM files, you can skip this process.
+During the sorting process, BAM file will be sorted by using Samtools. In general, many applications uses sorted BAM files. If you are not interested in analyzing the sorted BAM files, you may skip this process.
 
 * ``CPU(Thread)``
 
@@ -198,7 +198,7 @@ You can set the number of CPUs for analysis. (Default : Maximum number of cores 
 
 You can adjust many parameters for each stop. Check the box and click the Edit button. The parameter window will pop up.
 
-Please follow the link in details : :ref:`Full Parameter<full_parameter>`
+Please refer to the link for details : :ref:`Full Parameter<full_parameter>`
 
 * ``Edit``
 
@@ -225,7 +225,7 @@ You can compress intermediate files to save your disk space.
 * ``Remove Files``
 
 Each step creates intermediate files which may or may not be used. If you want to further analyze the processed data, you might want to keep those intermediate files.
-If not, you can remove intermediate files (up to few hundread gigabytes) by selecting the boxes in the Reomve Files window. 
+If not, you can remove intermediate files (up to few hundread gigabytes) by selecting the boxes in Reomve Files window. 
 
 .. list-table::
    :widths: 10 10 10
@@ -251,7 +251,7 @@ If not, you can remove intermediate files (up to few hundread gigabytes) by sele
      - Output generated during Alignment. (Mapped read to the genome)
    * - ``Sorted_Bam``
      - bam
-     - Output generated during Sortring. (Sorted mapped read)
+     - Output generated during Sorting. (Sorted mapped read)
 
 3. Set the paramters and options.
 
@@ -262,7 +262,7 @@ Run
 ___
 
 
-* Progress bar and status window (GSM1385578).
+* Below shows progress bar and status window (GSM1385578).
 
 .. image:: _static/Guide/3.Octopus-toolkit_run_public.png
 
@@ -288,7 +288,7 @@ Unlike the public data analysis, private data analysis does not require the conv
 
 Input files can be fastq (.fastq or .fq) files or compressed fastq (.fastq.gz or .fq.gz) files.
 
-Files must be follow the rules below.
+Files must follow the rules below.
 
 .. note::
     * Raw data : Sample ``.fastq`` or Sample ``.fq``
@@ -305,7 +305,7 @@ _____________
 
 Octopus-toolkit requires appropriate sample information for each file. You need to specify the required information.
 
-If any of the selected files does not appear in the list, please check file name and format of your files.
+If any of the selected files does not appear in the list, please check the file name and format of your files.
 
 You must specify the following information for each sample.
 
@@ -361,7 +361,7 @@ Multi-lane files generally have the following filenames. ::
 
     Sample.L001.fastq, Sample.L002.fastq, Sample.L003.fastq ... Sample.L008.fastq
 
-To merge the above files, you must set the Multi-Lane columns in the files to the same number.
+To merge the above files, you must set the number of ‘Multi-Lane columns’ to the same number for each file.
 
 * ``Strand``
 
@@ -391,7 +391,7 @@ ___________
 
 .. note::
     1. Select the Analysis tab -> Click the Peak Calling function in the Menu bar.
-    2. Select the output folder (Result/GSExxxxx) in the Result directory which is generated by Octopus-toolkit.
+    2. Select the output folder (Result/GSExxxxx) in the Result directory generated by Octopus-toolkit.
     3. Add information of each sample in the peak calling table.
     4. Click the Run button.
     
@@ -464,7 +464,7 @@ _____________________
 
 .. image:: _static/Guide/9.Graph_Start.png
 
-The Graph function is to draw average signal pattern on specificed regions which are given by the user. Signals are extracted from bigWig (normalized to ten million mapped reads) files.
+The Graph function is to draw average signal pattern on specificed regions which are defined by the user. Signals are extracted from bigWig (normalized to ten million mapped reads) files.
 
 If you would like to draw plots on peaks, you need to complete the peak calling analysis for a sample of your interest.
 
@@ -544,17 +544,17 @@ _________
 
 * ``Genome``
 
-Genome information shows the genome of the samples.
+Genome option shows the genome of the samples.
 
 3. In the sample window, select samples and then, click the Insert button.
-4. Check see if all genomes are the same. Only data in the same genome can be loaded into the IGV.
+4. Check if all genomes are the same. Only the data in the same genome can be loaded into the IGV.
 5. Set the same genome in the Table option.
 6. Click the Run button.
 
 Run
 ___
 
-* Run screen of IGV.
+* Below shows run screen of IGV.
 
 .. image:: _static/Guide/12.IGV_Run.png
 
@@ -588,7 +588,7 @@ The output files generated by each process are as follows:
    * - ``00_SRA``
      - Preprocessing
      - ``sra``
-     - Store the SRA file downloaded from NCBi
+     - Store the SRA file downloaded from NCBI
    * - ``01_Fastqc``
      - Quality check
      - ``html``, ``txt``
@@ -624,7 +624,7 @@ The output files generated by each process are as follows:
 .. image:: _static/Guide/17.File_Name.png
 
 * ``Yellow`` : GSM Accession number
-    Only for the public data.
+    Only applicable for the public data.
 
 * ``Red`` : ChIP-Seq_L1-WT-H3K4me3-rep2
     Sample file name (title) defined on the GEO website.
@@ -678,20 +678,20 @@ The 3rd party tools used in Octopus-toolkit : :ref:`3rd party tools<3rd_party_to
 Preprocessing
 _____________
 
-In the preprocessing step, Octopus-toolkit downloads selected NGS data from NCBI and converting the downloaded (.sra) files to FASTQ files.
+In the preprocessing step, Octopus-toolkit downloads selected NGS data from NCBI and converts the downloaded (.sra) files to FASTQ files.
 The 3rd party tools used in the preprocessing step are Aspera and SRAToolkit(fastq-dump)
 
 * **Transfer rate**
 
-    ``MAX-RATE`` : MAX transfer rate (Only Integer)
+    ``MAX-RATE`` : MAX transfer rate (Only Integers)
 
-    ``MIN-RATE`` : MIN transfer rate (Only Integer)
+    ``MIN-RATE`` : MIN transfer rate (Only Integers)
 
     ``Overwrite`` : Overwrite-Method, Always(Default), Never, Older, Diff
 
 * **Convert Sra to Fastq (Filtering)**
 
-    ``MIN-Read Length`` : Filter by sequence length >= <Value> (Only Integer)
+    ``MIN-Read Length`` : Filter by sequence length >= <Value> (Only Integers)
     
     ``Aligned or unaligned reads`` : Dump only aligned sequence or unaligned sequences, NotUse(Default), Both, Aligned, Unaligned
 
@@ -705,7 +705,7 @@ _____________
 QC & Trimming is the process of assessing the quality of the reads. If bad sequencing quality are detected, portions of low-quality reads are trimmed.
 The 3rd party tools used in QC & Trimming are FastQC and Trimmomatic.
 
-* **Determined quality of DNA Sequence**
+* **Determining the quality of DNA Sequence**
 
     ``K-Mer`` : Specifies the length of Kmer to look for in the Kmer content module, Specified Kmer length must be between 2 and 10. Default length is 7 if not specified.
 
@@ -719,9 +719,9 @@ The 3rd party tools used in QC & Trimming are FastQC and Trimmomatic.
 
     ``Palindrome clip threshold`` : Specifies how accurate the match between the two 'adapter ligated' reads must be for PE palindrome read alignment.
 
-    ``Simple clip threshold`` : Specifies how accurate the match between any adapter etc. sequence must be against a read.
+    ``Simple clip threshold`` : Specifies how accurate the match between adapter or any sequence must be against a read.
 
-    ``Window size`` : specifies the number of bases to average across
+    ``Window size`` : specifies the number of bases to be averaged.
 
     ``Average quality`` : Specifies the average quality required.
 
@@ -765,7 +765,7 @@ The 3rd party tool used in Alignment is Hisat2.
 
 * **Alignment**
 
-    ``Ignore all quality values`` : Treat all quality values as 30 on Phred scale (no)
+    ``Ignore all quality values`` : Treat all quality values as 30 in Phred scale (no)
 
     ``Do not align reverse of read`` : Do not align forward (original) version of read (no)
 
@@ -786,12 +786,12 @@ The 3rd party tool used in Alignment is Hisat2.
 Alignment-STAR
 ________________
 
-Alignment is the process of mapping reads to the reference genome.
+Alignment is the process of mapping reads to a reference genome.
 The 3rd party tool used in Alignment is STAR (RNA-Seq only).
 
 * **Alignment**
 
-    ``AlignIntronMin`` : Minimum intron size: genomic gap is considered intron if its\nlength>=alignIntronMin, otherwise it is considered Deletion (21)
+    ``AlignIntronMin`` : Minimum intron size: genomic gap is considered intron if its\nlength>=alignIntronMin, otherwise it is considered as Deletion (21)
 
     ``AlignIntronMax`` : Maximum intron size, if 0, max intron size will be determined by\n(2ˆwinBinNbits)*winAnchorDistNbins (0)
 

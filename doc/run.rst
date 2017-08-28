@@ -10,8 +10,8 @@
 
 Please follow the movie clip (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
 
-* Download (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress to the ``folder`` where you want it to be installed.
-* Open the terminal application (cmd) and type the command below ::
+* Download (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) and uncompress it to the ``folder`` where you want it to be installed.
+* Open the terminal application (cmd) and type the below command in  ::
 
     cd Octopus-toolkit/
     java -jar Octopus-toolkit.jar
@@ -39,7 +39,7 @@ Or Command (Download ~ Run) ::
 2-2.Java Virtual Machine(VM) heap memory limited
 ------------------------------------------------
 
-Octopus-toolkit requires at least 8 Gb (32 Gb memory for processing human/mouse RNA-seq) (Recommend : ``32+`` Gb RAM).
+Octopus-toolkit requires at least 8 Gb of the memory (32 Gb of memory for processing human/mouse RNA-seq) (Recommend : ``32+`` Gb RAM).
 
 If you get errors related to running out of memory, please increase the heap memory of the Java Virtual Machine. 
 

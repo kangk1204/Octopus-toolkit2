@@ -20,7 +20,7 @@ Octopus-toolkit creates five directories when you run the program.
      - Reference genome sequence and annotation files for analysis and alignment tools.
    * - ``Log``
      - Command, Run
-     - Log file containing commands used for analysis.
+     - Log file containing the commands used for analysis.
    * - ``Result``
      - GSE_Folder, P_Folder
      - The output files.
@@ -40,14 +40,14 @@ Octopus-toolkit creates five directories when you run the program.
 
 The reference folder contains several reference files required for analysis.
 
-Before starting each process, Octopus-toolkit checks the folder whether the reference files are prepared. If not, it automatically prepare the files.
+Before starting each process, Octopus-toolkit checks the folder whether the reference files are prepared. If not, it automatically prepares the files.
 
 3-2.Index-Hisat2
 ^^^^^^^^^^^^^^^^
 
 .. image:: _static/Folder/3.Hisat2_folder.png
 
-The reference genome sequence file should be indexed at least once before proceeding the alignment step. The folder contains indexed genome sequence files used by the Hisat2 tool.
+The reference genome sequence file should be indexed at least once before proceeding to the alignment step. The folder contains indexed genome sequence files used by the Hisat2 tool.
 
 Octopus-toolkit inspects the index file of the genome before running the alignment process and runs the indexing step if it does not exist.
 
@@ -58,9 +58,9 @@ Octopus-toolkit inspects the index file of the genome before running the alignme
 
 .. image:: _static/Folder/4.Command_folder.png
 
-The Command directory contains log files containing commands used during the analysis. 
+The Command directory contains log files containing the commands used during the analysis. 
 
-The file name is created based on the date. (:download:`2016_Dec_06.cmd.txt<_templates/2016_Dec_06.cmd.txt>`)
+The file name adopts the date it is created. (:download:`2016_Dec_06.cmd.txt<_templates/2016_Dec_06.cmd.txt>`)
 
 3-4.Log-Run
 ^^^^^^^^^^^
@@ -71,7 +71,7 @@ The file name is created based on the date. (:download:`2016_Dec_06.cmd.txt<_tem
 
 The Run directory contains log files containing running information recorded during analysis.
 
-The file name is created based on the date. (:download:`2016_Dec_06.run.txt<_templates/2016_Dec_06.run.txt>`)
+The file name adopts the date it is created. (:download:`2016_Dec_06.run.txt<_templates/2016_Dec_06.run.txt>`)
 
 3-5.Result
 ^^^^^^^^^^
@@ -82,7 +82,7 @@ The file name is created based on the date. (:download:`2016_Dec_06.run.txt<_tem
 
 The Result folder stores the output of Octopus-toolkit.
 
-The folder name is based on GEO accession number you entered. For the private data, the folder name begins with `P_.`
+The folder name is based on the GEO accession number you entered. For the private data, the folder name begins with `P_.`
 
 The Graph folder stores Heatmaps and Lineplots when you run the Graph function. 
 

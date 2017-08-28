@@ -15,7 +15,7 @@ Download Link : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`)
 1-2.Requirement
 ---------------
 
-To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher must be installed on your computer.
+To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer.
 
 * Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
 
@@ -36,7 +36,7 @@ To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher
     sudo yum install java-1.8.0-openjdk
 
 Octopus-toolkit utilizes several libraries for analysis.
-Each operating system such as ubuntu, mint and fedora have different ways to install the applications.
+Each operating system such as ubuntu, mint and fedora differ in ways to install the applications.
 Please follow the installation guide below.
 
 1-3.Ubuntu, Mint
@@ -120,7 +120,7 @@ OR ::
 1-6.Graph
 ---------
 
-To draw heatmap and Line plot, ``R (3.1)`` or higher version of it must be installed on your computer.
+To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
 
 * Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
 

@@ -9,7 +9,7 @@
 
 .. image:: _static/Interface/1.main.png
 
-* The description of each part as follows.
+* The description of each part are as follows.
 
 .. csv-table::
    :header: "No","Name","Description"
@@ -26,7 +26,7 @@
 4-2.Menu Bar
 ^^^^^^^^^^^^
 
-* Details below.
+* Below are the details.
 
 .. csv-table::
    :header: "Menu","Sub Menu","Description"
@@ -108,7 +108,7 @@ To analyze your own data, you must select appropriate information as follows.
 
 You can identify peaks using the Peak Calling function. You have to select appropriate options for each file from the setting window.
 
-RNA-seq data will not be applied.
+This function is not applicable for RNA-seq data.
 
 .. image:: _static/Interface/5.Peak_calling.png
 
@@ -127,7 +127,7 @@ RNA-seq data will not be applied.
 
 To draw heatmap and line plots with the identified regions.
 
-RNA-seq data will not be applied.
+This function is not applicable for RNA-seq data.
 
 .. image:: _static/Interface/6.Graph.png
 
@@ -139,7 +139,7 @@ RNA-seq data will not be applied.
    2,``Annotation``,Choose a peak file.
    3,``Samples``,Status window
    4,``Sample bigWig files``,Select bigWig files of samples you want to draw over the identified regions in the peak file.
-   5,``Option``,Defin the range (bp) relate to the center of peaks.
+   5,``Option``,Define the range (bp) relate to the center of peaks.
 
 4-8.IGV Table
 ^^^^^^^^^^^^^

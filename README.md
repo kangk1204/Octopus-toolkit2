@@ -31,10 +31,12 @@ Library
 - $ sudo apt-get install libpng12-dev
 - $ sudo apt-get install libncurses5-dev
 - $ sudo apt-get install build-essential
+- $ sudo apt-get install liblzma-dev
+- $ sudo apt-get install libbz2-dev
 
 OR 
 
-- $ sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential
+- $ sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential liblzma-dev libbz2-dev
 
 R
 - $ sudo apt-get install r-base

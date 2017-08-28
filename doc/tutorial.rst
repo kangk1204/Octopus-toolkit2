@@ -10,9 +10,9 @@ A case by case tutorial.
 
     :ref:`6-1.Public data<tutorial1>`,How to analyze a public data with ``GEO accession number``.
     :ref:`6-2.Public data<tutorial2>`,How to analyze a list of public data with a text file containing the ``list`` of GEO accession numbers.
-    :ref:`6-3.Private data<tutorial3>`,How to setup the Private table for ``user's data``.
-    :ref:`6-4.Private data<tutorial4>`,How to setup the Private table when you have multiple files for a single sample: ``Multi-lane``.
-    :ref:`6-5.Peak Calling<tutorial5>`,How to identified peaks using ``Peak Calling`` with the output.
+    :ref:`6-3.Private data<tutorial3>`,How to setup Private table for ``user's data``.
+    :ref:`6-4.Private data<tutorial4>`,How to setup Private table when you have multiple files for a single sample: ``Multi-lane``.
+    :ref:`6-5.Peak Calling<tutorial5>`,How to identify peaks using ``Peak Calling`` with the output.
     :ref:`6-6.Graph<tutorial6>`,How to draw ``Graph`` with the output.
     :ref:`6-7.IGV<tutorial7>`,How to explore genome using ``IGV`` with the output.
   
@@ -24,7 +24,7 @@ A case by case tutorial.
 .. note::
     ``6-1.Public data (Single GSE/GSM)`` describes how to process publicly available data by entering a single GEO accession number. 
 
-The way to analyze published data is very simple. Enter a GEO accession number in the input text area. Then click the Run button and Octopus-toolkit option window will appear. In the Option window, set the parameters for the analysis and click the RUN button to begin the analysis.
+Analyzing published data is a simple process. Enter a GEO accession number in the input text area. Then click the Run button and Octopus-toolkit option window will appear. In the Option window, set the parameters for the analysis and click the RUN button to begin the analysis.
 
 * ``GEO accession number`` : `GSE48685 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE48685>`_ (ChIP-Seq:10, RNA-Seq:1)
 
@@ -37,7 +37,7 @@ The way to analyze published data is very simple. Enter a GEO accession number i
 
 * ``C`` : Select the options to analyze and click the Run button. (Option : Defalut)
 
-Finally, Octopus-toolkit will automatically download raw files in the GSE48685 ftp directory and subsequenty analyzes the data. The output will be stored in a specified directory. No other action is required.
+Finally, Octopus-toolkit will automatically download raw files in the GSE48685 ftp directory and subsequenty analyze the data. The output will be stored in a specified directory. No other action is required.
 
 .. _tutorial2:
 
@@ -45,9 +45,9 @@ Finally, Octopus-toolkit will automatically download raw files in the GSE48685 f
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    ``6-2.Public data (Multi GSE/GSM)`` describes How to sequentially analyze a set of public data (a list of GSE accession numbers).
+    ``6-2.Public data (Multi GSE/GSM)`` describes how to sequentially analyze a set of public data (a list of GSE accession numbers).
 
-You may want to analyze subsamples (GSM) in a study (GSE) with several other studies (GSEs) altogether. In this case, you need to create a text file containing GSM ids for subsamples and GSE ids for studies.
+You may want to analyze samples (GSM) in a study (GSE) with several other studies (GSEs) altogether. In this case, you need to create a text file containing GSM ids for samples and GSE ids for studies.
 
 An example is shown below. (:download:`example.list<_templates/GEO_Accession_number.list>`)
 
@@ -55,7 +55,7 @@ An example is shown below. (:download:`example.list<_templates/GEO_Accession_num
    :scale: 80 %
 
    
-Then, click the OPEN button and select the list file that you prepared.
+Then, click the OPEN button and select the list file you prepared.
 
 
 .. image:: _static/Tutorial/Tutorial2.2.png
@@ -73,7 +73,7 @@ Then, click the RUN button. Octopus-toolkit option window will appear. In the Op
 
 .. image:: _static/Tutorial/Tutorial2.4.png
 
-Finally, Octopus-toolkit will automatically analyze massive data. You just have to wait for the results.
+Finally, Octopus-toolkit will automatically analyze the list of data. Sit back and relax until the results are out.
 
 .. _tutorial3:
 
@@ -83,7 +83,7 @@ Finally, Octopus-toolkit will automatically analyze massive data. You just have 
 .. note::
     ``6-3.Private data (Basic)`` describes how to analyze your own data using the same analysis pipeline for the public data.
 
-Let say you have the following data.
+Let's assume that you have the following data.
 
 .. csv-table:: Analysis situation.
    :header: "NO","File name","Genome","Seq Type","SE or PE","Strand"
@@ -112,7 +112,7 @@ The following Private Table window will appear.
 .. image:: _static/Tutorial/Tutorial3.3.png
    :scale: 90 %
 
-Case 1. let's fill in the blank for the 1.Private_ChIP-Seq_Mouse fastq file. Reads in this ChIP-seq file (single-end) should be mapped to the mm10 genome.
+Case 1. Fill in the blank for the 1.Private_ChIP-Seq_Mouse fastq file. Reads in this ChIP-seq file (single-end) should be mapped to the mm10 genome.
 
 .. image:: _static/Tutorial/Tutorial3.4.png
 
@@ -120,9 +120,9 @@ Case 1. let's fill in the blank for the 1.Private_ChIP-Seq_Mouse fastq file. Rea
 * ``F`` : Select appropriate parameters regarding this sample. (Genome : ``mm10``, Seq-Type : ``ChIP-Seq``)
 * ``G`` : Click the Insert button
 
-Case 2. let's fill in the blank for the 2 and 3.Private_RNA-Seq_Human fastq files. Reads in this RNA-seq files (paired-end, FR-Firststrand) should be mapped to the hg38 genome. 
+Case 2. Fill in the blank for the 2 and 3.Private_RNA-Seq_Human fastq files. Reads in this RNA-seq files (paired-end, FR-Firststrand) should be mapped to the hg38 genome. 
 
-Octopus-toolkit automatically recognizes Paired-End files. The name of the files must be the same and ended with _1.fastq and _2.fastq
+Octopus-toolkit automatically recognizes Paired-End files. The name of the files must be the same and end with the suffix _1.fastq and _2.fastq
 
 .. image:: _static/Tutorial/Tutorial3.5.png
 
@@ -228,7 +228,7 @@ Once you select an GSE folder (not double click), please click the Open button. 
 
 Samples of GSE48685, which were processed by Octopus-toolkit, will appear in the Sample area.
 
-First, you need to add given samples to the Peak Calling table using the Insert function. 
+First, you need to add the processed samples to the Peak Calling table using the Insert function. 
 
 .. image:: _static/Tutorial/Tutorial5.3.png
 
@@ -243,7 +243,7 @@ Then fill in the blanks for the selected samples using the Table option function
 * ``H`` : Click the Insert button
 * ``I`` : Click the Run button
 
-Peak Calling analysis will be started according to the Table information.
+Peak Calling analysis will start according to the Table information.
 
 .. image:: _static/Tutorial/Tutorial5.5.png
 
@@ -338,7 +338,7 @@ You need to select appropriate studies (GSE directories) in the Result folder. F
 * ``C`` : Select the GSE48685 and GSE31578 folders.
 * ``D`` : Click the Open button.
 
-Let say you select the following samples. You must select an appropriate genome for visualization. Of course, you cannot load bigWig files from different genomes.
+Let's say you select the following samples. You must select an appropriate genome for visualization. Obviously, you cannot load bigWig files from different genomes.
 
 .. image:: _static/Tutorial/Tutorial7.3.png
 

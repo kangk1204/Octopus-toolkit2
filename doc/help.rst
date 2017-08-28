@@ -3,7 +3,7 @@
 9.Help
 ======
 
-If you have any questions, please send an email to the following address: Octopustoolkit@gmail.com
+If you have any questions, please email us to the following address: Octopustoolkit@gmail.com
 
 When sending an email, please include the following text in the title.
 

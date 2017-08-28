@@ -9,8 +9,8 @@ To use the Octopus-toolkit right away, please follow these tutorials:
 
 Tutorial for installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
 
-0-2. Ubuntu, Mint (We highly recommend Ubuntu)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0-2. Ubuntu, Mint (We highly recommend to use Ubuntu)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Commands (:download:`Quick_Start(Ubuntu,mint).txt<_templates/Quick_Start(Ubuntu,mint).txt>`):: 
    

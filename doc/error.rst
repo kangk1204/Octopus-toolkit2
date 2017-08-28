@@ -18,9 +18,9 @@
     :ref:`Err005<err_005>`,Not enough disk space.
     :ref:`Err006<err_006>`,Related to each processing step.
     :ref:`Err007<err_007>`,Some analytics tools are not installed.
-    :ref:`Err008<err_008>`,The password you entered does not match.
+    :ref:`Err008<err_008>`,Incorrect password.
     :ref:`Err009<err_009>`,Octopus-toolkit can't read/write files from your computer.
-    :ref:`Err010<err_010>`,The number of Paired-End data does not match.
+    :ref:`Err010<err_010>`,Incorrect number of Paired-End data.
 	
 If you have any questions, Please contact us at Octopustoolkit@gmail.com
 
@@ -38,7 +38,7 @@ If ``your network connection is unstable``, or ``the NCBI server is tempararily 
 
 First, ``check the network connection`` of your computer. If it is ok, please ``check the`` `NCBI <https://www.ncbi.nlm.nih.gov/>`_ and whether the server is operating normally.
 
-If the above cannot solve the problem, the connection to the NCBI may be ``timed out`` due to unknown reasons. Please re-run the Octopus-toolkit later (``temporary phenomenon``).
+If the above cannot solve the problem, the connection to the NCBI may be ``timed out`` due to unknown reasons. Please re-run Octopus-toolkit after some time (``temporary phenomenon``).
 
 
 .. _err_002:
@@ -92,7 +92,7 @@ You can check ``experiment type`` of given GEO accession number through the webs
 Err004
 ^^^^^^
 
-Not all data in the GEO can be processed with the Octopus-toolkit. Octopus-toolkit check the following information before processing it.
+Not all data in the GEO can be processed with the Octopus-toolkit. Octopus-toolkit check the following information before the processing.
 ``Organism``, ``Library strategy``, ``Instrument model``, and ``FTP Address(SRA Experiment)``). (Important)
 
 * DataSet for GSE79452 (Ex : `GSE79452 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE79452>`_) 
@@ -142,9 +142,9 @@ Not all data in the GEO can be processed with the Octopus-toolkit. Octopus-toolk
 Err005
 ^^^^^^
 
-This error is related to disk space. To reslove this issue, please make ``enough free space`` (more than 10Gb) and re-run the analysis.
+This error is related to disk space. To resolve this issue, obtain ``enough free space`` (more than 10Gb) and re-run the analysis.
 
-* Check you hard disk space.
+* Check your hard disk space.
 
 .. image:: _static/Error/Err005_File_System_Monitor.png
 
@@ -179,19 +179,19 @@ ________
 
 NCBI provides raw data of published sample through ``FTP server`` to user. If the NCBI homepage is working normally, you can extract the sample information, but if the FTP server does not work, you will not be able to download the data.
 
-To solve this issue, you connects directly to the FTP server of NCBI.
+To solve this issue, you connect directly to the FTP server of NCBI.
 
 * ``Error006-1`` example : `GSM1675769 <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1675769>`_
 
 .. image:: _static/Error/Err006-1_Example.png
 
-If you can connect to the FTP server, download the manually published sample.
+If you can connect to the FTP server, manually download the published sample.
 
 * NCBI Ftp server is running.(``Success``)
 
 .. image:: _static/Error/Err006-1_Success.png
 
-But the server is closed or samples are not downloaded, please contact the NCBI because it is an issue for the NCBI.
+If the server is closed or samples can not be downloaded, please contact the NCBI because it is an issue for the NCBI.
 
 * NCBI Ftp server is closed.(``Fail``)
 
@@ -199,7 +199,7 @@ But the server is closed or samples are not downloaded, please contact the NCBI 
 
 If the above method works normally, please try Octopus-toolkit again.
 
-If you have an ``Err006-1`` despite retrying, please contact us at the address below.
+If you still have an ``Err006-1`` in the retrial, please contact us at the address below.
 
 Contact us : Octopustoolkit@gmail.com
 
@@ -214,9 +214,9 @@ Raw data of samples downloaded from NCBI is compressed in ``SRA format``. For NG
 * ``Input file`` : Sequence Read Archive (Extension : ``sra``)
 * ``Output file`` : Short read sequence. (Extension : ``fastq``)
 
-``006-2`` occurs when there not exist SRA file, which is an input file for executing Fastq-dump, or when it is an invalid SRA file.
+``006-2`` occurs when there is no or invalid SRA file, which is the input file for executing Fastq-dump.
 
-Downloading raw data from the previous step may be caused by disconnecting from FTP server, or raw data uploaded to NCBI may be broken.
+This error may arise due to an abrupt disconnection during the previous downloading step of the raw data from FTP server, or raw data uploaded to NCBI may be broken.
 
 You should check your ``network status``, ``free space`` on your computer and try the analysis again.
 
@@ -229,7 +229,7 @@ Contact us : Octopustoolkit@gmail.com
 Err006-3
 ________
 
-``Err006-3`` means that the input file(``Fastq``) for the ``Quality Check`` is invalid or the issue in the system part during ``Quality Check`` using ``FastQC``.
+``Err006-3`` means that the input file(``Fastq``) for the ``Quality Check`` is invalid or an issue in the system itself during ``Quality Check`` using ``FastQC``.
 
 You should check fastq files on your computer and try the analysis again.
 
@@ -237,7 +237,7 @@ If the above method does not work, please contact us at the address below.
 
 Contact us : Octopustoolkit@gmail.com
 
-After successfully completing the ``Quality Check`` step, some problems prevent ``FastQC`` from generating ``Fastqc_data.txt``.
+After successfully completing the ``Quality Check`` step, some problems may prevent ``FastQC`` from generating ``Fastqc_data.txt``.
 
 Octopus-toolkit extracts the encoding information of the sample from ``fastqc_data.txt`` among the outputs of ``FastQC``. Therefore, if ``Fastqc_data.txt`` is not generated, it stores the encoding information of the latest samples. (``Sanger / Illumina 1.9``)
 
@@ -255,7 +255,7 @@ ________
 
 You should check fastq files on your computer and try the analysis again.
 
-If the above method does not work, please contact us at the address below.
+If the above method does not work, please contact us using address below.
 
 Contact us : Octopustoolkit@gmail.com
 
@@ -266,13 +266,13 @@ If all reads are removed by ``bad quality``, Octopus-toolkit will use the non-tr
 Err006-5
 ________
 
-``Err006-5`` is related to the following causes.
+``Err006-5`` may arise due to the following reasons.
 
 * The input file (``non_trimmed Fastq``, ``Trimmed Fastq``) does not exist.
 * A large number of reads are trimmed due to ``bad sequencing quality`` or ``high threshold used``.
 * Too few mapped reads (Less than 2 MegaByte).
 
-You should check input file (``non-trimmed and trimmed fastq files``), ``read count``, ``file size after timming``.
+You should check your input file (``non-trimmed and trimmed fastq files``), ``read count``, ``file size after timming``.
 
 
 .. _err_006-6:
@@ -295,9 +295,9 @@ Err007
 To use the Octopus-toolkit, your must follow the installation procedure completely: ``Requirement(Err007-1)`` and ``analysis tools(Err007-2)``.
 
 * :ref:`Requirement <requirement>` : Library files must be installed.
-* Analysis tools : Tools that are installed automatically by Octopus-toolkit. If the installation procedure was interuppted, please remove the Octopus-toolkit directory and rerun it.
+* Analysis tools : Tools are installed automatically by Octopus-toolkit. If the installation procedure is interrupted, please remove the Octopus-toolkit directory and rerun it.
 
-Octopus-toolkit download files from the ``HOMER`` website. If the website (http://homer.ucsd.edu/homer/) is unavailable, ``Err007`` can occur.
+Octopus-toolkit download files from the ``HOMER`` website. ``Err007`` occurs if the website (http://homer.ucsd.edu/homer/) is unavailable, ``Err007`` can occur.
 
 
 .. _err_008:
@@ -335,5 +335,5 @@ If there are several SRA files in one sample (GSM), Octopus-toolkit will merge t
 
 Paired-end data must have two files, Sample1_1.fastq and Sample1_2.fastq.
 
-If if fails, this error occurs.
+``Err010`` occurs if any of these fails.
 
