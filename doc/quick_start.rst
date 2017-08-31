@@ -36,8 +36,8 @@ Tutorial for installation. (`Youtube <https://youtube.com/watch?v=K0OpNxXK534&t=
    java -jar Octopus-toolkit.jar
 
 
-0-4. Quick Run
-^^^^^^^^^^^^^^
+0-4. Quick Run (Public data)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Example GSE file (:download:`Example_GSE_List.txt<_templates/Example_GSE_List.txt>`)
 
@@ -55,4 +55,8 @@ Example GSE file (:download:`Example_GSE_List.txt<_templates/Example_GSE_List.tx
 
 .. image:: _static/Quick/3.Quick_run.png
 
+* Below shows output file of Octopus-toolkit
+
+.. image:: _static/Quick/4.Quick_run.png
+    :scale: 80%
 
