@@ -79,7 +79,7 @@ OR ::
   
     sudo apt-get install liblzma-dev libbz2-dev
 
-1-5.Fedora
+1-4.Fedora
 ----------
 
 To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``, ``libbz2``, ``liblzma``
@@ -118,7 +118,7 @@ OR ::
 
 .. _mac:
 
-1-6.MacOS
+1-5.MacOS
 ---------
 
 .. note::
@@ -165,7 +165,7 @@ Octopus-toolkit utilizes several libraries for analysis. Please follow the insta
 
 .. _graph:
 
-1-7.R
+1-6.R
 -----
 
 To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
