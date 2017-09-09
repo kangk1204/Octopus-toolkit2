@@ -38,6 +38,18 @@ public class Panel_Alignment_STAR {
 		
 	}
 	
+	public boolean checkChangeValue(){
+		
+		if(!alignIntronMin_txt.getText().equals("21") || !alignIntronMax_txt.getText().equals("0") || !alignMatesGapMax_txt.getText().equals("0")){
+			return true;
+		}
+		
+		if(!outfiltermultimapnmax_txt.getText().equals("10") || !outfiltermismatchnmax_txt.getText().equals("10") || !outfiltermismatchnoverlmax_txt.getText().equals("0.3")){
+			return true;
+		}
+		return false;
+	}
+	
 	public Panel_Alignment_STAR(DataSet ds){
 		cf = new CommonFunc(ds);
 		mainPanel.setBorder(new LineBorder(UIManager.getColor("Button.darkShadow")));

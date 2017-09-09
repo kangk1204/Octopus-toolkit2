@@ -165,50 +165,66 @@ public class UI_Tool_Option extends JFrame{
 		JButton apply_btn = new JButton("Apply");
 		apply_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String selectItem = tree.getLastSelectedPathComponent().toString();
-				if(selectItem == null){
-					selectItem = "Preprocessing";
-				}
+					boolean changeFlag = false;
+					if(panel_pre.checkChangeValue()){
+						String asperaOption = panel_pre.getAsperaOption();
+						String fastqdumpOption = panel_pre.getFastqDump();
+						ds.setToolOption(0, asperaOption);
+						ds.setToolOption(1, fastqdumpOption);
+						changeFlag = true;
+		
+					}
+					
+					if(panel_qc.checkChangeValue()){
+						String fastqcOption = panel_qc.getFastQCOption();
+						String trimOption = panel_qc.getTrimmomatic();
+						ds.setToolOption(2, fastqcOption);
+						ds.setToolOption(3, trimOption);
+						changeFlag = true;
 				
-				if(selectItem.equals("Preprocessing")){
-					String asperaOption = panel_pre.getAsperaOption();
-					String fastqdumpOption = panel_pre.getFastqDump();
-					ds.setToolOption(0, asperaOption);
-					ds.setToolOption(1, fastqdumpOption);
+					}
 					
-				}else if(selectItem.equals("QC & Trimming")){
-					String fastqcOption = panel_qc.getFastQCOption();
-					String trimOption = panel_qc.getTrimmomatic();
-					ds.setToolOption(2, fastqcOption);
-					ds.setToolOption(3, trimOption);
+					if(panel_align_hisat2.checkChangeValue()){
+						String hisatOption = panel_align_hisat2.getHisat2Option();
+						ds.setToolOption(4, hisatOption);						
+						changeFlag = true;
+
+					}
 					
-				}else if(selectItem.equals("Hisat2") || tree.getSelectionRows()[0] == 3){
-					String hisatOption = panel_align_hisat2.getHisat2Option();
-					ds.setToolOption(4, hisatOption);
+					if(panel_align_star.checkChangeValue()){
+						String starOption = panel_align_star.getSTAR();
+						ds.setToolOption(5, starOption);						
+						changeFlag = true;
+
+					}
 					
-				}else if(selectItem.equals("STAR")){
-					String starOption = panel_align_star.getSTAR();
-					ds.setToolOption(5, starOption);
+					if(panel_visual.checkChangeValue()){
+						String tagDirectoryOption = panel_visual.getMakeTagDirectoryOption();
+						ds.setToolOption(6, tagDirectoryOption);
+						
+						String makeBigWigOption = panel_visual.getMakeUCSCfileOption();
+						ds.setToolOption(7, makeBigWigOption);						
+						changeFlag = true;
+
+					}
 					
-				}else if(selectItem.equals("TagDirectory") || tree.getSelectionRows()[0] == 4){
-					String tagDirectoryOption = panel_visual.getMakeTagDirectoryOption();
-					ds.setToolOption(6, tagDirectoryOption);
+					if(panel_peakcall.checkChangeValue()){
+						String findPeakOption = panel_peakcall.getFindPeakOption();
+						ds.setToolOption(8, findPeakOption);
 					
-				}else if(selectItem.equals("MakeBigWig")){
-					String makeBigWigOption = panel_visual.getMakeUCSCfileOption();
-					ds.setToolOption(7, makeBigWigOption);
+						String annotatePeakOption = panel_peakcall.getAnnotatePeakOption();
+						ds.setToolOption(9, annotatePeakOption);						
+						changeFlag = true;
+
+					}
 					
-				}else if(selectItem.equals("ChIP-Seq/Histone") || selectItem.equals("Peak Filter") || selectItem.equals("Other analysis") || tree.getSelectionRows()[0] == 5){
-					String findPeakOption = panel_peakcall.getFindPeakOption();
-					ds.setToolOption(8, findPeakOption);
-				
-				}else if(selectItem.equals("Annotation")){
-					String annotatePeakOption = panel_peakcall.getAnnotatePeakOption();
-					ds.setToolOption(9, annotatePeakOption);
-				}
-				
-				ds.setFullOption(true);
-				JOptionPane.showMessageDialog(null, "The selected options applied.", "Full parameter",JOptionPane.INFORMATION_MESSAGE);
+					if(changeFlag == true){
+						ds.setFullOption(true);
+						JOptionPane.showMessageDialog(null, "All of the options are applied.", "Full parameter",JOptionPane.INFORMATION_MESSAGE);
+						ds.getMainUI().setToolOptionVisible();
+					}else{
+						JOptionPane.showMessageDialog(null, "Some of the option is not changed.", "Full parameter",JOptionPane.ERROR_MESSAGE);
+					}
 			}
 		});
 		apply_btn.setBounds(372, 5, 80, 25);
@@ -217,42 +233,29 @@ public class UI_Tool_Option extends JFrame{
 		JButton default_btn = new JButton("Default");
 		default_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String selectItem = tree.getLastSelectedPathComponent().toString();
-				if(selectItem == null){
-					selectItem = "Preprocessing";
-				}
+				panel_pre.init();
+				panel_qc.init();
+				panel_align_hisat2.init();
+				panel_align_star.init();
+				panel_visual.initTag();
+				panel_visual.initBw();
+				panel_peakcall.initPeakCall();
+				panel_peakcall.initAnno();
 				
-				if(selectItem.equals("Preprocessing")){
-					panel_pre.init();
-				}else if(selectItem.equals("QC & Trimming")){
-					panel_qc.init();
-				}else if(selectItem.equals("Hisat2") || tree.getSelectionRows()[0] == 3){
-					panel_align_hisat2.init();
-				}else if(selectItem.equals("STAR")){
-					panel_align_star.init();
-				}else if(selectItem.equals("TagDirectory") || tree.getSelectionRows()[0] == 4){
-					panel_visual.initTag();
-				}else if(selectItem.equals("MakeBigWig")){
-					panel_visual.initBw();
-				}else if(selectItem.equals("ChIP-Seq/Histone") || selectItem.equals("Peak Filter") || selectItem.equals("Other analysis") || tree.getSelectionRows()[0] == 5){
-					panel_peakcall.initPeakCall();
-				}else if(selectItem.equals("Annotation")){
-					panel_peakcall.initAnno();
-				}
-				
-				JOptionPane.showMessageDialog(null, "The default option selected.", "Full parameter",JOptionPane.INFORMATION_MESSAGE);
+				ds.setFullOption(false);
+				JOptionPane.showMessageDialog(null, "All of the options are reset an initial value.", "Full parameter",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		default_btn.setBounds(457, 5, 90, 25);
 		panel_sub.add(default_btn);
 		
-		JButton close_btn = new JButton("OK");
+		JButton close_btn = new JButton("Close");
 		close_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ds.getMainUI().setToolOptionVisible();
 			}
 		});
-		close_btn.setBounds(552, 5, 80, 25);
+		close_btn.setBounds(552, 5, 90, 25);
 		panel_sub.add(close_btn);
 		
 		getProprecessing();

@@ -8,7 +8,8 @@
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit.
 
-Download Link : Octopus-toolkit_2.0.1 (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`)
+1. Octopus-toolkit_2.0.2 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
+2. Octopus-toolkit_mac_2.0.2 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit_mac.zip>`)
 
 .. _requirement:
 
@@ -115,40 +116,15 @@ OR ::
 
     sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ bzip2-devel xz-devel
 
-.. _graph:
-
-1-6.Graph
----------
-
-To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
-
-* Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
-
-    sudo apt-get install r-base
-
-* Ubuntu (``14.04``)::
-
-    sudo apt-get update
-    sudo apt-get install r-base
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-    sudo add-apt-repository ppa:marutter/rdev
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get install r-base
-
-* Fedora (``Up to Fedora 25`` )::
-
-    sudo yum install R
-
 .. _mac:
 
-1-7.Mac
--------
+1-6.MacOS
+---------
 
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit (Mac version).
 
-To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer.
+To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer. (:download:`Octopus-toolkit_mac_2.0.2<_templates/Octopus-toolkit_mac.zip>`)
 
 * ``Java 8`` (JDK, Java Development ToolKit) or higher::
 
@@ -185,12 +161,37 @@ Octopus-toolkit utilizes several libraries for analysis. Please follow the insta
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install wget    
     brew install xz
-    brew install libpng  
+    brew install libpng
+
+.. _graph:
+
+1-7.R
+-----
 
 To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
 
-* ``R (3.1)`` or higher version::
+* Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
 
+    sudo apt-get install r-base
+
+* Ubuntu (``14.04``)::
+
+    sudo apt-get update
+    sudo apt-get install r-base
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+    sudo add-apt-repository ppa:marutter/rdev
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install r-base
+
+* Fedora (``Up to Fedora 25`` )::
+
+    sudo yum install R
+
+
+* MacOS::
+
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install r
 
 

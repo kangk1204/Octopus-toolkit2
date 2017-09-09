@@ -101,7 +101,7 @@ public class Panel_PeakCalling{
 	
 	public void initPeakCall(){
 		
-		// initPeakCall
+		// chip-seq/histone
 		peakSize_txt.setText("0");
 		minDist_txt.setText("0");
 		gSize_txt.setText("2e9");
@@ -119,7 +119,7 @@ public class Panel_PeakCalling{
 		regionRes_txt.setText("4");
 		center_chbx.setSelected(false);
 		
-		// initAnno
+		// peak filter
 		fcInput_txt.setText("4.0");
 		poiInput_txt.setText("0.0001");
 		fcLocal_txt.setText("4.0");
@@ -131,6 +131,8 @@ public class Panel_PeakCalling{
 		poiCutoff_txt.setText("0.001");
 		tagThsh_txt.setText("25");
 		ntagThsh_txt.setText("1e7");
+	
+		// Other analysis
 		methylThsh_txt.setText("0");
 		minCytosine_txt.setText("6");
 		unMethyl_rb.setSelected(true);
@@ -153,6 +155,86 @@ public class Panel_PeakCalling{
 		skipTssNo_rb.setSelected(true);
 		skipGenomeNo_rb.setSelected(true);
 		
+	}
+	
+	public boolean checkChangeValue(){
+
+		// chip-seq/histone
+		if(!peakSize_txt.getText().equals("0") || !minDist_txt.getText().equals("0") || !gSize_txt.getText().equals("2e9")){
+			return true;
+		}
+		
+		if(!fragLen_txt.getText().equals("only integer") && fragLen_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		if(!InputFragLen_txt.getText().equals("only integer") && InputFragLen_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+			
+		if(!tag_txt.getText().equals("0") || !inputTag_txt.getText().equals("0") || !norm_txt.getText().equals("10000000")){
+			return true;
+		}
+		
+		if(regionYes_rb.isSelected() || center_chbx.isSelected()){
+			return true;
+		}
+		
+		//peak filter
+		if(!fcInput_txt.getText().equals("4.0") || !poiInput_txt.getText().equals("0.0001")){
+			return true;
+		}
+		
+		if(!fcLocal_txt.getText().equals("4.0") || !poiLocal_txt.getText().equals("0.0001")){
+			return true;
+		}
+		
+		if(!fcUnique_txt.getText().equals("2.0")){
+			return true;
+		}
+		
+		if(!localSize_txt.getText().equals("10000") || !InputSize_txt.getText().equals("0") || !fdr_txt.getText().equals("0.001") || !poiCutoff_txt.getText().equals("0.001")){
+			return true;
+		}
+		
+		if(!tagThsh_txt.getText().equals("25") || !ntagThsh_txt.getText().equals("1e7")){
+			return true;
+		}
+		
+		//other analysis
+		if(methyl_rb.isSelected()){
+			return true;
+		}
+		
+		if(!methylThsh_txt.getText().equals("0") || !minCytosine_txt.getText().equals("6")){
+			return true;
+		}
+		
+		//annotation
+
+		maxTag_txt.setText("0");
+		useCpGNo_rb.setSelected(true);
+		useNfrNo_rb.setSelected(true);
+		nfrSize_txt.setText("Only Integer");
+		skipTssNo_rb.setSelected(true);
+		skipGenomeNo_rb.setSelected(true);
+		
+		if(!fragLenAnno_txt.getText().equals("only integer") && fragLenAnno_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(peakSize_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(!maxTag_txt.getText().equals("0")){
+			return true;
+		}
+		
+		if(useCpGYes_rb.isSelected() || useNfrYes_rb.isSelected() || skipTssYes_rb.isSelected() || skipGenomeYes_rb.isSelected()){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public void makeChIP_Histone(){

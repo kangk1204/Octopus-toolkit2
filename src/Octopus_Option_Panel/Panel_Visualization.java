@@ -65,6 +65,7 @@ public class Panel_Visualization {
 		tbp_txt.setText("0");
 		minLen_txt.setText("0");
 		maxLen_txt.setText("0");
+		flipNo_rb.setSelected(true);
 	}
 	public void initBw(){
 		fsize_txt.setText("1e10");
@@ -78,6 +79,43 @@ public class Panel_Visualization {
 		negPlotNo_rb.setSelected(true);
 		norTotalNum_txt.setText("1e7");
 		standLen_txt.setText("100");
+	}
+	
+	public boolean checkChangeValue(){
+		
+		if(!fragLen_txt.getText().equals("Int or given")){
+			return true;
+		}
+		
+		if(!tbp_txt.getText().equals("0") || !minLen_txt.getText().equals("0") || !maxLen_txt.getText().equals("0")){
+			return true;
+		}
+		
+		if(!fsize_txt.getText().equals("1e10")){
+			return true;
+		}
+		
+		if(fragLen2_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(!resolution_txt.getText().equals("1")){
+			return true;
+		}
+		
+		if(!minTag_txt.getText().equals("0") || !maxTag_txt.getText().equals("0")){
+			return true;
+		}
+		
+		if(negPlotYes_rb.isSelected()){
+			return true;
+		}
+		
+		if(!norTotalNum_txt.getText().equals("1e7") || !standLen_txt.getText().equals("100")){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public void makeTagpanel(){

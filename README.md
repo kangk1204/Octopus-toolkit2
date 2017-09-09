@@ -95,6 +95,25 @@ R
 - $ sudo yum install R
 
 ======================================================
+
+### Mac OS
+Java
+Refer to Link : http://octopus-toolkit2.readthedocs.io/en/latest/installation.html#macos
+
+Xcode Update
+- $ xcode-select --install
+
+Library
+- $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- $ brew install wget
+- $ brew install xz
+- $ brew install libpng
+
+R
+- $ brew install r
+
+
+======================================================
 ## 3.How to run
 ======================================================
 

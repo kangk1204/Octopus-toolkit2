@@ -101,6 +101,51 @@ public class Panel_Alignment_Hisat2 {
 		
 	}
 	
+	public boolean checkChangeValue(){
+		
+		if(!skipStart_txt.getText().equals("0") || !skipStop_txt.getText().equals("0")){
+			return true;
+		}
+				
+		if(!trim5p_txt.getText().equals("0") || !trim3p_txt.getText().equals("0")){
+			return true;
+		}
+				
+		if(!ambig_txt.getText().equals("1")){
+			return true;
+		}
+		
+		if(!minMismatch_txt.getText().equals("2") || !maxMismatch_txt.getText().equals("6")){
+			return true;
+		}
+				
+		if(!minSoftclip_txt.getText().equals("1") || !maxSoftclip_txt.getText().equals("2")){
+			return true;
+		}
+		
+		if(!readGOpen_txt.getText().equals("5") || !readGExtend_txt.getText().equals("3")){
+			return true;
+		}
+		
+		if(!refGOpen_txt.getText().equals("5") || !refGExtend_txt.getText().equals("3")){
+			return true;
+		}
+		
+		if(ignorYes_rb.isSelected() || dontAlignForYes_rb.isSelected() || dontAlignRevYes_rb.isSelected() || notSpliceAlignYes_rb.isSelected()){
+			return true;
+		}
+		
+		if(!canonical_txt.getText().equals("0") || !nonCanonical_txt.getText().equals("12")){
+			return true;
+		}
+		
+		if(!minIntron_txt.getText().equals("20") || !maxIntron_txt.getText().equals("500000")){
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public void makeFirstPanel(){
 		
 		subPanel1.setBackground(Color.WHITE);
@@ -388,7 +433,7 @@ public class Panel_Alignment_Hisat2 {
 		
 		JLabel dontAlignfor_lbl = new JLabel("Do not align forward of read(skip) : ");
 		dontAlignfor_lbl.setFont(new Font("Dialog", Font.PLAIN, 12));
-		dontAlignfor_lbl.setBounds(22, 144, 230, 15);
+		dontAlignfor_lbl.setBounds(22, 117, 230, 15);
 		subPanel2.add(dontAlignfor_lbl);
 		
 		ButtonGroup dontAlignfor_bg = new ButtonGroup();
@@ -411,7 +456,7 @@ public class Panel_Alignment_Hisat2 {
 		
 		JLabel dontAlignRev_lbl = new JLabel("Do not align reverse of read(skip) : ");
 		dontAlignRev_lbl.setFont(new Font("Dialog", Font.PLAIN, 12));
-		dontAlignRev_lbl.setBounds(22, 117, 230, 15);
+		dontAlignRev_lbl.setBounds(22, 144, 230, 15);
 		subPanel2.add(dontAlignRev_lbl);
 		
 		ButtonGroup dontAlignRev_bg = new ButtonGroup();

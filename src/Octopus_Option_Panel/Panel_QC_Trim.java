@@ -2,15 +2,20 @@ package Octopus_Option_Panel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
@@ -29,11 +34,13 @@ public class Panel_QC_Trim {
 	private JPanel mainPanel = new JPanel();
 	private JComboBox kmer_cbx;
 	private JComboBox available_Mem_cbx;
-	private JRadioButton rdbtnYes;
+	private JRadioButton rdbtnIllumina;
+	private JRadioButton rdbtnUser;
 	private JRadioButton rdbtnNo;
 	private JLabel minLength_lbl;
 	private JTextField minLength_txt;
 	private JLabel minLength_img;
+	private JLabel illumina_seq_img;
 	private JPanel sliding_panel;
 	private JTextField winSize_txt;
 	private JTextField avgQual_txt;
@@ -44,11 +51,16 @@ public class Panel_QC_Trim {
 	private JTextField headcrop_txt;
 	private JTextField tailcrop_txt;
 	private JPanel illumina_panel;
+	private JLabel adapt_lbl;
 	private JComboBox adaptSeq_cbx;
 	private JTextField seedMismatch_txt;
 	private JTextField palindromeThsh_txt;
 	private JTextField simpeThsh_txt;
-	
+	private JTextField userAdapt_txt;
+	private JButton open_Btn;
+	private boolean adapter_flag;
+	private String userAdaptPath;
+		
 	public void init(){
 		kmer_cbx.setSelectedIndex(5);
 		winSize_txt.setText("4");
@@ -62,6 +74,8 @@ public class Panel_QC_Trim {
 		seedMismatch_txt.setText("2");
 		palindromeThsh_txt.setText("30");
 		simpeThsh_txt.setText("30");
+		userAdapt_txt.setText("");
+		adapter_flag = false;
 		
 		rdbtnNo.setSelected(true);
 		sliding_panel.setBounds(20, 250, 205, 90);
@@ -72,6 +86,63 @@ public class Panel_QC_Trim {
 		minLength_img.setBounds(392,427,17,20);
 		mainPanel.remove(illumina_panel);
 
+		userAdaptPath = "";
+	}
+	
+	public boolean checkChangeValue(){
+		
+		if(kmer_cbx.getSelectedIndex() != 5){
+			return true;
+		}
+		
+		if(available_Mem_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(rdbtnIllumina.isSelected()){
+			return true;
+		}
+		
+		if(rdbtnUser.isSelected()){
+			if(adapter_flag == false){
+				JOptionPane.showMessageDialog(null, "Adapter sequence file is not selected.", "Full parameter",JOptionPane.WARNING_MESSAGE);
+				return false;
+			}else{
+				return true;
+			}
+		}
+		
+		if(!winSize_txt.getText().equals("4")){
+			return true;
+		}
+		
+		if(!avgQual_txt.getText().equals("15")){
+			return true;
+		}
+		
+		if(!leading_txt.getText().equals("3")){
+			return true;
+		}
+		
+		if(!trailing_txt.getText().equals("3")){
+			return true;
+		}
+		
+		if(!headcrop_txt.getText().equals("4")){
+			return true;
+		}
+		
+		if(!tailcrop_txt.getText().equals("20")){
+			return true;
+		}
+		
+		if(!minLength_txt.getText().equals("20")){
+			return true;
+		}
+		
+		
+			
+		return false;
 	}
 	
 	public Panel_QC_Trim(DataSet ds){
@@ -162,24 +233,31 @@ public class Panel_QC_Trim {
 		mainPanel.add(minLength_txt);
 		minLength_txt.setColumns(10);
 		
-		JLabel wouldYouUse_lbl = new JLabel("Do you want to use Illumina adapt sequence?");
+		JLabel wouldYouUse_lbl = new JLabel("Which adapter would you like to use?");
 		wouldYouUse_lbl.setFont(new Font("Dialog", Font.PLAIN, 12));
-		wouldYouUse_lbl.setBounds(30, 220, 291, 15);
+		wouldYouUse_lbl.setBounds(30, 220, 232, 15);
 		mainPanel.add(wouldYouUse_lbl);
 		
-		rdbtnYes = new JRadioButton("Yes");
-		rdbtnYes.setFont(new Font("Dialog", Font.PLAIN, 12));
-		rdbtnYes.setBackground(Color.WHITE);
-		rdbtnYes.setBounds(323, 216, 48, 23);
-		bg.add(rdbtnYes);
+		rdbtnIllumina = new JRadioButton("Illumina");
+		rdbtnIllumina.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnIllumina.setBackground(Color.WHITE);
+		rdbtnIllumina.setBounds(265, 216, 72, 23);
+		bg.add(rdbtnIllumina);
+		
+		rdbtnUser = new JRadioButton("User");
+		rdbtnUser.setFont(new Font("Dialog", Font.PLAIN, 12));
+		rdbtnUser.setBackground(Color.WHITE);
+		rdbtnUser.setBounds(338, 216, 60, 23);
+		bg.add(rdbtnUser);
 		
 		rdbtnNo = new JRadioButton("No");
 		rdbtnNo.setFont(new Font("Dialog", Font.PLAIN, 12));
 		rdbtnNo.setBackground(Color.WHITE);
-		rdbtnNo.setBounds(370, 216, 50, 23);
+		rdbtnNo.setBounds(400, 216, 50, 23);
 		bg.add(rdbtnNo);
 		
-		mainPanel.add(rdbtnYes);
+		mainPanel.add(rdbtnIllumina);
+		mainPanel.add(rdbtnUser);
 		mainPanel.add(rdbtnNo);
 		
 		JLabel kmer_img = new JLabel("");
@@ -203,16 +281,51 @@ public class Panel_QC_Trim {
 		minLength_img.setBounds(392, 427, 17, 20);
 		mainPanel.add(minLength_img);
 		
-		rdbtnYes.addActionListener(new ActionListener() {
+		rdbtnIllumina.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnYes.isSelected()){
+				if(rdbtnIllumina.isSelected()){
 					sliding_panel.setBounds(20, 390, 205, 90);
 					trimQuality_panel.setBounds(235, 390, 205, 90);
 					cutRead_panel.setBounds(20, 485, 420, 55);
 					minLength_lbl.setBounds(30, 550, 250, 15);
 					minLength_txt.setBounds(272, 545, 114, 25);
 					minLength_img.setBounds(392,547,17,20);
+
+					adapt_lbl.setText("Illumina adapter Sequence: ");
+					illumina_panel.add(adapt_lbl);
+					illumina_panel.setBorder(new TitledBorder(null, "Illumina clip", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+					illumina_panel.add(adaptSeq_cbx);
+					illumina_panel.add(illumina_seq_img);
+					illumina_panel.remove(userAdapt_txt);
+					illumina_panel.remove(open_Btn);
+					
+					mainPanel.add(illumina_panel);
+					mainPanel.repaint();
+				}
+			}
+		});
+		
+		rdbtnUser.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnUser.isSelected()){
+					
+					sliding_panel.setBounds(20, 390, 205, 90);
+					trimQuality_panel.setBounds(235, 390, 205, 90);
+					cutRead_panel.setBounds(20, 485, 420, 55);
+					minLength_lbl.setBounds(30, 550, 250, 15);
+					minLength_txt.setBounds(272, 545, 114, 25);
+					minLength_img.setBounds(392,547,17,20);
+					
+					adapt_lbl.setText("User adapter sequence : ");
+					illumina_panel.add(adapt_lbl);
+					illumina_panel.setBorder(new TitledBorder(null, "User adapter", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+					illumina_panel.add(userAdapt_txt);
+					illumina_panel.add(open_Btn);
+					illumina_panel.remove(adaptSeq_cbx);
+					illumina_panel.remove(illumina_seq_img);
+					
 					mainPanel.add(illumina_panel);
 					mainPanel.repaint();
 				}
@@ -334,17 +447,23 @@ public class Panel_QC_Trim {
 		illumina_panel.setBounds(24, 240, 406, 140);
 		illumina_panel.setLayout(null);
 		
-		JLabel adapt_lbl = new JLabel("Illumina adapt Sequence : ");
+		adapt_lbl = new JLabel("Illumina adapter Sequence: ");
 		adapt_lbl.setBounds(10, 20, 250, 15);
-		illumina_panel.add(adapt_lbl);
 		adapt_lbl.setFont(new Font("Dialog", Font.PLAIN, 12));
 		
 		adaptSeq_cbx = new JComboBox();
 		adaptSeq_cbx.setBounds(185, 15, 170, 24);
-		illumina_panel.add(adaptSeq_cbx);
 		adaptSeq_cbx.setModel(new DefaultComboBoxModel(new String[] {"NexteraPE-PE.fa", "TruSeq2-PE.fa", "TruSeq2-SE.fa", "TruSeq3-PE.fa", "TruSeq3-SE.fa", "TruSeq3-PE-2.fa"}));
 		adaptSeq_cbx.setBackground(Color.WHITE);
 		adaptSeq_cbx.setFont(new Font("Dialog", Font.PLAIN, 12));
+		
+		userAdapt_txt = new JTextField();
+		userAdapt_txt.setBounds(185, 15, 135, 24);
+		illumina_panel.add(userAdapt_txt);
+		userAdapt_txt.setColumns(30);
+		
+		open_Btn = new JButton("OPEN");
+		open_Btn.setBounds(325, 13, 75, 25);
 		
 		JLabel seedMismatch_lbl = new JLabel("Seed mismatches : ");
 		seedMismatch_lbl.setBounds(10, 50, 125, 15);
@@ -376,12 +495,12 @@ public class Panel_QC_Trim {
 		illumina_panel.add(simpeThsh_txt);
 		simpeThsh_txt.setColumns(10);
 		
-		JLabel minLength_img = new JLabel("");
-		minLength_img.setIcon(info_img);
-		minLength_img.setToolTipText("<html>Specifies the path to a fasta file containing all the adapters, PCR sequences etc.<br>The naming of the various sequences within this file determines how they are used.</html>");
-		minLength_img.setHorizontalAlignment(SwingConstants.LEFT);
-		minLength_img.setBounds(360, 15, 17, 20);
-		illumina_panel.add(minLength_img);
+		illumina_seq_img = new JLabel("");
+		illumina_seq_img.setIcon(info_img);
+		illumina_seq_img.setToolTipText("<html>Specifies the path to a fasta file containing all the adapters, PCR sequences etc.<br>The naming of the various sequences within this file determines how they are used.</html>");
+		illumina_seq_img.setHorizontalAlignment(SwingConstants.LEFT);
+		illumina_seq_img.setBounds(360, 15, 17, 20);
+		illumina_panel.add(illumina_seq_img);
 		
 		JLabel seedMismatch_img = new JLabel("");
 		seedMismatch_img.setIcon(info_img);
@@ -403,6 +522,19 @@ public class Panel_QC_Trim {
 		simpeThsh_img.setHorizontalAlignment(SwingConstants.LEFT);
 		simpeThsh_img.setBounds(360, 105, 17, 20);
 		illumina_panel.add(simpeThsh_img);
+		
+		open_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String path = cf.openDialog_File(userAdapt_txt,"Full_Parameter");
+				if(userAdapt_txt.getText().length() > 5 && userAdapt_txt.getText().substring(0,6).equals("File :")){
+					adapter_flag = true;
+					userAdaptPath = path;
+				}else{
+					adapter_flag = false;
+				}
+			}
+		});
+
 	}
 	
 	public JPanel getPanel() {
@@ -423,11 +555,22 @@ public class Panel_QC_Trim {
 	public String getTrimmomatic(){
 		String option = "";
 		String path = System.getProperty("user.dir") + "/Octopus-toolkit/Tools/Trimmomatic/adapters/";
-		if(rdbtnYes.isSelected()){
+		if(rdbtnIllumina.isSelected()){
 			if(cf.checkInteger(seedMismatch_txt.getText().toString()) && cf.checkInteger(palindromeThsh_txt.getText().toString()) && cf.checkInteger(simpeThsh_txt.getText().toString())){
 				String tmp = "ILLUMINACLIP:"+path+adaptSeq_cbx.getSelectedItem().toString()+":";
 				tmp = tmp+seedMismatch_txt.getText().toString()+":"+palindromeThsh_txt.getText().toString()+":"+simpeThsh_txt.getText().toString();
 				option = option + " "+tmp;
+			}
+		}else if(rdbtnUser.isSelected()){
+			if (adapter_flag == true) {
+				if (cf.checkInteger(seedMismatch_txt.getText().toString())
+						&& cf.checkInteger(palindromeThsh_txt.getText().toString())
+						&& cf.checkInteger(simpeThsh_txt.getText().toString())) {
+					String tmp = "ILLUMINACLIP:" + userAdaptPath + ":";
+					tmp = tmp + seedMismatch_txt.getText().toString() + ":" + palindromeThsh_txt.getText().toString()
+							+ ":" + simpeThsh_txt.getText().toString();
+					option = option + " " + tmp;
+				}
 			}
 		}
 		if(cf.checkInteger(winSize_txt.getText().toString()) && cf.checkInteger(avgQual_txt.getText().toString())){

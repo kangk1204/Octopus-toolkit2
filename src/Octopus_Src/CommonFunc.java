@@ -151,26 +151,40 @@ public class CommonFunc {
 		}
 	}
 
-	public void openDialog_File(JTextField text) {
+	public String openDialog_File(JTextField text, String function) {
 		// Public
 		// GSE or GSM List File.
 		JFileChooser fc = new JFileChooser(System.getProperty("user.dir") + "/Octopus-toolkit/");
-		fc.setMultiSelectionEnabled(true);
+		
+		if(function.equals("Full_Parameter")){
+			fc.setMultiSelectionEnabled(false);			
+		}else{
+			fc.setMultiSelectionEnabled(true);
+		}
 		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int returnVal = fc.showOpenDialog(new Frame());
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File files[] = fc.getSelectedFiles();
 
-			text.setText("File : " + files[0].getName());
-			ds.setInputText(files[0].getName());
-			for (int i = 0; i < files.length; i++) {
-				ds.setFilePath(files[i].getPath());
+			if(function.equals("Full_Parameter")){
+				File file = fc.getSelectedFile();
+				text.setText("File : " + file.getName());
+				return file.getPath();				
+			}else{
+				File files[] = fc.getSelectedFiles();
+
+				text.setText("File : " + files[0].getName());
+				ds.setInputText(files[0].getName());
+				for (int i = 0; i < files.length; i++) {
+					ds.setFilePath(files[i].getPath());
+				}
+				return "";				
 			}
 		} else {
 			System.out.println("Canceled");
 			text.setText("");
 			ds.setInputText("");
 			ds.getFilePath().clear();
+			return null;
 		}
 	}
 

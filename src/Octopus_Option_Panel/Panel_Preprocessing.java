@@ -49,6 +49,43 @@ public class Panel_Preprocessing{
 		biologicalNo_rdb.setSelected(true);
 	}
 	
+	public boolean checkChangeValue(){
+
+		if(maxRate_cbx.getSelectedIndex() != 0){
+			if(!maxRate_txt.getText().equals("Only Integer")){
+				return true;
+			}
+		}
+		
+		if(minRate_cbx.getSelectedIndex() != 0){
+			if(!minRate_txt.getText().equals("Only Integer")){
+				return true;
+			}
+		}
+		
+		if(overwrite_cbx.getSelectedIndex() != 1){
+			return true;
+		}
+		
+		if(!minRead_txt.getText().equals("Only Integer")){
+			return true;
+		}
+		
+		if(alignUn_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(qualityConvert_cbx.getSelectedIndex() != 0){
+			return true;
+		}
+		
+		if(biologicalYes_rdb.isSelected()){
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public Panel_Preprocessing(DataSet ds){
 		cf = new CommonFunc(ds);
 		mainPanel.setBorder(new LineBorder(UIManager.getColor("Button.darkShadow")));

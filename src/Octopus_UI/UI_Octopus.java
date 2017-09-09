@@ -228,7 +228,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(runThread == false){
-					cf.openDialog_File(input_TextField);
+					cf.openDialog_File(input_TextField,"");
 				}
 			}
 		});
@@ -239,7 +239,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 				if (runThread == false) {
 					if (input_TextField.getText().equals("")) {
 						if (runThread == false) {
-							cf.openDialog_File(input_TextField);
+							cf.openDialog_File(input_TextField,"");
 							if (!input_TextField.getText().equals("")) {
 								ds.setInputText(input_TextField.getText().replace(" ", ""));
 								ui_Oo = new UI_Octopus_Option(ds, cf, "Public");
@@ -551,24 +551,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 	public void setToolOptionVisible(){
 		ui_tool.setVisible(false);
 	}
-	/*public void setPasswordVisible(boolean btn){
-		ui_pw.setVisible(false);
-			if(btn == true){ //true : OK
-				
-				Thread auto = new Thread() {
-					public void run() {
-						setRunningPrograss(true);
-						ui_g = new UI_Graph_Table(ds, cf);
-						setProgress(65,"Installed : R Packages");
-						setRunningPrograss(true);
-						cp.downLoadTool("R", ds.getPath());
-					
-					}
-				};
-				
-				auto.start();
-			}
-	}*/
+	
 
 	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub

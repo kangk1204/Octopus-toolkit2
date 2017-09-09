@@ -12,7 +12,7 @@ public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.1";
+		String version = "2.0.2";
 		System.out.println("[Octopus-toolkit."+version+"]");
 		newVersion = version;
 		
@@ -111,15 +111,10 @@ public class Main {
 
 		System.out.println("[Checking to see if the necessary applications are installed to run the program]");
 		
-		int ubuntuVersion = 16;
 		for(int i = 0; i < result_cmd.length; i++){
 			if(result_cmd[i].contains("Ubuntu")){
 				ds.setOS("Ubuntu");
 				for(int j = 0; j < result_cmd.length; j++){
-					if(result_cmd[j].contains("VERSION_ID=\"14.04")){
-						ubuntuVersion = 14;
-						break;
-					}
 				}
 				break;
 			}else if(result_cmd[i].contains("Mint")){
@@ -140,7 +135,7 @@ public class Main {
 			String fedoraListCmd[] = {"yum","list"};
 			String resultList =cf.shellCmd(fedoraListCmd);
 			String tmpTable[] = resultList.split("\n");
-			String requiredTool[] = {"zlib-devel.x86_64 ","libpng-devel.x86_64 ","libpng12-devel.x86_64 ","ncurses-devel.x86_64 ","gcc-c++.x86_64 "};
+			String requiredTool[] = {"zlib-devel.x86_64 ","libpng-devel.x86_64 ","libpng12-devel.x86_64 ","ncurses-devel.x86_64 ","gcc-c++.x86_64 ","bzip2-devel.x86_64 ","xz-devel.x86_64 "};
 			
 			
 			for(int i = 0; i < requiredTool.length; i++){
@@ -166,6 +161,10 @@ public class Main {
 						lib_name = lib_name + "ncurses : sudo yum install ncurses-devel.x86_64\n";
 					} else if (requiredTool[i].equals("gcc-c++.x86_64 ")) {
 						lib_name = lib_name + "gcc : sudo yum install gcc-c++\n";
+					} else if (requiredTool[i].equals("bzip2-devel.x86_64 ")) {
+						lib_name = lib_name + "gcc : sudo yum install bzip2-devel\n";
+					} else if (requiredTool[i].equals("xz-devel.x86_64 ")) {
+						lib_name = lib_name + "gcc : sudo yum install xz-devel\n";
 					}
 				}
 			
@@ -176,16 +175,8 @@ public class Main {
 			String resultList =cf.shellCmd(ubuntuListCmd);
 			String tmpTable[] = resultList.split("\n");
 			String requiredTool[] = {"zlib1g-dev","libpng12-dev","libncurses5-dev","g++","liblzma-dev","libbz2-dev"};
-			
-			int toolLen = 0;
-	
-			if(ubuntuVersion == 16){
-				toolLen = requiredTool.length-2;
-			}else{
-				toolLen = requiredTool.length;				
-			}
-			
-			for(int i = 0; i < toolLen; i++){
+				
+			for(int i = 0; i < requiredTool.length; i++){
 				boolean checkFlag = false;
 				for(int j = 0; j < tmpTable.length; j++){
 					if(tmpTable[j].contains(requiredTool[i])){
