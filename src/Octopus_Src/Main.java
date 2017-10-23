@@ -12,10 +12,10 @@ public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.2";
+		String version = "2.0.3";
 		System.out.println("[Octopus-toolkit."+version+"]");
 		newVersion = version;
-		
+				
 		DataSet ds = new DataSet();
 		CommonFunc cf = new CommonFunc(ds);
 		
@@ -114,8 +114,6 @@ public class Main {
 		for(int i = 0; i < result_cmd.length; i++){
 			if(result_cmd[i].contains("Ubuntu")){
 				ds.setOS("Ubuntu");
-				for(int j = 0; j < result_cmd.length; j++){
-				}
 				break;
 			}else if(result_cmd[i].contains("Mint")){
 				ds.setOS("Mint");
@@ -124,6 +122,10 @@ public class Main {
 				ds.setOS("Fedora");
 				System.out.println("[Fedora takes time to check the requirement.]");
 				break;
+			}else if(result_cmd[i].contains("CentOS")){
+				ds.setOS("CentOS");
+				System.out.println("[CentOS takes time to check the requirement.]");
+				break;
 			}
 		}
 		
@@ -131,7 +133,7 @@ public class Main {
 		String lib_name = "";
 		
 		
-		if(ds.getOS().equals("Fedora")){
+		if(ds.getOS().equals("Fedora") || ds.getOS().equals("CentOS") ){
 			String fedoraListCmd[] = {"yum","list"};
 			String resultList =cf.shellCmd(fedoraListCmd);
 			String tmpTable[] = resultList.split("\n");

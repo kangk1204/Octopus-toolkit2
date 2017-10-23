@@ -88,9 +88,9 @@ public class Mapping {
 		}
 
 		if (aligntool.equals("Hisat2")) {
-			String hisat2Idx_Cmd[] = { path + "Tools/hisat2/hisat2-build-l", "-p", ds.getAnalysisCPU(),
+			String hisat2Idx_Cmd[] = { path + "Tools/hisat2/hisat2-build", "-p", ds.getAnalysisCPU(),
 					path + "Index/Reference/" + genome + ".fasta", path + "Index/Hisat2/" + genome + "/" + genome };
-			String writeCmd = path + "Tools/hisat2/hisat2-build-l -p " + ds.getAnalysisCPU() + " " + path
+			String writeCmd = path + "Tools/hisat2/hisat2-build -p " + ds.getAnalysisCPU() + " " + path
 					+ "Index/Reference/" + genome + ".fasta " + path + "Index/Hisat2/" + genome + "/" + genome;
 			cf.shellCmd(hisat2Idx_Cmd);
 
@@ -167,29 +167,29 @@ public class Mapping {
 				if(fr.endsWith(".gz")){
 					if(ds.getFullOption()){
 						if (ds.getReverseFastq().equals("")) {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						} else {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred"+ encoding + " " + strand + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") -2 <(zcat "	+ ds.getReverseFastq().replace(" ", "\\ ") + ") | " + spacePath	+ "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";	
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred"+ encoding + " " + strand + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") -2 <(zcat "	+ ds.getReverseFastq().replace(" ", "\\ ") + ") | " + spacePath	+ "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";	
 						}					
 					}else{
 						if (ds.getReverseFastq().equals("")) {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						} else {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred"+ encoding + " " + strand + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") -2 <(zcat "	+ ds.getReverseFastq().replace(" ", "\\ ") + ") | " + spacePath	+ "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";	
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred"+ encoding + " " + strand + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 <(zcat " + ds.getForwardFastq().replace(" ", "\\ ") + ") -2 <(zcat "	+ ds.getReverseFastq().replace(" ", "\\ ") + ") | " + spacePath	+ "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";	
 						}
 					}
 				} else {
 					if(ds.getFullOption()){
 						if (ds.getReverseFastq().equals("")) {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U " + ds.getForwardFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U " + ds.getForwardFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						} else {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " " + strand + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 " + ds.getForwardFastq().replace(" ", "\\ ") + " -2 "+ ds.getReverseFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " " + strand + " "+fullOption+" -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 " + ds.getForwardFastq().replace(" ", "\\ ") + " -2 "+ ds.getReverseFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						}
 					}else{
 						if (ds.getReverseFastq().equals("")) {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U " + ds.getForwardFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -U " + ds.getForwardFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						} else {
-							align_Cmd = spacePath + "Tools/hisat2/hisat2-align-l -p " + ds.getAnalysisCPU() + " --phred" + encoding + " " + strand + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 " + ds.getForwardFastq().replace(" ", "\\ ") + " -2 "+ ds.getReverseFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
+							align_Cmd = spacePath + "Tools/hisat2/hisat2 -p " + ds.getAnalysisCPU() + " --phred" + encoding + " " + strand + " -x " + spacePath + "Index/Hisat2/" + genome + "/" + genome + " -1 " + ds.getForwardFastq().replace(" ", "\\ ") + " -2 "+ ds.getReverseFastq().replace(" ", "\\ ") + " | " + spacePath + "Tools/Samtools/samtools view -bS -> " + bamPath.replace(" ", "\\ ") + fileName + ".bam";
 						}	
 					}
 				}

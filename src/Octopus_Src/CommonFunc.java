@@ -53,6 +53,7 @@ public class CommonFunc {
 		boolean requiredToolFlag = false;
 		String cmd[] = { "which", "R" };
 		String result_cmd = shellCmd(cmd);
+				
 		if (ds.getOS().equals("Fedora")) {
 			if (result_cmd.contains("no R")) {
 				JOptionPane.showMessageDialog(null,
@@ -73,7 +74,28 @@ public class CommonFunc {
 					requiredToolFlag = false;
 				}
 			}
-		} else {
+		} else if(ds.getOS().equals("CentOS")){
+			if (result_cmd.contains("no R")) {
+				JOptionPane.showMessageDialog(null,
+						"Please install the R application with the following command:\n sudo yum install epel-release\nsudo yum install R",
+						"Check R tool", JOptionPane.INFORMATION_MESSAGE);
+				requiredToolFlag = false;
+			} else {
+				// R version >= 3.1
+				String cmd2[] = { "R", "--version" };
+				String rInfo[] = shellCmd(cmd2).split(" ");
+				String rVersion[] = rInfo[2].split("\\.");
+
+				if (Integer.parseInt(rVersion[0]) >= 3 && Integer.parseInt(rVersion[1]) >= 1) {
+					requiredToolFlag = true;
+				} else {
+					JOptionPane.showMessageDialog(null, "Octopus-toolkit requires R version 3.1.0 or higher.", "Check R Version",
+							JOptionPane.INFORMATION_MESSAGE);
+					requiredToolFlag = false;
+				}
+			}
+		}else {
+
 			// Ubuntu , Mint
 			if (result_cmd.equals("")) {
 				JOptionPane.showMessageDialog(null,

@@ -96,6 +96,29 @@ R
 
 ======================================================
 
+### CentOS (CentOS 7)
+Java
+- $ sudo yum install java-1.8.0-openjdk
+
+Library
+- $ sudo yum install zlib-devel.x86_64
+- $ sudo yum install libpng-devel.x86_64
+- $ sudo yum install libpng12-devel.x86_64
+- $ sudo yum install ncurses-devel.x86_64
+- $ sudo yum install gcc-c++
+- $ sudo yum install bzip2-devel
+- $ sudo yum install xz-devel
+
+OR
+
+- $ sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ bzip2-devel xz-devel
+
+R
+- $ sudo yum install epel-release
+- $ sudo yum install R
+
+======================================================
+
 ### Mac OS
 Java
 Refer to Link : http://octopus-toolkit2.readthedocs.io/en/latest/installation.html#macos

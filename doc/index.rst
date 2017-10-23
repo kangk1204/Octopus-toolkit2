@@ -9,13 +9,29 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 
 Download
 --------
-``Latest Version (2.0.2)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 09/09/2017
+
+``Latest Version (2.0.3)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 10/23/2017
+
+  - Version(``2.0.3``) is a minor release with the following changes.
+  - Updated ``CentOS`` version
+  - Optimized Mapping process.
+  - Changed source code of Octopus-toolkit to make maintenance easier.
+
+``Latest Mac Version (2.0.3)`` : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 10/23/2017
+
+  - Version(``2.0.3``) is a minor release with the following changes.
+  - Optimized Mapping process.
+  - Changed source code of Octopus-toolkit to make maintenance easier.
+
+---------------------------------------------------------------------------------------
+
+``Version (2.0.2)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 09/09/2017
 
   - Version(``2.0.2``) is a minor release with the following changes.
   - Motified a Full parameter Option.
   - Changed source code of Octopus-toolkit to make maintenance easier.
 
-``Latest Mac Version (2.0.2)`` : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 09/09/2017
+``Mac Version (2.0.2)`` : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 09/09/2017
 
 ---------------------------------------------------------------------------------------
 

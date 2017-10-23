@@ -139,7 +139,7 @@ public class CheckProgram {
 		if(btnFlag == true){
 			
 			prBar.setVisible(true);
-			if(ds.getOS().equals("Fedora")){
+			if(ds.getOS().equals("Fedora") || ds.getOS().equals("CentOS")){
 				prBar.setSize(300,95);	
 			}else if(ds.getOS().equals("Mint")){
 				prBar.setSize(300,63);
@@ -386,6 +386,7 @@ public class CheckProgram {
 	
 	public boolean checkRPackage(){		
 		// Check R Package
+
 		String pack[] = { "colorspace", "dichromat", "Rcpp", "plyr", "munsell", "labeling", "RColorBrewer",
 				"scales", "gtable", "pheatmap", "stringi", "magrittr", "stringr", "digest", "reshape2","lazyeval","assertthat","tibble",
 				"ggplot2" };

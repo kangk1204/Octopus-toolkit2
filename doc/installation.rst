@@ -9,7 +9,7 @@
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit.
 
 1. Octopus-toolkit_2.0.2 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
-2. Octopus-toolkit_mac_2.0.2 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit_mac.zip>`)
+2. Octopus-toolkit_mac_2.0.2 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
 
 .. _requirement:
 
@@ -31,7 +31,7 @@ To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher
     sudo update-alternatives --config java
     sudo update-alternatives --config javac
 
-* Fedora (``Up to Fedora 25`` )::
+* Fedora, CentOS(``Up to Fedora 25 or CentOS 7`` )::
 
     sudo yum update
     sudo yum install java-1.8.0-openjdk
@@ -79,8 +79,8 @@ OR ::
   
     sudo apt-get install liblzma-dev libbz2-dev
 
-1-4.Fedora
-----------
+1-4.Fedora, CentOS
+------------------
 
 To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``, ``libbz2``, ``liblzma``
 
@@ -186,6 +186,11 @@ To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be instal
 
 * Fedora (``Up to Fedora 25`` )::
 
+    sudo yum install R
+
+* CentOS (``Up to CentOS 7`` )::
+
+    sudo yum install epel-release
     sudo yum install R
 
 
