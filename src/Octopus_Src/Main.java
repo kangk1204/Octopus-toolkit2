@@ -111,22 +111,33 @@ public class Main {
 
 		System.out.println("[Checking to see if the necessary applications are installed to run the program]");
 		
+		boolean os_flag = false;
+		
 		for(int i = 0; i < result_cmd.length; i++){
 			if(result_cmd[i].contains("Ubuntu")){
 				ds.setOS("Ubuntu");
+				os_flag = true;
 				break;
-			}else if(result_cmd[i].contains("Mint")){
+			}else if(result_cmd[i].contains("Mint")){ 
 				ds.setOS("Mint");
+				os_flag = true;
 				break;
 			}else if(result_cmd[i].contains("Fedora")){
 				ds.setOS("Fedora");
 				System.out.println("[Fedora takes time to check the requirement.]");
+				os_flag = true;
 				break;
 			}else if(result_cmd[i].contains("CentOS")){
 				ds.setOS("CentOS");
 				System.out.println("[CentOS takes time to check the requirement.]");
+				os_flag = true;
 				break;
 			}
+		}
+		
+		if(os_flag == false){
+			JOptionPane.showMessageDialog(null, "This OS is not supported by the Octopus-toolkit.\nplease contact us using address below.\nE-mail : Octopustoolkit@gmail.com", "Check the OS", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(0);
 		}
 		
 		// Check Required library
