@@ -18,7 +18,7 @@
 
 To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer.
 
-* Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
+* Ubuntu, Mint (``Ubuntu 16.04 or Mint18`` )::
 
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
@@ -31,7 +31,7 @@ To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher
     sudo update-alternatives --config java
     sudo update-alternatives --config javac
 
-* Fedora, CentOS(``Up to Fedora 25 or CentOS 7`` )::
+* Fedora, CentOS(``Fedora 22~25 or CentOS 7`` )::
 
     sudo yum update
     sudo yum install java-1.8.0-openjdk
@@ -170,7 +170,7 @@ Octopus-toolkit utilizes several libraries for analysis. Please follow the insta
 
 To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
 
-* Ubuntu, Mint (``Up to Ubuntu 16.04 or Mint18`` )::
+* Ubuntu, Mint (``Ubuntu 16.04 or Mint18`` )::
 
     sudo apt-get install r-base
 
@@ -184,11 +184,11 @@ To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be instal
     sudo apt-get upgrade
     sudo apt-get install r-base
 
-* Fedora (``Up to Fedora 25`` )::
+* Fedora (``Fedora 22~25`` )::
 
     sudo yum install R
 
-* CentOS (``Up to CentOS 7`` )::
+* CentOS (``CentOS 7`` )::
 
     sudo yum install epel-release
     sudo yum install R
