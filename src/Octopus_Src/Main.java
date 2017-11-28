@@ -14,7 +14,11 @@ public class Main {
 
 		String version = "2.0.6";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		System.out.println("[Octopus-toolkit."+version+"] ");
+=======
+		System.out.println("[Octopus-toolkit."+version+"]");
+>>>>>>> b861eb95693a1efe6b9a6af94459742f4805a786
 =======
 		System.out.println("[Octopus-toolkit."+version+"]");
 >>>>>>> b861eb95693a1efe6b9a6af94459742f4805a786
