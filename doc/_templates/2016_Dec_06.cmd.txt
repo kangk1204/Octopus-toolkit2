@@ -1,0 +1,116 @@
+
+# Tue Dec 06 19:00:36 KST 2016
+
+# ============================================================
+# GSM1385578 : GSM1385578(1/1)
+# Latest Genome Version.
+# Analyze the data in succession : false
+# Omit Process (Trimming) : false
+# Omit Process (Sorting) : false
+# CPU : 8
+# Remove Files : 
+# Title : wt-#2
+# Organism : sacCer3
+# Library : CHIP-SEQ
+# Strand : Unstrand
+# ============================================================
+
+# Download SRA format file using the Aspera
+/home/ktm/.aspera/connect/bin/ascp -T -l 1000m -i /home/ktm/.aspera/connect/etc/asperaweb_id_dsa.openssh anonftp@ftp.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByExp/sra/SRX/SRX541/SRX541158 /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Download/
+
+# Convert SRA to Fastq using the Fastq-dump
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/sratoolkit/bin/fastq-dump -O /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/tmp --split-3 
+
+# Merge Fastq format data.
+
+# ============================================================
+# GSM1385578 : GSM1385578(1/1)
+# Latest Genome Version.
+# Analyze the data in succession : true
+# Omit Process (Trimming) : false
+# Omit Process (Sorting) : false
+# CPU : 8
+# Remove Files : 
+# Title : wt-#2
+# Organism : sacCer3
+# Library : CHIP-SEQ
+# Strand : Unstrand
+# ============================================================
+
+# Download SRA format file using the Aspera
+/home/ktm/.aspera/connect/bin/ascp -T -l 1000m -i /home/ktm/.aspera/connect/etc/asperaweb_id_dsa.openssh anonftp@ftp.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByExp/sra/SRX/SRX541/SRX541158 /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Download/
+
+# Convert SRA to Fastq using the Fastq-dump
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/sratoolkit/bin/fastq-dump -O /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/tmp --split-3 /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Download/SRX541158/SRR1284645/SRR1284645.sra
+
+# Merge Fastq format data.
+mv /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/00_Fastq/tmp/SRR1284645.fastq /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/wt-#2.fastq
+
+# Check the quality of Fastq using the FastQC
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/FastQC/fastqc /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/wt-#2.fastq -alloMem 125 -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/01_Fastqc -t 8 --extract
+
+# Trim the Fastq data using the Trimmomatic.
+java -jar /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Trimmomatic/trimmomatic.jar SE -phred33 -threads 8 /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/wt-#2.fastq /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/Trim_wt-#2.CH.SE.sacCer3.fastq LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+# Align to the genome using the Hisat2
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/hisat2/hisat2-align-l -p 8 --phred33 -x /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Index/Hisat2/sacCer3/sacCer3 -U /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/00_Fastq/Trim_wt-#2.CH.SE.sacCer3.fastq | /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Samtools/samtools view -bS -> /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//02_Bam/wt-#2.CH.SE.sacCer3.bam
+
+# Sort the mapped sequence file using the Samtools
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Samtools/samtools sort /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//02_Bam/wt-#2.CH.SE.sacCer3.bam -@ 8 -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//02_Bam/sorted_wt-#2.CH.SE.sacCer3.bam
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Samtools/samtools index /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//02_Bam/sorted_wt-#2.CH.SE.sacCer3.bam
+
+# Make the visualization file using the Homer.
+export Octopus_Homer=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/
+export Octopus_SubTool=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/SubTool/
+export Octopus_samtools=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Samtools/
+export Octopus_bwtool=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Bwtools/
+export PATH=$PATH:"$Octopus_Homer":"$Octopus_SubTool":"$Octopus_samtools":"$Octopus_bwtool"
+
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/makeTagDirectory /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3/ /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//02_Bam/sorted_wt-#2.CH.SE.sacCer3.bam
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/removeOutOfBoundsReads.pl /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3/ sacCer3 -chromSizes /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Index/Reference/sacCer3.chrom.sizes
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/makeUCSCfile /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3/ -fsize 1e10 -fragLength 150 -bigWig /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Index/Reference/sacCer3.chrom.sizes -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Result/GSM1385578//04_BigWig/wt-#2.CH.SE.sacCer3.bigWig
+
+# Calling peaks using the Homer
+wget http://homer.salk.edu/homer/data/organisms/yeast.v5.8.zip -O /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Script/downLog
+unzip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip -d /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Homer/
+rm /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip
+wget http://homer.salk.edu/homer/data/promoters/yeast.v5.5.zip -O /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Script/downLog
+unzip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip -d /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Homer/
+rm /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/yeast.zip
+wget http://homer.salk.edu/homer/data/genomes/sacCer3.v5.7.zip -O /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/sacCer3.zip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Script/downLog
+unzip -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/sacCer3.zip -d /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Homer/
+rm /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/sacCer3.zip
+
+# ============================================================
+# Sample : wt-#2
+# Control : 
+# Style : Transcription Factor
+# ============================================================
+
+export Octopus_Homer=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Homer/bin/
+export Octopus_SubTool=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/SubTool/
+export Octopus_samtools=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Samtools/
+export Octopus_bwtool=/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit//Tools/Bwtools/
+export PATH=$PATH:"$Octopus_Homer":"$Octopus_SubTool":"$Octopus_samtools":"$Octopus_bwtool"
+
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/findPeaks /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3 -F 2 -fdr 0.01 -P 0.01 -minDist 100 -style factor -o auto
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/pos2bed.pl /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3/peaks.txt -o /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/05_Analysis/Bed/wt-#2.CH.SE.sacCer3.bed
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Homer/bin/annotatePeaks.pl /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/03_Tag/wt-#2.CH.SE.sacCer3/peaks.txt sacCer3 > /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/05_Analysis/Annotation/wt-#2.CH.SE.sacCer3_annotation.txt
+
+# Visualization using the Integrative Genomics Viewer(IGV)
+java -jar /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/IGV/igv.jar -g sacCer3 -b /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Script/igvBatch
+
+# Make the graph(Heatmap, Lineplot) using R 
+
+# ============================================================
+# Annotation(Bed) : Promoter_sacCer3
+# Sample : wt-#2.CH.SE.sacCer3
+# Genome : sacCer3
+# TSS region : +-1000bp
+# Number of BINs : 200
+# ============================================================
+
+/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/Bwtool/bwtool matrix 1000:1000 -tiled-averages=10 /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Index/Reference/sacCer3.bed /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/GSM1385578/04_BigWig/wt-#2.CH.SE.sacCer3.bigWig /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/Graph/Promoter_sacCer3/bwtool_output
+Rscript /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Tools/SubTool/makeGraph.R /media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Octopus-toolkit/Result/Graph/Promoter_sacCer3/ 200 1000 10 wt-#2.CH.SE.sacCer3
+
+# Octopus-toolkit is terminated.
