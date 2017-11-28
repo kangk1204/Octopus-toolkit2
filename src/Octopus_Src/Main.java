@@ -12,7 +12,7 @@ public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.3";
+		String version = "2.0.6";
 		System.out.println("[Octopus-toolkit."+version+"]");
 		newVersion = version;
 				

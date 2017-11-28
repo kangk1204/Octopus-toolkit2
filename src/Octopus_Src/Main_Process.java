@@ -45,6 +45,7 @@ public class Main_Process {
 					cnt++;
 					ds.initGSMInfo();
 					// (Latest Genome CheckBox)
+					parse.resetAccessCnt();
 					parse.getGSMInfo(ds.getGSM().get(i), ds.getLatest());
 					ds.setRunGSM("");
 					

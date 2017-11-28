@@ -421,7 +421,7 @@ public class DataSet {
 				log_analyzeInfo.write(timeStr + "\t" + tmp);
 				log_analyzeInfo.flush();
 			}else {
-				log_analyzeInfo.write(timeStr+"\t"+gseNum+"\t-\t-\t-\t-\t"+str);
+				log_analyzeInfo.write(timeStr+"\t"+gseNum+"\t-\t-\t-\t-\t"+str+"\n");
 				log_analyzeInfo.flush();
 			}
 		}catch (Exception e) {

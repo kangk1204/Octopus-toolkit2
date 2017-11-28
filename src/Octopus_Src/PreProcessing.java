@@ -21,7 +21,6 @@ public class PreProcessing {
 	}
 	
 	public void use_Aspera(){
-		
 		ds.getMainUI().setProgress(10, "Aspera : "+ ds.getGSMInfo()[0]);
 		ds.writeLogCmd("# Download SRA format file using the Aspera\n");
 		
@@ -42,8 +41,8 @@ public class PreProcessing {
 
 		if (tmpUrl.length > 1) {
 			// Multi
+			System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Aspera -> ");
 			for (int i = 0; i < tmpUrl.length; i++) {
-				System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Aspera -> ");
 				String writeCmd = "";
 				if (ds.getFullOption()) {
 					String aspera_Cmd[] = makeAsperaCmd(tmpUrl[i]);

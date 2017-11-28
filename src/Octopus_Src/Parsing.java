@@ -31,6 +31,7 @@ public class Parsing {
 	private Boolean inputGSM;
 	private static int size = 1024;
 	private int accessCnt = 0;
+	private int accessCnt2 = 0;
 	
 	private String subGSM;
 	
@@ -50,7 +51,11 @@ public class Parsing {
 		ds.setGSE(gseNum.toUpperCase());
 		ds.getGSM().clear();
 		
+		ds.getMainUI().setProgress(5, "Parsing : "+ gseNum);
+		ds.getMainUI().setRunningPrograss(true);
+		
 		// Check page & experiment type
+		accessCnt = 0;
 		Elements text = checkPage();
 		
 		if(existFlag == true && checkExperimentFlag == true){
@@ -96,13 +101,15 @@ public class Parsing {
 			ds.closeAnalyzeInfo();
 			
 		}
+		
+		ds.getMainUI().setRunningPrograss(false);
 	}
 
 	
 	public Elements checkPage(){
 		ds.getErrLog().initErr();
 		try {
-			Document doc = Jsoup.connect("http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + ds.getGSE()).get();
+			Document doc = Jsoup.connect("http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + ds.getGSE()).timeout(5000).get();
 			Elements text = doc.select("td");
 			
 			//check page(exist or not exist)
@@ -235,7 +242,7 @@ public class Parsing {
 		subGSM = gsm;
 		
 		try {
-			doc = Jsoup.connect("http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + gsm).get();
+			doc = Jsoup.connect("http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + gsm).timeout(5000).get();
 			Elements text = doc.select("td");
 					
 			for(Element e : text){
@@ -249,15 +256,9 @@ public class Parsing {
 				}else if(e.text().equals("Instrument model")){
 					String tmp[] = e.nextElementSibling().ownText().split(" ");
 					ds.setGSMInfo(3, tmp[0]); // Illumina
-				}else if(e.text().equals("SRA Experiment")){ 
-					String tmp[] = e.previousElementSibling().outerHtml().split("\"");
-					String tmpUrl = "";
-					if(!(ds.getGSMInfo()[4] == null)){
-						tmpUrl = ds.getGSMInfo()[4]+" "+tmp[3];
-						ds.setGSMInfo(4, tmpUrl);
-					}else{
-						ds.setGSMInfo(4, tmp[3]);	
-					}
+				}else if(e.text().equals("SRA Experiment")){
+					accessCnt2 = 0;
+					ds.setGSMInfo(4, newSrrAddress(gsm));
 				}
 			}
 			
@@ -373,7 +374,11 @@ public class Parsing {
 			}
 		}
 		if(tmpFlag == false){
-			ds.getErrLog().setGSMInfoErr("Err004 : Unable to analze the data (this library strategy of NGS data is not currently supported) : "+ds.getGSMInfo()[2]+"(Err004-2)");
+			if(ds.getGSMInfo()[2] == null){
+				ds.getErrLog().setGSMInfoErr("Err004 : Unable to analze the data (this library strategy of NGS data is not currently supported) : Microarray(Err004-2)");			
+			}else{
+				ds.getErrLog().setGSMInfoErr("Err004 : Unable to analze the data (this library strategy of NGS data is not currently supported) : "+ds.getGSMInfo()[2]+"(Err004-2)");	
+			}
 			checkGsmFlag = false;
 			ds.setAnalyzeFlag();
 			String tmp[] = {subGSM,"Err004-2"};
@@ -390,7 +395,7 @@ public class Parsing {
 			return;
 		}
 
-		if(ds.getGSMInfo()[4] == null){
+		if(ds.getGSMInfo()[4].equals("")){
 			ds.getErrLog().setGSMInfoErr("Err004 : Unable to access the FTP Address(Err004-4)");
 			checkGsmFlag = false;
 			ds.setAnalyzeFlag();
@@ -441,7 +446,54 @@ public class Parsing {
 		}
 	}
 	
+	public String newSrrAddress(String gsm){
+		String srr_address = "";
+		
+		try {
+			Document doc = Jsoup.connect("https://www.ncbi.nlm.nih.gov/sra/?term="+gsm).timeout(5000).get();
+			Elements text = doc.select("td");
+			
+			for (Element e : text) {
+				if (e.text().length() > 2) {
+					if (e.text().toString().substring(0, 3).equals("SRR")) {
+
+						String srr = e.text().toString();
+						String srrTmp = e.text().toString().substring(0, 6);
+						String address_tmp = "/sra/sra-instant/reads/ByRun/sra/SRR/" + srrTmp + "/" + srr + "/" + srr
+								+ ".sra";
+
+						if (srr_address.equals("")) {
+							srr_address = address_tmp;
+						} else {
+							srr_address += " " + address_tmp;
+						}
+					}
+				}
+			}
+			return srr_address;
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			if (accessCnt2 == 100) {
+				ds.getErrLog().setAccessPage("Err001 : Unable to access the NCBI : " + gsm);
+				System.out.println("Error : Unable to access the NCBI : " + gsm + " (Err001)");
+				accessCnt2 = 0;
+				ds.setAnalyzeFlag();
+				String tmp[] = { gsm, "Err001" };
+				ds.setSubRunLog(tmp);
+			} else {
+				accessCnt2++;
+				checkGsmFlag = false;
+				newSrrAddress(gsm);
+			}
+		}
+		return srr_address;
+	}
+	
 	public boolean getCheckGSMFlag(){
 		return checkGsmFlag;
+	}
+	public void resetAccessCnt(){
+		accessCnt = 0;
 	}
 }
