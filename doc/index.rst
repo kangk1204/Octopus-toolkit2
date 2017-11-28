@@ -24,12 +24,12 @@ Download
 
 ---------------------------------------------------------------------------------------
 
-``Version (2.0.5)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 11/08/2017
+``Version (2.0.5)``,  release 11/08/2017
 
   - Version(``2.0.5``) is a minor release with the following changes.
   - Regular inspection of source code.
 
-``Mac Version (2.0.5)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 11/08/2017
+``Mac Version (2.0.5)``,  release 11/08/2017
 
   - Version(``2.0.5``) is a minor release with the following changes.
   - Regular inspection of source code.
