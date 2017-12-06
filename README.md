@@ -16,11 +16,7 @@ Minimum Memory (RAM)
 Operating System
 - 64bit Linux
 - Operating System Version:
-<<<<<<< HEAD
 - Linux : Ubuntu (14.04),(16.04, highly recommend), Fedora (22),(25), Mint (18), CentOS (7)
-=======
-- Linux : Ubuntu (14.04),(16.04, highly recommend), Fedora (22),(25), Mint (18)
->>>>>>> 7577c4998ab5c8e0fd305301021430469b3db43d
 
 ======================================================
 ## 2.Requirement
