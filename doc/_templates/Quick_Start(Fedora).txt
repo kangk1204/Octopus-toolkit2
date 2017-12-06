@@ -1,0 +1,19 @@
+# OS : Fedora 
+# Requirement Installation
+
+# Java (openjdk-8-jdk)
+sudo yum update
+sudo yum install java-1.8.0-openjdk
+
+# Library and Pacakges
+sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ R
+
+# Download Octopus-toolkit and Run 
+
+wget http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip -O Octopus-toolkit.zip
+unzip Octopus-toolkit.zip
+cd Octopus-toolkit/
+java -jar Octopus-toolkit.jar
+
+
+
