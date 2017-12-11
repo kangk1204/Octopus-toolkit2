@@ -51,13 +51,13 @@ Download
 
 ---------------------------------------------------------------------------------------
 
-``Latest Version (2.0.6)``,  release 11/28/2017
+``Version (2.0.6)``,  release 11/28/2017
 
   - Version(``2.0.6``) is a minor release with the following changes.
   - Changed a method which to obtain modified url of the raw data in NCBI.
   - Display Microarray in unsupported list (Err004-2) (NULL -> Microarray)
 
-``Latest Mac Version (2.0.6)``,  release 11/28/2017
+``Mac Version (2.0.6)``,  release 11/28/2017
 
   - Version(``2.0.5``) is a minor release with the following changes.
   - Changed a method which to obtain modified url of the raw data in NCBI.
