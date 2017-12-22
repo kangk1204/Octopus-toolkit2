@@ -25,7 +25,7 @@ Operating System Version (tested):
 * Fedora (``22``),(``25``)
 * Mint (``18``)
 * CentOS (``7``)
-* MacOS (``Sierra``)
+* MacOS (``Sierra.10.12.6``)
 
 Program development
 -------------------
