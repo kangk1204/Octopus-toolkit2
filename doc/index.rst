@@ -25,6 +25,7 @@ Operating System Version (tested):
 * Fedora (``22``),(``25``)
 * Mint (``18``)
 * CentOS (``7``)
+* MacOS (``Sierra``)
 
 Program development
 -------------------
@@ -37,14 +38,26 @@ Program development
 Download
 --------
 
+``Latest Version (2.0.8)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 12/22/2017
+
+  - Version(``2.0.8``) is a minor release with the following changes.
+  - Modified a list of the private table.
+  - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
+
+``Latest Mac Version (2.0.8)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 12/22/2017
+
+  - Version(``2.0.8``) is a minor release with the following changes.
+  - Modified a list of the private table.
+  - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
+
 --------
 
-``Latest Version (2.0.7)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 12/11/2017
+``Version (2.0.7)``,  release 12/11/2017
 
   - Version(``2.0.7``) is a minor release with the following changes.
   - modified a parsing code because the format of the NCBI's GEO Accession display is changed.
 
-``Latest Mac Version (2.0.7)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 12/11/2017
+``Mac Version (2.0.7)``,  release 12/11/2017
 
   - Version(``2.0.7``) is a minor release with the following changes.
   - modified a parsing code because the format of the NCBI's GEO Accession display is changed.
