@@ -1,5 +1,10 @@
 # OS : Ubuntu, Mint
 # Requirement Installation
+# Ubuntu 14.04, 16.04(Higly recommened)
+# Mint 18
+
+#############################################################################################################
+### Ubuntu 16.04, Mint 18
 
 # Java (openjdk-8-jdk)
 sudo apt-get update
@@ -15,6 +20,7 @@ unzip Octopus-toolkit.zip
 cd Octopus-toolkit/
 java -jar Octopus-toolkit.jar
 
+#############################################################################################################
 
 ### Ubuntu Version(14.04)
 
@@ -44,3 +50,4 @@ unzip Octopus-toolkit.zip
 cd Octopus-toolkit/
 java -jar Octopus-toolkit.jar
 
+#############################################################################################################

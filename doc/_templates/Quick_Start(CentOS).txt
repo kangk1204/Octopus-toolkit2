@@ -1,16 +1,18 @@
-# OS : Fedora 
+# OS : CentOS 
 # Requirement Installation
-# Fedora 22,23,24,25(Higly recommened)
+# CentOS 7
 
 #############################################################################################################
-### Fedora 22~25
+### CentOS 7
 
 # Java (openjdk-8-jdk)
 sudo yum update
 sudo yum install java-1.8.0-openjdk
 
 # Library and Pacakges
-sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++ R
+sudo yum install zlib-devel.x86_64 libpng-devel.x86_64 libpng12-devel.x86_64 ncurses-devel.x86_64 gcc-c++
+sudo yum install epel-release
+sudo yum install R
 
 # Download Octopus-toolkit and Run 
 
@@ -20,3 +22,5 @@ cd Octopus-toolkit/
 java -jar Octopus-toolkit.jar
 
 #############################################################################################################
+
+
