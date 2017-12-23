@@ -17,7 +17,7 @@ Minimum Memory (RAM):
 
 Operating System:
 
-* 32-64bit Linux, 64bit Window.
+* 32-64bit ``Linux``, 64bit ``MacOS``, 64bit ``Window(Alpha Version)``.
 
 Operating System Version (tested):
 

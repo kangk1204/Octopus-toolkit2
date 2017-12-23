@@ -11,9 +11,23 @@
 1. Octopus-toolkit_2.0.8 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
 2. Octopus-toolkit_mac_2.0.8 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
 
+
+1-2.Installation Movie Clip
+---------------------------
+
+* Tutorial for installation
+
+* Ubuntu ``16.04`` version. (`Youtube - Ubuntu 16.04 <https://youtube.com/watch?v=K0OpNxXK534&t=2s>`_)
+
+* CentOS ``6.9`` version. (`Youtube - CentOS 6.9 <https://youtube.com/watch?v=ZQYrBumI73c&feature=youtu.be>`_) - Currently not supported.
+
+* CentOS ``7`` version. (`Youtube - CentOS 7 <https://youtube.com/watch?v=jJvu3cu5mCc&t=8s>`_)
+
+* MacOS ``Sierra 10.12.6`` version (`Youtube - MacOS Sierra 10.12.6 <https://youtube.com/watch?v=Ltm5MFZJN-E>`_)
+
 .. _requirement:
 
-1-2.Requirement
+1-3.Requirement
 ---------------
 
 To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer.
@@ -40,8 +54,8 @@ Octopus-toolkit utilizes several libraries for analysis.
 Each operating system such as ubuntu, mint and fedora differ in ways to install the applications.
 Please follow the installation guide below.
 
-1-3.Ubuntu, Mint
-----------------
+1-4.Ubuntu(14.04,16.04), Mint(18)
+---------------------------------
 
 To run the Octopus-toolkit, you must install the following libraries: ``zlib1g``, ``libpng12``, ``libncurses5``, ``g++``
 
@@ -79,8 +93,8 @@ OR ::
   
     sudo apt-get install liblzma-dev libbz2-dev
 
-1-4.Fedora, CentOS
-------------------
+1-5.Fedora(22~25), CentOS(7)
+----------------------------
 
 To run the Octopus-toolkit, you must install the following libraries: ``zlib``, ``libpng`` , ``libpng12``, ``ncurses``, ``gcc-c++``, ``libbz2``, ``liblzma``
 
@@ -118,8 +132,8 @@ OR ::
 
 .. _mac:
 
-1-5.MacOS
----------
+1-6.MacOS(Sierra_10.12.6)
+-------------------------
 
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit (Mac version).
@@ -165,8 +179,8 @@ Octopus-toolkit utilizes several libraries for analysis. Please follow the insta
 
 .. _graph:
 
-1-6.R
------
+1-7.R (3.1)
+-----------
 
 To draw heatmap and Line plot, ``R (3.1)`` or higher version of R must be installed on your computer.
 
