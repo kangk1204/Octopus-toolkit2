@@ -38,19 +38,33 @@ Program development
 Download
 --------
 
-``Latest Version (2.0.8)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 12/22/2017
+``Latest Version (2.0.9)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 01/03/2018
+
+  - Version(``2.0.9``) is a minor release with the following changes.
+  - Optimized Paired-end classfication Method in Private Data.
+  - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
+
+``Latest Mac Version (2.0.9)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 01/03/2018
+
+  - Version(``2.0.9``) is a minor release with the following changes.
+  - Optimized Paired-end classfication Method in Private Data.
+  - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
+
+---------------------------------------------------------------------------------------
+
+``Version (2.0.8)``,  release 12/22/2017
 
   - Version(``2.0.8``) is a minor release with the following changes.
   - Modified a list of the private table.
   - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
 
-``Latest Mac Version (2.0.8)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 12/22/2017
+``Mac Version (2.0.8)``,  release 12/22/2017
 
   - Version(``2.0.8``) is a minor release with the following changes.
   - Modified a list of the private table.
   - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
 
---------
+---------------------------------------------------------------------------------------
 
 ``Version (2.0.7)``,  release 12/11/2017
 

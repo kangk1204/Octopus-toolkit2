@@ -13,7 +13,7 @@ public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.8";
+		String version = "2.0.9";
 		System.out.println("[Octopus-toolkit."+version+"] ");
 		newVersion = version;
 				
@@ -46,9 +46,9 @@ public class Main {
 		// Check tool to analysis 
 		CheckProgram cp;
 		
-		// Start Mint Error
+		// Start Mint
 		if(checkRequired_OS(ds, cf)){
-			cp = new CheckProgram(ds, cf);			
+			cp = new CheckProgram(ds, cf);
 		}else{
 			System.exit(0);
 		}

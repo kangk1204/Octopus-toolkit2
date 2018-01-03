@@ -44,8 +44,8 @@ public class UI_Private_Table extends JFrame {
 	private CommonFunc cf;
 	private JTable private_table;
 	private DefaultTableModel model_Personal;
-	private JComboBox rep_cbx;
-	
+	private JComboBox<Integer> rep_cbx;
+
 	public UI_Private_Table(DataSet ds, CommonFunc cf) {
 
 		this.ds = ds;
@@ -57,9 +57,9 @@ public class UI_Private_Table extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		if(ds.getOS().equals("Ubuntu")){
-			this.setSize(700, 430);			
-		}else{
+		if (ds.getOS().equals("Ubuntu")) {
+			this.setSize(700, 430);
+		} else {
 			this.setSize(700, 465);
 		}
 		this.setTitle("Octopus-toolkit");
@@ -67,7 +67,7 @@ public class UI_Private_Table extends JFrame {
 		DefaultTableCellRenderer celAlignCenter = new DefaultTableCellRenderer();
 		celAlignCenter.setHorizontalAlignment(JLabel.CENTER);
 
-		final String colNames[] = { "Multi-Lane", "Forward", "Reverse", "Genome", "Seq type","Strand" };
+		final String colNames[] = { "Multi-Lane", "Forward", "Reverse", "Genome", "Seq type", "Strand" };
 		model_Personal = new DefaultTableModel(null, colNames) {
 			public boolean isCellEditable(int row, int colum) {
 				return false;
@@ -75,7 +75,7 @@ public class UI_Private_Table extends JFrame {
 		};
 
 		ImageIcon image = new ImageIcon("/media/ktm/Extend_HDD1/workspace/Octopus-toolkit3/Img/HelpImg.png");
-		
+
 		private_table = new JTable(model_Personal);
 		private_table.setFillsViewportHeight(true);
 		private_table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -85,7 +85,8 @@ public class UI_Private_Table extends JFrame {
 		private_table.getColumn("Reverse").setPreferredWidth(245);
 		private_table.getColumn("Genome").setPreferredWidth(100);
 		private_table.getColumn("Seq type").setPreferredWidth(130);
-		private_table.getColumn("Strand").setPreferredWidth(160);;
+		private_table.getColumn("Strand").setPreferredWidth(160);
+		;
 		private_table.getColumn("Multi-Lane").setCellRenderer(celAlignCenter);
 		private_table.getColumn("Genome").setCellRenderer(celAlignCenter);
 		private_table.getColumn("Seq type").setCellRenderer(celAlignCenter);
@@ -125,7 +126,8 @@ public class UI_Private_Table extends JFrame {
 		genome_cbx.setBounds(130, 26, 170, 24);
 		option_panel.add(genome_cbx);
 		genome_cbx.setBackground(Color.WHITE);
-		genome_cbx.setModel(new DefaultComboBoxModel(new String[] {"hg38", "hg19", "hg18", "mm10", "mm9", "dm6", "dm3", "sacCer3", "canFam3", "tair10", "danRer10", "ce11"}));
+		genome_cbx.setModel(new DefaultComboBoxModel(new String[] { "hg38", "hg19", "hg18", "mm10", "mm9", "dm6", "dm3",
+				"sacCer3", "canFam3", "tair10", "danRer10", "ce11" }));
 
 		JComboBox seqtype_cbx = new JComboBox();
 		seqtype_cbx.setBounds(130, 58, 170, 24);
@@ -165,22 +167,22 @@ public class UI_Private_Table extends JFrame {
 		rep_chbx.setBounds(420, 91, 60, 23);
 		option_panel.add(rep_chbx);
 		rep_chbx.setBackground(Color.WHITE);
-		
+
 		JLabel strand_lbl = new JLabel("Strand   : ");
 		strand_lbl.setFont(new Font("Dialog", Font.BOLD, 14));
 		strand_lbl.setBounds(25, 128, 100, 15);
 		option_panel.add(strand_lbl);
-		
+
 		JComboBox strand_cbx = new JComboBox();
-		strand_cbx.setModel(new DefaultComboBoxModel(new String[] {"Unstrand", "FR-Firststrand", "FR-Secondstrand"}));
+		strand_cbx.setModel(new DefaultComboBoxModel(new String[] { "Unstrand", "FR-Firststrand", "FR-Secondstrand" }));
 		strand_cbx.setBackground(Color.WHITE);
 		strand_cbx.setBounds(130, 122, 170, 24);
 		option_panel.add(strand_cbx);
-		
+
 		JButton strand_btn = new JButton("Insert");
 		strand_btn.setBounds(330, 120, 81, 25);
 		option_panel.add(strand_btn);
-		
+
 		JCheckBox strand_chbx = new JCheckBox("all");
 		strand_chbx.setBackground(Color.WHITE);
 		strand_chbx.setBounds(420, 120, 60, 23);
@@ -195,7 +197,7 @@ public class UI_Private_Table extends JFrame {
 		option2_panel.setLayout(null);
 
 		JButton reopen_btn = new JButton("Open");
-		
+
 		reopen_btn.setBounds(24, 30, 95, 25);
 		option2_panel.add(reopen_btn);
 
@@ -206,22 +208,30 @@ public class UI_Private_Table extends JFrame {
 		JButton run_btn = new JButton("Run");
 		run_btn.setBounds(24, 110, 95, 25);
 		option2_panel.add(run_btn);
-		
+
 		JLabel help_img = new JLabel("HELP");
 		help_img.setHorizontalAlignment(SwingConstants.LEFT);
 		help_img.setToolTipText("Private table help.");
 		help_img.setIcon(new ImageIcon(UI_Private_Table.class.getResource("/Octopus_Icon/HelpImg.png")));
 		help_img.setBounds(610, 10, 80, 20);
 		getContentPane().add(help_img);
-		
+
 		help_img.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
-				cf.openURL("http://octopus-toolkit2.readthedocs.io/en/latest/tutorial.html#private-data-basic");				
+				cf.openURL("http://octopus-toolkit2.readthedocs.io/en/latest/tutorial.html#private-data-basic");
 			}
-			public void mouseReleased(MouseEvent e){}
-			public void mouseEntered(MouseEvent e) {}
-			public void mouseExited(MouseEvent e) {}
-			public void mousePressed(MouseEvent e) {}
+
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
 		});
 
 		// open
@@ -235,7 +245,7 @@ public class UI_Private_Table extends JFrame {
 				}
 			}
 		});
-		
+
 		// insert
 		seqtype_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -244,12 +254,12 @@ public class UI_Private_Table extends JFrame {
 				if (seqtype_chbx.isSelected()) {
 					for (int i = 0; i < private_table.getRowCount(); i++) {
 						model_Personal.setValueAt(seqtype_cbx.getSelectedItem().toString(), i, 4);
-						if(!seqtype_cbx.getSelectedItem().toString().equals("RNA-Seq")){
+						if (!seqtype_cbx.getSelectedItem().toString().equals("RNA-Seq")) {
 							model_Personal.setValueAt("Not use", i, 5);
-						}else{
-							if(model_Personal.getValueAt(i, 5) == null){
+						} else {
+							if (model_Personal.getValueAt(i, 5) == null) {
 								model_Personal.setValueAt("", i, 5);
-							}else if(model_Personal.getValueAt(i, 5).toString().equals("Not use")){
+							} else if (model_Personal.getValueAt(i, 5).toString().equals("Not use")) {
 								model_Personal.setValueAt("", i, 5);
 							}
 						}
@@ -261,12 +271,12 @@ public class UI_Private_Table extends JFrame {
 					} else {
 						for (int i = 0; i < row.length; i++) {
 							model_Personal.setValueAt(seqtype_cbx.getSelectedItem().toString(), row[i], 4);
-							if(!seqtype_cbx.getSelectedItem().toString().equals("RNA-Seq")){
+							if (!seqtype_cbx.getSelectedItem().toString().equals("RNA-Seq")) {
 								model_Personal.setValueAt("Not use", row[i], 5);
-							}else{
-								if(model_Personal.getValueAt(row[i], 5) == null){
+							} else {
+								if (model_Personal.getValueAt(row[i], 5) == null) {
 									model_Personal.setValueAt("", row[i], 5);
-								}else if(model_Personal.getValueAt(row[i], 5).toString().equals("Not use")){
+								} else if (model_Personal.getValueAt(row[i], 5).toString().equals("Not use")) {
 									model_Personal.setValueAt("", row[i], 5);
 								}
 							}
@@ -319,7 +329,7 @@ public class UI_Private_Table extends JFrame {
 				}
 			}
 		});
-		
+
 		// insert
 		strand_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -327,9 +337,9 @@ public class UI_Private_Table extends JFrame {
 
 				if (strand_chbx.isSelected()) {
 					for (int i = 0; i < private_table.getRowCount(); i++) {
-						if(model_Personal.getValueAt(i, 4).equals("RNA-Seq")){
+						if (model_Personal.getValueAt(i, 4).equals("RNA-Seq")) {
 							model_Personal.setValueAt(strand_cbx.getSelectedItem().toString(), i, 5);
-						}else{
+						} else {
 							model_Personal.setValueAt("Not use", i, 5);
 						}
 					}
@@ -339,9 +349,9 @@ public class UI_Private_Table extends JFrame {
 								JOptionPane.INFORMATION_MESSAGE);
 					} else {
 						for (int i = 0; i < row.length; i++) {
-							if(model_Personal.getValueAt(row[i], 4).equals("RNA-Seq")){
+							if (model_Personal.getValueAt(row[i], 4).equals("RNA-Seq")) {
 								model_Personal.setValueAt(strand_cbx.getSelectedItem().toString(), row[i], 5);
-							}else{
+							} else {
 								model_Personal.setValueAt("Not use", row[i], 5);
 							}
 						}
@@ -366,7 +376,7 @@ public class UI_Private_Table extends JFrame {
 				if (private_pre.getTableFlag() == true) {
 					ds.getMainUI().getUI_Analysis().setVisible(false);
 					UI_Octopus_Option ui_sub = new UI_Octopus_Option(ds, cf, "Private");
-					ui_sub.setVisible(true);	
+					ui_sub.setVisible(true);
 				}
 			}
 		});
@@ -377,92 +387,112 @@ public class UI_Private_Table extends JFrame {
 
 	public void makeList() {
 
-		ArrayList<String[]> data = new ArrayList<>();
+		ArrayList<String[]> data = new ArrayList<>(ds.getP_Fastq().size());
 
-		String tmpTable[] = { "", "", "", "", "" };
-		int rep = 1;
-		String tmpTitle[] = null;
-		String fqGz = "";
-		boolean forwardFlag = false;
-		String str = "";
-		
 		for (int i = 0; i < ds.getP_Fastq().size(); i++) {
-			str = ds.getP_Fastq().get(i);
+			String arr[] = splitFileName(ds.getP_Fastq().get(i));
+			data.add(arr);
+		}
 
-			if(forwardFlag == true){
-				String tmpReverseTitle[] = str.split("_2\\.");
-				if(tmpReverseTitle.length == 2){
-					if(!tmpTitle[0].equals(tmpReverseTitle[0])){
-						rep_cbx.addItem(rep);
-						tmpTable[0] = String.valueOf(rep++);
-						tmpTable[1] = tmpTitle[0]+"_1."+tmpTitle[1];
-						model_Personal.addRow(tmpTable);
-						tmpTable[1] = "";
+		matchPaired(data);
+	}
+
+	public void matchPaired(ArrayList<String[]> data) {
+		int rep = 1;
+
+		while (!data.isEmpty()) {
+			String str = "";
+			String str2 = "";
+			String tmpTable[] = { "", "", "", "", "" };
+			String tmpData[] = data.get(0);
+
+			if (tmpData[1].equals("0")) {
+				// Single
+				str = tmpData[0] + "." + tmpData[2];
+				rep_cbx.addItem(rep);
+				tmpTable[0] = String.valueOf(rep++);
+				tmpTable[1] = str;
+				model_Personal.addRow(tmpTable);
+
+			} else {
+				boolean flag = false;
+				for (int j = 1; j < data.size(); j++) {
+					String subData[] = data.get(j);
+
+					if (tmpData[0].equals(subData[0])) {
+						if (!tmpData[1].equals(subData[2])) {
+							data.remove(j);
+							// Paired
+							str = tmpData[0] + tmpData[1] + "." + tmpData[2];
+							str2 = subData[0] + subData[1] + "." + subData[2];
+							rep_cbx.addItem(rep);
+							tmpTable[0] = String.valueOf(rep++);
+							tmpTable[1] = str;
+							tmpTable[2] = str2;
+							model_Personal.addRow(tmpTable);
+							flag = true;
+							break;
+						}
 					}
-				}else{
+				}
+				if (flag == false) {
+					// Single
+					str = tmpData[0] + tmpData[1] + "." + tmpData[2];
 					rep_cbx.addItem(rep);
 					tmpTable[0] = String.valueOf(rep++);
+					tmpTable[1] = str;
 					model_Personal.addRow(tmpTable);
-					//tmpTable[1] = str;
-					tmpTable[1] = "";
 				}
-				forwardFlag = false;
 			}
-			
-			// Paired
-			if (str.endsWith("_1.fastq") || str.endsWith("_1.fq")) {
-				tmpTable[1] = str;
-				tmpTitle = str.split("_1\\.");
-				forwardFlag = true;
-			} else if (str.endsWith("_2.fastq") || str.endsWith("_2.fq")) {
-				rep_cbx.addItem(rep);
-				tmpTable[0] = String.valueOf(rep++);
-				
-				if(tmpTable[1].equals("")){
-					tmpTable[1] = str;	
-				}else{
-					tmpTable[2] = str;
-				}
-				
-				model_Personal.addRow(tmpTable);
-				tmpTable[1] = "";
-				tmpTable[2] = "";
-			} else if (str.endsWith("_1.fastq.gz") || str.endsWith("_1.fq.gz")) {
-				tmpTable[1] = str;
-				tmpTitle = str.split("_1\\.");
-				forwardFlag = true;
-			} else if (str.endsWith("_2.fastq.gz") || str.endsWith("_2.fq.gz")) {
-				rep_cbx.addItem(rep);
-				tmpTable[0] = String.valueOf(rep++);
-				
-				if(tmpTable[1].equals("")){
-					tmpTable[1] = str;	
-				}else{
-					tmpTable[2] = str;
-				}				
-				
-				model_Personal.addRow(tmpTable);
-				tmpTable[1] = "";
-				tmpTable[2] = "";
-			} 
+
+			data.remove(0);
+		}
+	}
+
+	public String[] splitFileName(String file) {
+
+		String tmp[] = new String[3];
+
+		if (file.endsWith(".gz")) {
+			file = file.replace(".gz", "");
+			if (file.endsWith(".fastq")) {
+				file = file.replace(".fastq", "");
+				tmp[2] = "fastq.gz";
+			} else {
+				file = file.replace(".fq", "");
+				tmp[2] = "fq.gz";
+			}
+		} else {
+			if (file.endsWith(".fastq")) {
+				file = file.replace(".fastq", "");
+				tmp[2] = "fastq";
+			} else {
+				file = file.replace(".fq", "");
+				tmp[2] = "fq";
+			}
+		}
+
+		String str = "";
+		if (file.endsWith("_1_val_1") || file.endsWith("_2_val_2")) {
+			str = file.substring(file.length() - 1);
+			tmp[1] = "_" + str + "_val_" + str;
+			tmp[0] = file.replace("_" + str + "_val_" + str, "");
+		} else if (file.endsWith("_R1") || file.endsWith("_R2")) {
+			str = file.substring(file.length() - 1);
+			tmp[1] = "_R" + str;
+			tmp[0] = file.replace("_R" + str, "");
+		} else if (file.endsWith("_1") || file.endsWith("_2")) {
+			str = file.substring(file.length() - 1);
+			tmp[1] = "_" + str;
+			tmp[0] = file.replace("_" + str, "");
+		} else {
 			// Single
-			else if (str.endsWith(".fastq") || str.endsWith(".fq") || str.endsWith(".fastq.gz")
-					|| str.endsWith(".fq.gz")) {
-				rep_cbx.addItem(rep);
-				tmpTable[0] = String.valueOf(rep++);
-				tmpTable[1] = str;
-				model_Personal.addRow(tmpTable);
-				tmpTable[1] = "";
-			}
+			tmp[1] = "0";
+			tmp[0] = file;
+
 		}
-		
-		if(!tmpTable[1].equals("")){
-			rep_cbx.addItem(rep);
-			tmpTable[0] = String.valueOf(rep++);
-			tmpTable[1] = str;
-			model_Personal.addRow(tmpTable);
-			tmpTable[1] = "";
-		}
+
+		return tmp;
 	}
 
 	public void clearTable() {

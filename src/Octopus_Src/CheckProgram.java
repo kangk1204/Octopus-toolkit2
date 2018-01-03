@@ -64,7 +64,7 @@ public class CheckProgram {
 
 		}else{
 			prBar.setVisible(false);
-			JOptionPane.showMessageDialog(null, "Octopus-toolkit is ready.", "Check Program",JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Octopus-toolkit is ready.", "Check Program",JOptionPane.INFORMATION_MESSAGE);
 			ui.setVisible(true);
 			ds.writeLogRun("Octopus-toolkit is ready.\n",true);
 		}
@@ -411,7 +411,7 @@ public class CheckProgram {
 			ds.closeLog();
 			System.exit(0);	
 		}else{
-			JOptionPane.showMessageDialog(null, "Octopus-toolkit is ready.", "Check Program",JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Octopus-toolkit is ready.", "Check Program",JOptionPane.INFORMATION_MESSAGE);
 			ui.setVisible(true);
 			ds.writeLogRun("Octopus-toolkit is ready.\n",true);
 		}

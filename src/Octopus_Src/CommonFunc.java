@@ -222,107 +222,25 @@ public class CommonFunc {
 
 			// init
 			ds.initP_Fastq();
-
+			String tmp[];
+			
 			for (int i = 0; i < files.length; i++) {
 
 				if (files[i].isDirectory()) {
 					File fileList[] = files[i].listFiles();
 					Arrays.sort(fileList);
 					for (int j = 0; j < fileList.length; j++) {
-
-						String file_lower = fileList[j].getName().toLowerCase();
-						if (file_lower.endsWith(".fq") || file_lower.endsWith(".fastq")
-								|| file_lower.endsWith(".fastq.gz") || file_lower.endsWith(".fq.gz")) {
-							String originFolder = fileList[j].getParent().replaceAll(" ", "\\ ");
-							String originFile = fileList[j].getName();
-							String tmpTitle = "";
-							if (file_lower.endsWith(".fq")) {
-								String f_name = originFile.substring(0,originFile.length()-3);
-	 							tmpTitle = checkSymbol(f_name);
-								File changeFile = new File(fileList[j].getParent() + "/" + tmpTitle + ".fq");
-								fileList[j].renameTo(changeFile);
-								ds.setP_Fastq(tmpTitle + ".fq");
-								ds.setHmP_Fastq(tmpTitle + ".fq", originFolder + "/" + tmpTitle + ".fq");
-							} else if (file_lower.endsWith(".fastq")) {
-								// fastq
-								String f_name = originFile.substring(0,originFile.length()-6);
-	 							tmpTitle = checkSymbol(f_name);
-								File changeFile = new File(fileList[j].getParent() + "/" + tmpTitle + ".fastq");
-								fileList[j].renameTo(changeFile);
-								ds.setP_Fastq(tmpTitle + ".fastq");
-								ds.setHmP_Fastq(tmpTitle + ".fastq", originFolder + "/" + tmpTitle + ".fastq");
-							} else if (file_lower.endsWith(".fastq.gz")) {
-								String f_name = originFile.substring(0,originFile.length()-9);
-	 							tmpTitle = checkSymbol(f_name);
-								File changeFile = new File(fileList[j].getParent() + "/" + tmpTitle + ".fastq.gz");
-								fileList[j].renameTo(changeFile);
-								ds.setP_Fastq(tmpTitle + ".fastq.gz");
-								ds.setHmP_Fastq(tmpTitle + ".fastq.gz", originFolder + "/" + tmpTitle + ".fastq.gz");
-							} else {
-								// .fq.gz
-								String f_name = originFile.substring(0,originFile.length()-6);
-	 							tmpTitle = checkSymbol(f_name);
-								File changeFile = new File(fileList[j].getParent() + "/" + tmpTitle + ".fq.gz");
-								fileList[j].renameTo(changeFile);
-								ds.setP_Fastq(tmpTitle + ".fq.gz");
-								ds.setHmP_Fastq(tmpTitle + ".fq.gz", originFolder + "/" + tmpTitle + ".fq.gz");
-							}
-
-						}
-
-						if (i == 0) {
-							String tmp[] = fileList[j].getParent().split("/");
-							String dir = "P_" + tmp[tmp.length - 1];
-							ds.setResultDirName(dir.replaceAll(" ", ""));
-						}
+						setP_Fastq(fileList[j]);
 					}
+					tmp = files[i].getPath().split("/");
 				} else {
-					String file_lower = files[i].getName().toLowerCase();
-					if (file_lower.endsWith(".fq") || file_lower.endsWith(".fastq") || file_lower.endsWith(".fastq.gz")
-							|| file_lower.endsWith(".fq.gz")) {
-
-						String originFolder = files[i].getParent().toString().replaceAll(" ", "\\ ");
-						String originFile = files[i].getName().toString();
-
-						String tmpTitle = "";
-						if (file_lower.endsWith(".fq")) {
-							String f_name = originFile.substring(0,originFile.length()-3);
- 							tmpTitle = checkSymbol(f_name);
-							File changeFile = new File(files[i].getParent() + "/" + tmpTitle + ".fq");
-							files[i].renameTo(changeFile);
-							ds.setP_Fastq(tmpTitle + ".fq");
-							ds.setHmP_Fastq(tmpTitle + ".fq", originFolder + "/" + tmpTitle + ".fq");
-						} else if (file_lower.endsWith(".fastq")) {
-							String f_name = originFile.substring(0,originFile.length()-6);
- 							tmpTitle = checkSymbol(f_name);
-							File changeFile = new File(files[i].getParent() + "/" + tmpTitle + ".fastq");
-							files[i].renameTo(changeFile);
-							ds.setP_Fastq(tmpTitle + ".fastq");
-							ds.setHmP_Fastq(tmpTitle + ".fastq", originFolder + "/" + tmpTitle + ".fastq");
-						} else if (file_lower.endsWith(".fastq.gz")) {
-							String f_name = originFile.substring(0,originFile.length()-9);
- 							tmpTitle = checkSymbol(f_name);
-							File changeFile = new File(files[i].getParent() + "/" + tmpTitle + ".fastq.gz");
-							files[i].renameTo(changeFile);
-							ds.setP_Fastq(tmpTitle + ".fastq.gz");
-							ds.setHmP_Fastq(tmpTitle + ".fastq.gz", originFolder + "/" + tmpTitle + ".fastq.gz");
-						} else {
-							// .fq.gz
-							String f_name = originFile.substring(0,originFile.length()-6);
- 							tmpTitle = checkSymbol(f_name);
-							File changeFile = new File(files[i].getParent() + "/" + tmpTitle + ".fq.gz");
-							files[i].renameTo(changeFile);
-							ds.setP_Fastq(tmpTitle + ".fq.gz");
-							ds.setHmP_Fastq(tmpTitle + ".fq.gz", originFolder + "/" + tmpTitle + ".fq.gz");
-						}
-
-					}
-					
-					if (i == 0) {
-						String tmp[] = files[i].getParent().split("/");
-						String dir = "P_" + tmp[tmp.length - 1];
-						ds.setResultDirName(dir.replaceAll(" ", ""));
-					}
+					setP_Fastq(files[i]);
+					tmp = files[i].getParent().split("/");
+				}
+				
+				if (i == 0) {
+					String dir = "P_" + tmp[tmp.length - 1];
+					ds.setResultDirName(dir.replaceAll(" ", ""));
 				}
 			}
 			
@@ -330,6 +248,55 @@ public class CommonFunc {
 			System.out.println("Canceled");
 			ds.getP_Fastq().clear();
 		}
+	}
+	
+	public void setP_Fastq(File fastq){
+		
+		String file_lower = fastq.getName().toLowerCase();
+		if (file_lower.endsWith(".fq") || file_lower.endsWith(".fastq") || file_lower.endsWith(".fastq.gz") || file_lower.endsWith(".fq.gz")) {
+			String originFolder = fastq.getParent().replaceAll(" ", "\\ ");
+			String originFile = fastq.getName();
+			String tmpTitle = "";
+			String f_name  = "";
+			
+			if (file_lower.endsWith(".fq")) {
+				f_name = originFile.substring(0,originFile.length()-3);
+				tmpTitle = checkSymbol(f_name);
+				
+				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fq");
+				fastq.renameTo(changeFile);
+				ds.setP_Fastq(tmpTitle + ".fq");
+				ds.setHmP_Fastq(tmpTitle + ".fq", originFolder + "/" + tmpTitle + ".fq");
+			} else if (file_lower.endsWith(".fastq")) {
+				// fastq
+				f_name = originFile.substring(0,originFile.length()-6);
+				tmpTitle = checkSymbol(f_name);
+				
+				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fastq");
+				fastq.renameTo(changeFile);
+				ds.setP_Fastq(tmpTitle + ".fastq");
+				ds.setHmP_Fastq(tmpTitle + ".fastq", originFolder + "/" + tmpTitle + ".fastq");
+			} else if (file_lower.endsWith(".fastq.gz")) {
+				f_name = originFile.substring(0,originFile.length()-9);
+				tmpTitle = checkSymbol(f_name);
+				
+				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fastq.gz");
+				fastq.renameTo(changeFile);
+				ds.setP_Fastq(tmpTitle + ".fastq.gz");
+				ds.setHmP_Fastq(tmpTitle + ".fastq.gz", originFolder + "/" + tmpTitle + ".fastq.gz");
+			} else {
+				// .fq.gz
+				f_name = originFile.substring(0,originFile.length()-6);
+				tmpTitle = checkSymbol(f_name);
+				
+				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fq.gz");
+				fastq.renameTo(changeFile);
+				ds.setP_Fastq(tmpTitle + ".fq.gz");
+				ds.setHmP_Fastq(tmpTitle + ".fq.gz", originFolder + "/" + tmpTitle + ".fq.gz");
+			}
+
+		}
+
 	}
 
 	public void openDialog_Dir(String subAnalysis) {
@@ -952,9 +919,7 @@ public class CommonFunc {
 				shellCmd(tair_cmd2);
 				new File(path+"Tools/Homer/tair10.zip").delete();
 			}
-			
-			
-			
+						
 			ds.writeLogRun("Download : Reference genome for Homer (End)\n", true);
 			
 		} catch (Exception e) {
