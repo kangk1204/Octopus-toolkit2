@@ -2,7 +2,7 @@
 11. 3rd Party Tools
 ===================
 
-11-1.Version 2.0.9
+11-1.Version 2.1.0
 ^^^^^^^^^^^^^^^^^^
 
 Octopus-toolkit utilizes the following 3rd party tools during the process.
