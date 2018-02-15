@@ -3,6 +3,9 @@ Octopus-toolkit
 
 Octopus-toolkit
 
+.. note::
+    ``2018-02-15`` : We are moving the Octopus-toolkit server. If you are using 2.0.9 version, please download the 2.1.0 version again.
+
 * Please cite the following paper : 
 
   - Kim T, Seo HD, Hennighausen L, Lee D, Kang K. Octopus-toolkit: a workflow to automate mining of public epigenomic and transcriptomic next-generation sequencing data. Nucleic Acids Res. 2018 Feb 6. doi: 10.1093/nar/gky083. PubMed PMID: `29420797 <https://www.ncbi.nlm.nih.gov/pubmed/29420797>`_
@@ -10,6 +13,21 @@ Octopus-toolkit
 <2017-04-06 17:02:12 by Prof. Keunsoo Kang, Taemook Kim in the Kangklab>
 
 Octopus-toolkit is a stand-alone application for retrieving and processing large sets of next-generation sequencing (NGS) data with a single step. Octopus-toolkit is an automated set-up-and-analysis pipeline utilizing the Aspera, SRA Toolkit, bwtool, Samtools FastQC, Trimmomatic, HISAT2, STAR, and HOMER applications. All the applications will be installed on the user’s computer when the program starts. Upon the installation, it can automatically retrieve original files (.SRA) of various data sets, including ChIP-seq, ATAC-seq, DNase-seq, MeDIP-seq, MNase-seq, and RNA-seq, from the gene expression omnibus data repository. The downloaded files can then be sequentially processed to generate BAM and BigWig files, which are used for advanced analyses and visualization. Currently, it can process NGS data from popular model genomes such as, human (Homo sapiens), mouse (Mus musculus), dog (Canis lupus familiaris), Fruit fly (Drosophila melanogaster), Zebrafish (Danio rerio), Arabidopsis (Arabidopsis thaliana), budding yeast (Saccharomyces cerevisiae), and Worm (c.elegans) genomes. With the processed files from Octopus-toolkit, the meta-analysis of various data sets, motif searches for DNA-binding proteins, and the identification of differentially expressed genes and/or protein-binding sites can be easily conducted with few commands by users. Octopus-toolkit can allow biologist and other researchers to run NGS analysis without understanding of computation behind the tools.
+
+Download
+--------
+
+``Latest Version (2.1.0)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 02/13/2018
+
+  - Version(``2.1.0``) is a minor release with the following changes.
+  - Periodic inspection of source code
+  - Change the server storage and link
+
+``Latest Mac Version (2.1.0)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 02/13/2018
+
+  - Version(``2.1.0``) is a minor release with the following changes.
+  - Periodic inspection of source code
+  - Change the server storage and link
 
 Hardware/Software Requirement
 -----------------------------
@@ -38,21 +56,8 @@ Program development
 * Language : Java Programming language (JDK1.8)
 * Graphic User Interface(GUI) : Swing & Windowbuilder
 
-
-Download
---------
-
-``Latest Version (2.1.0)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 02/13/2018
-
-  - Version(``2.1.0``) is a minor release with the following changes.
-  - Periodic inspection of source code
-
-``Latest Mac Version (2.1.0)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 02/13/2018
-
-  - Version(``2.1.0``) is a minor release with the following changes.
-  - Periodic inspection of source code
-
----------------------------------------------------------------------------------------
+Previous version
+-------------------
 
 ``Latest Version (2.0.9)``,  release 01/03/2018
 
