@@ -57,7 +57,7 @@ author = u'Keunsoo Kang, Taemook Kim'
 # built documents.
 #
 # The short X.Y version.
-version = u'stable'
+version = u'2.1.1'
 # The full version, including alpha/beta/rc tags.
 release = u'stable'
 

@@ -77,7 +77,7 @@ public class P_PreProcessing {
 
 			// Exist Replicate -> Merge
 			if (rep.size() != model.getRowCount()) {
-				mergeFile(rep);                                                                                                                 
+				mergeFile(rep);
 			}else{
 				// GSMInfo arrange
 				saveTable();
@@ -98,6 +98,7 @@ public class P_PreProcessing {
 			String forward = "";
 			String reverse = "";
 			String strand = "";
+			String pairSymbol = "";
 
 			for (int j = 0; j < model.getRowCount(); j++) {
 				// replicate Number Check.
@@ -122,15 +123,46 @@ public class P_PreProcessing {
 							library_end = "Single-End";
 							forward = forward + ds.getHmP_Fastq(model.getValueAt(j, 1).toString()) + "  ";
 						} else { // Paired-End
-							if (model.getValueAt(j, 1).toString().endsWith("_1.fq")) {
+							if (model.getValueAt(j, 1).toString().endsWith("_1_val_1.fq")) {
+								title = model.getValueAt(j, 1).toString().replace("_1_val_1.fq", "");
+								pairSymbol = "V";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_1_val_1.fastq")) {
+								title = model.getValueAt(j, 1).toString().replace("_1_val_1.fastq", "");
+								pairSymbol = "V";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_1_val_1.fastq.gz")) {
+								title = model.getValueAt(j, 1).toString().replace("_1_val_1.fastq.gz", "");
+								pairSymbol = "V";
+							} else if(model.getValueAt(j, 1).toString().endsWith("_1_val_1.fq.gz")){
+								title = model.getValueAt(j, 1).toString().replace("_1_val_1.fq.gz", "");
+								pairSymbol = "V";
+							}
+							else if (model.getValueAt(j, 1).toString().endsWith("_1.fq")) {
 								title = model.getValueAt(j, 1).toString().replace("_1.fq", "");
-							} else if (model.getValueAt(j, 1).toString().endsWith(".fastq")) {
+								pairSymbol = "N";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_1.fastq")) {
 								title = model.getValueAt(j, 1).toString().replace("_1.fastq", "");
-							} else if (model.getValueAt(j, 1).toString().endsWith(".fastq.gz")) {
+								pairSymbol = "N";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_1.fastq.gz")) {
 								title = model.getValueAt(j, 1).toString().replace("_1.fastq.gz", "");
-							} else {
-								// .fq.gz
+								pairSymbol = "N";
+							} else if(model.getValueAt(j, 1).toString().endsWith("_1.fq.gz")){
 								title = model.getValueAt(j, 1).toString().replace("_1.fq.gz", "");
+								pairSymbol = "N";
+							}
+							
+							else if (model.getValueAt(j, 1).toString().endsWith("_R1.fq")) {
+								title = model.getValueAt(j, 1).toString().replace("_R1.fq", "");
+								pairSymbol = "R";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_R1.fastq")) {
+								title = model.getValueAt(j, 1).toString().replace("_R1.fastq", "");
+								pairSymbol = "R";
+							} else if (model.getValueAt(j, 1).toString().endsWith("_R1.fastq.gz")) {
+								title = model.getValueAt(j, 1).toString().replace("_R1.fastq.gz", "");
+								pairSymbol = "R";
+							} else{
+								// _R1.fq.gz
+								title = model.getValueAt(j, 1).toString().replace("_R1.fq.gz", "");
+								pairSymbol = "R";
 							}
 
 							library_end = "Paired-End";
@@ -161,11 +193,12 @@ public class P_PreProcessing {
 			// in For . End Rep Data
 			if (tableFlag == true) {
 
-				String tmpInfo[] = new String[6];
+				String tmpInfo[] = new String[7];
 				tmpInfo[0] = genome;
 				tmpInfo[1] = seq;
 				tmpInfo[2] = title;
 				tmpInfo[5] = strand;
+				tmpInfo[6] = pairSymbol;
 
 				String tmpFr[] = forward.split("  ");
 				String tmpFr2[] = tmpFr[0].split("\\.");
@@ -216,7 +249,7 @@ public class P_PreProcessing {
 	
 	public void saveTable(){
 		for(int j = 0; j < model.getRowCount(); j++){
-			String tmpInfo[] = new String[6];
+			String tmpInfo[] = new String[7];
 			tmpInfo[0] = model.getValueAt(j, 3).toString();
 			tmpInfo[1] = model.getValueAt(j, 4).toString();
 			tmpInfo[5] = model.getValueAt(j, 5).toString();
@@ -234,16 +267,48 @@ public class P_PreProcessing {
 				tmpInfo[3] = ds.getHmP_Fastq(model.getValueAt(j, 1).toString());
 				tmpInfo[4] = "";
 			}else{
-				if(model.getValueAt(j, 1).toString().endsWith("_1.fq")){
+				if(model.getValueAt(j, 1).toString().endsWith("_1_val_1.fq")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1_val_1.fq", "");
+					tmpInfo[6] = "V";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_1_val_1.fastq")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1_val_1.fastq", "");
+					tmpInfo[6] = "V";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_1_val_1.fastq.gz")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1_val_1.fastq.gz", "");
+					tmpInfo[6] = "V";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_1_val_1.fq.gz")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1_val_1.fq.gz", "");
+					tmpInfo[6] = "V";
+				}
+				else if(model.getValueAt(j, 1).toString().endsWith("_1.fq")){
 					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1.fq", "");
+					tmpInfo[6] = "N";
 				}else if(model.getValueAt(j, 1).toString().endsWith("_1.fastq")){
 					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1.fastq", "");
+					tmpInfo[6] = "N";
 				}else if(model.getValueAt(j, 1).toString().endsWith("_1.fastq.gz")){
 					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1.fastq.gz", "");
-				}else{
-					// _1.fq.gz
+					tmpInfo[6] = "N";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_1.fq.gz")){
 					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_1.fq.gz", "");
+					tmpInfo[6] = "N";
 				}
+				else if(model.getValueAt(j, 1).toString().endsWith("_R1.fq")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_R1.fq", "");
+					tmpInfo[6] = "R";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_R1.fastq")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_R1.fastq", "");
+					tmpInfo[6] = "R";
+				}else if(model.getValueAt(j, 1).toString().endsWith("_R1.fastq.gz")){
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_R1.fastq.gz", "");
+					tmpInfo[6] = "R";
+				}else{
+					// _R1.fq.gz
+					tmpInfo[2] = model.getValueAt(j, 1).toString().replace("_R1.fq.gz", "");
+					tmpInfo[6] = "R";
+				}
+				
+							
 				tmpInfo[3] = ds.getHmP_Fastq(model.getValueAt(j, 1).toString());
 				tmpInfo[4] = ds.getHmP_Fastq(model.getValueAt(j, 2).toString());
 			}

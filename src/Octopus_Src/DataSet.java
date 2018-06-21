@@ -40,6 +40,7 @@ public class DataSet {
 	private String analysisPath; // ..Result/GSEXXXXX/
 	private String forward;
 	private String reverse;
+	private String pairSymbol;
 	
 	// QualityCheck & Trimming
 	private String encoding_fr;
@@ -169,6 +170,7 @@ public class DataSet {
 		encoding_fr = "sanger";
 		encoding_rv = "sanger";
 		bamFile = "";
+		pairSymbol = "";
 		
 	}
 	public void initP_Fastq(){
@@ -481,6 +483,9 @@ public class DataSet {
 		subRunLog.add(gsm);
 	}
 	
+	public void setPairSymbol(String symbol){
+		pairSymbol = symbol;
+	}
 	//=====
 	
 	public UI_Octopus getMainUI(){
@@ -638,5 +643,8 @@ public class DataSet {
 	}
 	public ArrayList<String[]> getSubRunLog(){
 		return subRunLog;
+	}
+	public String getPairSymbol(){
+		return pairSymbol;
 	}
 }

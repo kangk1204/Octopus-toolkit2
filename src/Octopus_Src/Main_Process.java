@@ -234,7 +234,7 @@ public class Main_Process {
 					ds.setGSMInfo(2, ds.getPrivateData().get(i)[1].toUpperCase()); // Library : ChIP
 					ds.setFastq(ds.getPrivateData().get(i)[3], ds.getPrivateData().get(i)[4]);
 					ds.setGSMInfo(5, ds.getPrivateData().get(i)[5]); // Strand : Not use / Unstrand / FR ...
-					
+					ds.setPairSymbol(ds.getPrivateData().get(i)[6]);
 					// Log (Option)
 					ds.writeLogRun(ds.getGSE() + " : " + ds.getGSMInfo()[0] + "\n", true);
 					ds.writeLogRun("Analysis : " + ds.getGSE() + " : " + ds.getGSMInfo()[0] + "(" + cnt + "/" + cntTotal+ ")\n", true);

@@ -1,5 +1,6 @@
 package Octopus_Src;
 
+import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,57 +8,75 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Main {
 	private static String newVersion;
 	public static void main(String args[]){
 
-		String version = "2.0.9";
-		System.out.println("[Octopus-toolkit."+version+"] ");
-		newVersion = version;
-				
-		DataSet ds = new DataSet();
-		CommonFunc cf = new CommonFunc(ds);
+		EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+/*                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                }
+*/                
+                String version = "2.1.1";
+        		System.out.println("[Octopus-toolkit."+version+"] ");
+        		newVersion = version;
+        				
+        		DataSet ds = new DataSet();
+        		CommonFunc cf = new CommonFunc(ds);
 
-		// Check New Octopus-toolkit version
-		if(checkUpdateVersion(version, cf)){
-			int checkResult = JOptionPane.showConfirmDialog(null,"Octopus-toolkit has a new version("+newVersion+").\n Do you want to download new Octopus-toolkit?","Octopus-toolkit ("+version+")", JOptionPane.YES_NO_OPTION);
-			if(checkResult == 0){
-				String newVersionCmd[] = {"wget","http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip","-O","Octopus-toolkit.zip"};
-				String decompressCmd[] = {"unzip","-o","Octopus-toolkit.zip","-d","./"};
-				String mvCmd1[] = {"mv","Octopus-toolkit/Octopus-toolkit.jar","./"};
-				String mvCmd2[] = {"mv","Octopus-toolkit/README.md","./"};
-				cf.shellCmd(newVersionCmd);
-				cf.shellCmd(decompressCmd);
-				cf.shellCmd(mvCmd1);
-				cf.shellCmd(mvCmd2);
-				
-				File f = new File(ds.getPath()+"/Tools/SubTool/makeGraph.R");
-				if(f.exists()){
-					f.delete();
-				}
-				
-				JOptionPane.showMessageDialog(null, "Downloading the latest version of Octopus-toolkit.\nPlease rerun the Octopus-toolkit.", "Octopus-toolkit", JOptionPane.INFORMATION_MESSAGE);
-				System.exit(0);
-			}
-		}
+        		// Check New Octopus-toolkit version
+        		if(checkUpdateVersion(version, cf)){
+        			int checkResult = JOptionPane.showConfirmDialog(null,"Octopus-toolkit has a new version("+newVersion+").\n Do you want to download new Octopus-toolkit?","Octopus-toolkit ("+version+")", JOptionPane.YES_NO_OPTION);
+        			if(checkResult == 0){
+        				String newVersionCmd[] = {"wget","http://octopus-toolkit2.readthedocs.io/en/latest/_downloads/Octopus-toolkit.zip","-O","Octopus-toolkit.zip"};
+        				String decompressCmd[] = {"unzip","-o","Octopus-toolkit.zip","-d","./"};
+        				String mvCmd1[] = {"mv","Octopus-toolkit/Octopus-toolkit.jar","./"};
+        				String mvCmd2[] = {"mv","Octopus-toolkit/README.md","./"};
+        				cf.shellCmd(newVersionCmd);
+        				cf.shellCmd(decompressCmd);
+        				cf.shellCmd(mvCmd1);
+        				cf.shellCmd(mvCmd2);
+        				
+        				File f = new File(ds.getPath()+"/Tools/SubTool/makeGraph.R");
+        				if(f.exists()){
+        					f.delete();
+        				}
+        				
+        				JOptionPane.showMessageDialog(null, "Downloading the latest version of Octopus-toolkit.\nPlease rerun the Octopus-toolkit.", "Octopus-toolkit", JOptionPane.INFORMATION_MESSAGE);
+        				System.exit(0);
+        			}
+        		}
+        		
+        		// Check tool to analysis 
+        		CheckProgram cp;
+        		
+        		// Start Mint
+        		if(checkRequired_OS(ds, cf)){
+        			cp = new CheckProgram(ds, cf);
+        		}else{
+        			System.exit(0);
+        		}
+
+           }
+        });
 		
-		// Check tool to analysis 
-		CheckProgram cp;
 		
-		// Start Mint
-		if(checkRequired_OS(ds, cf)){
-			cp = new CheckProgram(ds, cf);
-		}else{
-			System.exit(0);
-		}
 		
 	} 
 	
 	public static boolean checkUpdateVersion(String v, CommonFunc cf){
 		
-		String versionCmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Octopus-toolkit_Version.txt","-O","Octopus-toolkit_Version.txt"};
+		String versionCmd[] = {"wget","143.248.14.23/Octopus-Sub/Octopus-toolkit_Version.txt","-O","Octopus-toolkit_Version.txt"};
 		cf.shellCmd(versionCmd);
 		
 		FileReader fr;

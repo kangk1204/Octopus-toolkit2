@@ -38,7 +38,7 @@ public class CheckProgram {
 		prBar = new UI_ProgressBar(cf);
 		
 		toolList = new ArrayList<String>();
-		String dir[] = { "Tools", "Script", "Index", "Result", "Log", "Tools/Homer/", "Tools/SubTool", "Index/Reference","Index/Hisat2","Index/STAR", "Log/Command", "Log/Run"};
+		String dir[] = { "Tools", "Script", "Index", "Result", "Log", "Tools/SubTool", "Index/Reference","Index/Hisat2","Index/STAR", "Log/Command", "Log/Run"};
 
 		// make Directory
 		cf.makeDirectory(dir);
@@ -174,43 +174,44 @@ public class CheckProgram {
 
 		File file = new File(fileName);
 		if (tool.equals("Homer")) {
-			String homer_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/configureHomer.pl","-O",path + "/Tools/Homer/configureHomer.pl","-o",path + "/Script/Downlog"};
-			String homer_cmd2[] = {"perl",path + "/Tools/Homer/configureHomer.pl","-install"};
+			String homer_cmd[] = {"wget","143.248.14.23/Octopus-Sub/Homer.zip","-O",path + "/Tools/Homer.zip","-o",path	+ "/Script/Downlog"};
+			String homer_cmd2[] = {"unzip","-o",path + "/Tools/Homer.zip","-d",path + "/Tools/"};
 			cf.shellCmd(homer_cmd);
 			cf.shellCmd(homer_cmd2);
+			new File(path+"Tools/Homer.zip").delete();			
 		}  else if (tool.equals("Sra-toolkit")) {
-			String sra_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/sratoolkit.zip","-O",path + "/Tools/sratoolkit.zip","-o",path	+ "/Script/Downlog"};
+			String sra_cmd[] = {"wget","143.248.14.23/Octopus-Sub/sratoolkit.zip","-O",path + "/Tools/sratoolkit.zip","-o",path	+ "/Script/Downlog"};
 			String sra_cmd2[] = {"unzip","-o",path + "/Tools/sratoolkit.zip","-d",path + "/Tools/"};
 			cf.shellCmd(sra_cmd);
 			cf.shellCmd(sra_cmd2);
 			new File(path+"Tools/sratoolkit.zip").delete();
 		} else if (tool.equals("Trimmomatic")) {
-			String trim_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Trimmomatic.zip","-O",path + "/Tools/Trimmomatic.zip","-o",path	+ "/Script/Downlog"};
+			String trim_cmd[] = {"wget","143.248.14.23/Octopus-Sub/Trimmomatic.zip","-O",path + "/Tools/Trimmomatic.zip","-o",path	+ "/Script/Downlog"};
 			String trim_cmd2[] = {"unzip","-o",path + "/Tools/Trimmomatic.zip","-d",path + "/Tools/"};
 			cf.shellCmd(trim_cmd);
 			cf.shellCmd(trim_cmd2);
 			new File(path+"Tools/Trimmomatic.zip").delete();
 		}else if (tool.equals("Hisat2")) {
-			String hisat_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/hisat2.zip","-O",path + "/Tools/hisat2.zip","-o",path	+ "/Script/Downlog"};
+			String hisat_cmd[] = {"wget","143.248.14.23/Octopus-Sub/hisat2.zip","-O",path + "/Tools/hisat2.zip","-o",path	+ "/Script/Downlog"};
 			String hisat_cmd2[] = {"unzip","-o",path + "/Tools/hisat2.zip","-d",path + "/Tools/"};
 			cf.shellCmd(hisat_cmd);
 			cf.shellCmd(hisat_cmd2);
 			new File(path+"Tools/hisat2.zip").delete();
 		}else if (tool.equals("STAR")) {
-			String star_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/STAR.zip","-O",path + "/Tools/STAR.zip","-o",path	+ "/Script/Downlog"};
+			String star_cmd[] = {"wget","143.248.14.23/Octopus-Sub/STAR.zip","-O",path + "/Tools/STAR.zip","-o",path	+ "/Script/Downlog"};
 			String star_cmd2[] = {"unzip","-o",path + "/Tools/STAR.zip","-d",path + "/Tools/"};
 			cf.shellCmd(star_cmd);
 			cf.shellCmd(star_cmd2);
 			new File(path+"Tools/STAR.zip").delete();
 		}
 		else if (tool.equals("Aspera")) {
-			String aspera_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/aspera.zip","-O",path + "/Tools/aspera.zip","-o",path	+ "/Script/Downlog"};
+			String aspera_cmd[] = {"wget","143.248.14.23/Octopus-Sub/aspera.zip","-O",path + "/Tools/aspera.zip","-o",path	+ "/Script/Downlog"};
 			String aspera_cmd2[] = {"unzip","-o",path + "/Tools/aspera.zip","-d",path + "/Tools/"};
 			cf.shellCmd(aspera_cmd);
 			cf.shellCmd(aspera_cmd2);
 			new File(path+"Tools/aspera.zip").delete();
 		} else if (tool.equals("Fastqc")) {
-			String fastqc_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/FastQC.zip","-O",path + "/Tools/FastQC.zip","-o",path	+ "/Script/Downlog"};
+			String fastqc_cmd[] = {"wget","143.248.14.23/Octopus-Sub/FastQC.zip","-O",path + "/Tools/FastQC.zip","-o",path	+ "/Script/Downlog"};
 			String fastqc_cmd2[] = {"unzip","-o",path + "/Tools/FastQC.zip","-d",path + "/Tools/"};
 			String fastqc_cmd3[] = {"chmod","777",path + "/Tools/FastQC/fastqc"};
 			cf.shellCmd(fastqc_cmd);
@@ -220,7 +221,7 @@ public class CheckProgram {
 		} else if (tool.equals("IGV")) {
 			try {
 				FileWriter fw = new FileWriter(file);
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/IGV.zip -O " + spacePath + "/Tools/IGV.zip -o " + spacePath + "/Script/Downlog\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/IGV.zip -O " + spacePath + "/Tools/IGV.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip -o " + spacePath + "/Tools/IGV.zip -d " + spacePath + "/Tools/\n");
 				fw.write("rm " + spacePath + "/Tools/IGV.zip\n");
 
@@ -239,7 +240,7 @@ public class CheckProgram {
 			try {
 				FileWriter fw = new FileWriter(file);
 				
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/RPackage.zip -O " + spacePath + "/Tools/RPackage.zip -o " + spacePath + "/Script/Downlog\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/RPackage.zip -O " + spacePath + "/Tools/RPackage.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip " + spacePath + "/Tools/RPackage.zip -d " + spacePath + "/Tools/\n");
 
 				String rPackage[] = { "colorspace_1.3-1", "dichromat_2.0-0", "Rcpp_0.12.8", "plyr_1.8.4",
@@ -303,9 +304,9 @@ public class CheckProgram {
 		else if (tool.equals("bwtool")) {
 			try {
 				FileWriter fw = new FileWriter(file);
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Bwtool.zip -O " + spacePath + "/Tools/Bwtool.zip -o " + spacePath + "/Script/Downlog\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/Bwtool.zip -O " + spacePath + "/Tools/Bwtool.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip -o " + spacePath + "/Tools/Bwtool.zip -d " + spacePath + "/Tools/\n");
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/libbeato.zip -O " + spacePath + "/Tools/libbeato.zip -o " + spacePath + "/Script/Downlog\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/libbeato.zip -O " + spacePath + "/Tools/libbeato.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip -o " + spacePath + "/Tools/libbeato.zip -d " + spacePath + "/Tools/\n");
 				
 				fw.write("cd " + spacePath + "/Tools/libbeato/\n");
@@ -334,7 +335,7 @@ public class CheckProgram {
 		} else if (tool.equals("samtools")) {
 			try {
 				FileWriter fw = new FileWriter(file);
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Samtools.zip -O " + spacePath + "/Tools/Samtools.zip -o " + spacePath + "/Script/Downlog\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/Samtools.zip -O " + spacePath + "/Tools/Samtools.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip -o " + spacePath + "/Tools/Samtools.zip -d " + spacePath + "/Tools/\n");
 				
 				fw.write("cd " + spacePath + "/Tools/Samtools/\n");
@@ -360,10 +361,10 @@ public class CheckProgram {
 		else if (tool.equals("SubTool")) {
 			try {
 				FileWriter fw = new FileWriter(file);
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/twoBitToFa -O " + spacePath + "/Tools/SubTool/twoBitToFa\n");
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/bedGraphToBigWig -O " + spacePath + "/Tools/SubTool/bedGraphToBigWig\n");
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Extract_Chr_Sequence.py -O " + spacePath + "/Tools/SubTool/Extract_Chr_Sequence.py\n");
-				fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/makeGraph.R -O " + spacePath + "/Tools/SubTool/makeGraph.R\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/twoBitToFa -O " + spacePath + "/Tools/SubTool/twoBitToFa\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/bedGraphToBigWig -O " + spacePath + "/Tools/SubTool/bedGraphToBigWig\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/Extract_Chr_Sequence.py -O " + spacePath + "/Tools/SubTool/Extract_Chr_Sequence.py\n");
+				fw.write("wget 143.248.14.23/Octopus-Sub/makeGraph.R -O " + spacePath + "/Tools/SubTool/makeGraph.R\n");
 				fw.write("chmod 777 " + spacePath + "/Tools/SubTool/*\n");
 
 				fw.flush();

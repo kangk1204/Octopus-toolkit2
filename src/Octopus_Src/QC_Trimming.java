@@ -175,7 +175,7 @@ public class QC_Trimming {
 			if(ds.getRemove(2)){
 				cf.removeFile("Fastqc");	
 			}
-			
+
 		}catch(Exception e){
 			System.out.println("\nError : Unable to make the FastQC.sh file due to unknown reasons (Err009)");
 			ds.writeLogRun("Error : Unable to make the FastQC.sh file due to unknown reasons (Err009) <a href=\"http://octopus-toolkit2.readthedocs.io/en/latest/error.html#err-009\">[Err009]</a> \n", true);
@@ -205,8 +205,21 @@ public class QC_Trimming {
 				
 			}else{
 				//Paired-end
-				String encoding_1 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_1");
-				String encoding_2 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_2");
+				String encoding_1 = "";
+				String encoding_2 = "";
+				
+				if(ds.getPairSymbol().equals("N")){
+					encoding_1 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_1");
+					encoding_2 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_2");	
+				}else if(ds.getPairSymbol().equals("R")){
+					encoding_1 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_R1");
+					encoding_2 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_R2");	
+				}else{
+					// V
+					encoding_1 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_1_val_1");
+					encoding_2 = getEncodeInFastqc(ds.getGSMInfo()[0]+"_2_val_2");	
+				}
+				
 				ds.setEncoding(encoding_1, encoding_2);
 			}			
 		}		

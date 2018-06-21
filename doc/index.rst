@@ -4,7 +4,7 @@ Octopus-toolkit
 Octopus-toolkit
 
 .. note::
-    ``2018-02-15`` : We are moving the Octopus-toolkit server. If you are using 2.0.9 version, please download the 2.1.0 version again.
+    ``2018-02-15`` : We are moving the Octopus-toolkit server. If you are using 2.0.9 version, please download the 2.1.1 version again.
 
 * Please cite the following paper : 
 
@@ -17,17 +17,15 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 Download
 --------
 
-``Latest Version (2.1.0)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 02/13/2018
+``Latest Version (2.1.1)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 06/21/2018
 
-  - Version(``2.1.0``) is a minor release with the following changes.
-  - Periodic inspection of source code
-  - Change the server storage and link
+  - Version(``2.1.1``) is a minor release with the following changes.
+  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
+  
+``Latest Mac Version (2.1.1)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 06/21/2018
 
-``Latest Mac Version (2.1.0)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 02/13/2018
-
-  - Version(``2.1.0``) is a minor release with the following changes.
-  - Periodic inspection of source code
-  - Change the server storage and link
+  - Version(``2.1.1``) is a minor release with the following changes.
+  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
 
 Hardware/Software Requirement
 -----------------------------
@@ -59,13 +57,27 @@ Program development
 Previous version
 -------------------
 
-``Latest Version (2.0.9)``,  release 01/03/2018
+``Version (2.1.0)``,  release 02/13/2018
+
+  - Version(``2.1.0``) is a minor release with the following changes.
+  - Periodic inspection of source code
+  - Change the server storage and link
+
+``Mac Version (2.1.0)``,  release 02/13/2018
+
+  - Version(``2.1.0``) is a minor release with the following changes.
+  - Periodic inspection of source code
+  - Change the server storage and link
+
+---------------------------------------------------------------------------------------
+
+``Version (2.0.9)``,  release 01/03/2018
 
   - Version(``2.0.9``) is a minor release with the following changes.
   - Optimized Paired-end classfication Method in Private Data.
   - Changed source code (Private Table) of Octopus-toolkit to make maintenance easier.
 
-``Latest Mac Version (2.0.9)``,  release 01/03/2018
+``Mac Version (2.0.9)``,  release 01/03/2018
 
   - Version(``2.0.9``) is a minor release with the following changes.
   - Optimized Paired-end classfication Method in Private Data.

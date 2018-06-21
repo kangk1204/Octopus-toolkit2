@@ -2,7 +2,7 @@
 11. 3rd Party Tools
 ===================
 
-11-1.Version 2.1.0
+11-1.Version 2.1.1
 ^^^^^^^^^^^^^^^^^^
 
 Octopus-toolkit utilizes the following 3rd party tools during the process.
@@ -33,7 +33,7 @@ Octopus-toolkit utilizes the following 3rd party tools during the process.
      - v2.5.1
      - Indexing and Mapping to reference genome for RNA-Seq
    * - ``Homer``
-     - v4.9.1
+     - v4.10.1
      - Create bigWig for visualization and Detect enriched regions by mapped reads 
    * - ``Bwtool``, ``libbeato``
      - v1.0

@@ -58,8 +58,8 @@ public class Visualization {
 			
 			if(!cf.checkReference("chrom.sizes",ds.getGSMInfo()[1])){
 				if(ds.getGSMInfo()[1].equals("tair10")){
-					fw.write("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Tair10/tair10.chrom.sizes -O "+spacePath+"Index/Reference/"+genome+".chrom.sizes -o "+spacePath+"Script/Downlog\n");
-					ds.writeLogCmd("wget http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Tair10/tair10.chrom.sizes -O "+spacePath+"Index/Reference/"+genome+".chrom.sizes -o "+spacePath+"Script/Downlog\n\n");
+					fw.write("wget 143.248.14.23/Octopus-Sub/Tair10/tair10.chrom.sizes -O "+spacePath+"Index/Reference/"+genome+".chrom.sizes -o "+spacePath+"Script/Downlog\n");
+					ds.writeLogCmd("wget 143.248.14.23/Octopus-Sub/Tair10/tair10.chrom.sizes -O "+spacePath+"Index/Reference/"+genome+".chrom.sizes -o "+spacePath+"Script/Downlog\n\n");
 
 				}else{
 					fw.write("wget http://hgdownload.soe.ucsc.edu/goldenPath/"+genome+"/bigZips/"+genome+".chrom.sizes -O "+spacePath+"Index/Reference/"+genome+".chrom.sizes -o "+spacePath+"Script/Downlog\n");

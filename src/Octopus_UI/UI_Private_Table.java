@@ -86,7 +86,7 @@ public class UI_Private_Table extends JFrame {
 		private_table.getColumn("Genome").setPreferredWidth(100);
 		private_table.getColumn("Seq type").setPreferredWidth(130);
 		private_table.getColumn("Strand").setPreferredWidth(160);
-		;
+		
 		private_table.getColumn("Multi-Lane").setCellRenderer(celAlignCenter);
 		private_table.getColumn("Genome").setCellRenderer(celAlignCenter);
 		private_table.getColumn("Seq type").setCellRenderer(celAlignCenter);
@@ -475,8 +475,8 @@ public class UI_Private_Table extends JFrame {
 		String str = "";
 		if (file.endsWith("_1_val_1") || file.endsWith("_2_val_2")) {
 			str = file.substring(file.length() - 1);
-			tmp[1] = "_" + str + "_val_" + str;
-			tmp[0] = file.replace("_" + str + "_val_" + str, "");
+			tmp[1] = "_"+str + "_val_" + str;
+			tmp[0] = file.replace("_"+str + "_val_" + str, "");
 		} else if (file.endsWith("_R1") || file.endsWith("_R2")) {
 			str = file.substring(file.length() - 1);
 			tmp[1] = "_R" + str;

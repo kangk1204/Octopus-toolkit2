@@ -250,45 +250,46 @@ public class CommonFunc {
 		}
 	}
 	
-	public void setP_Fastq(File fastq){
-		
+	public void setP_Fastq(File fastq) {
+
 		String file_lower = fastq.getName().toLowerCase();
-		if (file_lower.endsWith(".fq") || file_lower.endsWith(".fastq") || file_lower.endsWith(".fastq.gz") || file_lower.endsWith(".fq.gz")) {
+		if (file_lower.endsWith(".fq") || file_lower.endsWith(".fastq") || file_lower.endsWith(".fastq.gz")
+				|| file_lower.endsWith(".fq.gz")) {
 			String originFolder = fastq.getParent().replaceAll(" ", "\\ ");
 			String originFile = fastq.getName();
 			String tmpTitle = "";
-			String f_name  = "";
-			
+			String f_name = "";
+
 			if (file_lower.endsWith(".fq")) {
-				f_name = originFile.substring(0,originFile.length()-3);
+				f_name = originFile.substring(0, originFile.length() - 3);
 				tmpTitle = checkSymbol(f_name);
-				
+
 				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fq");
 				fastq.renameTo(changeFile);
 				ds.setP_Fastq(tmpTitle + ".fq");
 				ds.setHmP_Fastq(tmpTitle + ".fq", originFolder + "/" + tmpTitle + ".fq");
 			} else if (file_lower.endsWith(".fastq")) {
 				// fastq
-				f_name = originFile.substring(0,originFile.length()-6);
+				f_name = originFile.substring(0, originFile.length() - 6);
 				tmpTitle = checkSymbol(f_name);
-				
+
 				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fastq");
 				fastq.renameTo(changeFile);
 				ds.setP_Fastq(tmpTitle + ".fastq");
 				ds.setHmP_Fastq(tmpTitle + ".fastq", originFolder + "/" + tmpTitle + ".fastq");
 			} else if (file_lower.endsWith(".fastq.gz")) {
-				f_name = originFile.substring(0,originFile.length()-9);
+				f_name = originFile.substring(0, originFile.length() - 9);
 				tmpTitle = checkSymbol(f_name);
-				
+
 				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fastq.gz");
 				fastq.renameTo(changeFile);
 				ds.setP_Fastq(tmpTitle + ".fastq.gz");
 				ds.setHmP_Fastq(tmpTitle + ".fastq.gz", originFolder + "/" + tmpTitle + ".fastq.gz");
 			} else {
 				// .fq.gz
-				f_name = originFile.substring(0,originFile.length()-6);
+				f_name = originFile.substring(0, originFile.length() - 6);
 				tmpTitle = checkSymbol(f_name);
-				
+
 				File changeFile = new File(fastq.getParent() + "/" + tmpTitle + ".fq.gz");
 				fastq.renameTo(changeFile);
 				ds.setP_Fastq(tmpTitle + ".fq.gz");
@@ -616,7 +617,7 @@ public class CommonFunc {
 
 			String downloadUrl = "";
 			if (genome.equals("tair10")){
-				downloadUrl = "http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Tair10/tair10.2bit";
+				downloadUrl = "143.248.14.23/Octopus-Sub/Tair10/tair10.2bit";
 			} else {
 				downloadUrl = "http://hgdownload.soe.ucsc.edu/goldenPath/" + genome + "/bigZips/" + genome + ".2bit";
 			}
@@ -649,7 +650,7 @@ public class CommonFunc {
 			
 			
 			if(!chrList.equals("")){
-				downloadUrl = "http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/chromosome/"+chrList;
+				downloadUrl = "143.248.14.23/Octopus-Sub/chromosome/"+chrList;
 				
 				String list[] = { "wget", downloadUrl, "-O", ds.getPath() + "Index/Reference/" + chrList, "-o",
 						ds.getPath() + "Script/Downlog" };
@@ -675,7 +676,7 @@ public class CommonFunc {
 			}
 			
 			// Download GTF
-			downloadUrl = "http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/GTF/"+genome+".gtf";
+			downloadUrl = "143.248.14.23/Octopus-Sub/GTF/"+genome+".gtf";
 			String cmd5[] = { "wget", downloadUrl, "-O", ds.getPath() + "Index/Reference/" + genome + ".gtf", "-o",
 					ds.getPath() + "Script/Downlog" };
 			
@@ -683,7 +684,7 @@ public class CommonFunc {
 			
 		} else if(format.equals("bed")){
 			// Bed
-			String downLoadUrl = "http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Bed/" + genome + ".bed";
+			String downLoadUrl = "143.248.14.23/Octopus-Sub/Bed/" + genome + ".bed";
 			String cmd[] = { "wget", downLoadUrl, "-O", ds.getPath() + "Index/Reference/" + genome + ".bed", "-o",
 					ds.getPath() + "/Script/Downlog" };
 			
@@ -913,7 +914,7 @@ public class CommonFunc {
 			//Change Homer TAIR10 Chromosome Label
 			if(genome.equals("tair10")){
 
-				String tair_cmd[] = {"wget","http://dkucombio.ipdisk.co.kr:80/publist/VOL1/Public/Octopus-Sub/Tair10/tair10.zip","-O",path + "/Tools/Homer/tair10.zip","-o",path	+ "/Script/Downlog"};
+				String tair_cmd[] = {"wget","143.248.14.23/Octopus-Sub/Tair10/tair10.zip","-O",path + "/Tools/Homer/tair10.zip","-o",path	+ "/Script/Downlog"};
 				String tair_cmd2[] = {"unzip","-o",path + "/Tools/Homer/tair10.zip","-d",path + "/Tools/Homer/data/genomes/tair10/"};
 				shellCmd(tair_cmd);
 				shellCmd(tair_cmd2);
