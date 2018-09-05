@@ -8,8 +8,8 @@
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit.
 
-1. Octopus-toolkit_2.1.1 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
-2. Octopus-toolkit_mac_2.1.1 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
+1. Octopus-toolkit_2.1.2 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
+2. Octopus-toolkit_mac_2.1.2 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
 
 
 1-2.Installation Movie Clip
@@ -57,15 +57,11 @@ Please follow the installation guide below.
 1-4.Ubuntu(14.04,16.04), Mint(18)
 ---------------------------------
 
-To run the Octopus-toolkit, you must install the following libraries: ``zlib1g``, ``libpng12``, ``libncurses5``, ``g++``
+To run the Octopus-toolkit, you must install the following libraries: ``zlib1g``, ``libpng12``, ``libncurses5``, ``g++``, ``liblzma``, ``libbz2``
 
 * ``zlib1g-dev`` ::
     
     sudo apt-get install zlib1g-dev
-
-* ``libpng12-dev`` ::
-    
-    sudo apt-get install libpng12-dev
 
 * ``libncurses5-dev`` ::
 
@@ -74,12 +70,6 @@ To run the Octopus-toolkit, you must install the following libraries: ``zlib1g``
 * ``g++`` ::
 
     sudo apt-get install build-essential
-
-OR ::
-
-    sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential
-
-If Ubuntu version is ``14.04``, you must install the following libraries: ``liblzma-dev``, ``libbz2-dev``
 
 * ``liblzma-dev`` ::
 
@@ -90,8 +80,22 @@ If Ubuntu version is ``14.04``, you must install the following libraries: ``libl
     sudo apt-get install libbz2-dev
 
 OR ::
-  
-    sudo apt-get install liblzma-dev libbz2-dev
+
+    sudo apt-get install zlib1g-dev libpng12-dev libncurses5-dev build-essential liblzma-dev libbz2-dev
+
+In the Ubuntu version (``18.04``)
+
+
+* ``libpng-dev`` ::
+    
+    sudo apt-get install libpng-dev
+
+Another Ubuntu version (``14.04``16.04``), Mint (``18``)
+
+* ``libpng12-dev`` ::
+    
+    sudo apt-get install libpng12-dev
+
 
 1-5.Fedora(22~25), CentOS(7)
 ----------------------------
@@ -138,7 +142,7 @@ OR ::
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit (Mac version).
 
-To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer. (:download:`Octopus-toolkit_mac_2.1.1<_templates/Octopus-toolkit_mac.zip>`)
+To run the Octopus-toolkit, ``Java 8`` (JDK, Java Development ToolKit) or higher, must be installed on your computer. (:download:`Octopus-toolkit_mac_2.1.2<_templates/Octopus-toolkit_mac.zip>`)
 
 * ``Java 8`` (JDK, Java Development ToolKit) or higher::
 

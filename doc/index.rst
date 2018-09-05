@@ -4,7 +4,7 @@ Octopus-toolkit
 Octopus-toolkit
 
 .. note::
-    ``2018-02-15`` : We are moving the Octopus-toolkit server. If you are using 2.0.9 version, please download the 2.1.1 version again.
+    ``2018-09-05`` : Octopus-toolkit supports Ubuntu18.04 version. Please feel free to contact us if you have any problems in use.
 
 * Please cite the following paper : 
 
@@ -17,15 +17,18 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 Download
 --------
 
-``Latest Version (2.1.1)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 06/21/2018
+``Latest Version (2.1.2)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 09/05/2018
 
-  - Version(``2.1.1``) is a minor release with the following changes.
-  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
+  - Version(``2.1.2``) is a minor release with the following changes.
+  - Added new operating system to support Ubuntu ``18.04`` version.
+  - Upgraded versions of R packages.
+  - Optimized the analysis package for each operating system.
   
-``Latest Mac Version (2.1.1)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 06/21/2018
+``Latest Mac Version (2.1.2)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 09/05/2018
 
-  - Version(``2.1.1``) is a minor release with the following changes.
-  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
+  - Version(``2.1.2``) is a minor release with the following changes.
+  - Upgraded versions of R packages.
+  - Optimized the analysis package for each operating system.
 
 Hardware/Software Requirement
 -----------------------------
@@ -41,7 +44,7 @@ Operating System:
 
 Operating System Version (tested):
 
-* Linux : Ubuntu (``14.04``),(``16.04``, highly recommend)
+* Linux : Ubuntu (``14.04``),(``16.04``, highly recommend), (``18.04``)
 * Fedora (``22``),(``25``)
 * Mint (``18``)
 * CentOS (``7``)
@@ -56,6 +59,18 @@ Program development
 
 Previous version
 -------------------
+
+``Version (2.1.1)``,  release 06/21/2018
+
+  - Version(``2.1.1``) is a minor release with the following changes.
+  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
+  
+``Mac Version (2.1.1)``,  release 06/21/2018
+
+  - Version(``2.1.1``) is a minor release with the following changes.
+  - Changed source code (Download) of Octopus-toolkit to install Homer tool.
+
+---------------------------------------------------------------------------------------
 
 ``Version (2.1.0)``,  release 02/13/2018
 

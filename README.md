@@ -1,4 +1,4 @@
-# Octopus-toolkit (2.1.1)
+# Octopus-toolkit
 ======================================================
 ## 0.Octopus-toolkit Homepage
 ======================================================
@@ -16,7 +16,7 @@ Minimum Memory (RAM)
 Operating System
 - 64bit Linux
 - Operating System Version:
-- Linux : Ubuntu (14.04),(16.04, highly recommend), Fedora (22),(25), Mint (18), CentOS (7)
+- Linux : Ubuntu (14.04),(16.04, highly recommend),(18.04), Fedora (22),(25), Mint (18)
 
 ======================================================
 ## 2.Requirement
