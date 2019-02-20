@@ -176,8 +176,10 @@ public class CheckProgram {
 		if (tool.equals("Homer")) {
 			String homer_cmd[] = {"wget","143.248.14.23/Octopus-Sub/Homer.zip","-O",path + "/Tools/Homer.zip","-o",path	+ "/Script/Downlog"};
 			String homer_cmd2[] = {"unzip","-o",path + "/Tools/Homer.zip","-d",path + "/Tools/"};
+			String homer_cmd3[] = {"perl",path + "/Tools/Homer/configureHomer.pl","-make"};
 			cf.shellCmd(homer_cmd);
 			cf.shellCmd(homer_cmd2);
+			cf.shellCmd(homer_cmd3);
 			new File(path+"Tools/Homer.zip").delete();			
 		}  else if (tool.equals("Sra-toolkit")) {
 			String sra_cmd[] = {"wget","143.248.14.23/Octopus-Sub/sratoolkit.zip","-O",path + "/Tools/sratoolkit.zip","-o",path	+ "/Script/Downlog"};
@@ -243,10 +245,10 @@ public class CheckProgram {
 				fw.write("wget 143.248.14.23/Octopus-Sub/RPackage.zip -O " + spacePath + "/Tools/RPackage.zip -o " + spacePath + "/Script/Downlog\n");
 				fw.write("unzip " + spacePath + "/Tools/RPackage.zip -d " + spacePath + "/Tools/\n");
 
-				String rPackage[] = { "colorspace_1.3-1", "dichromat_2.0-0", "Rcpp_0.12.8", "plyr_1.8.4",
-						"munsell_0.4.3", "labeling_0.3", "RColorBrewer_1.1-2", "scales_0.4.1", "gtable_0.2.0",
-						"pheatmap_1.0.8", "stringi_1.1.2", "magrittr_1.5", "stringr_1.1.0", "digest_0.6.10",
-						"reshape2_1.4.2", "lazyeval_0.2.0","assertthat_0.1","tibble_1.2","ggplot2_2.2.0" };
+				String rPackage[] = { "colorspace_1.3-2", "dichromat_2.0-0", "Rcpp_0.12.18", "plyr_1.8.4",
+						"munsell_0.5.0", "labeling_0.3", "RColorBrewer_1.1-2", "scales_0.4.1", "gtable_0.2.0",
+						"pheatmap_1.0.10", "stringi_1.2.4", "magrittr_1.5", "stringr_1.2.0", "digest_0.6.16",
+						"reshape2_1.4.3", "lazyeval_0.2.1","assertthat_0.2.0","tibble_1.3.0","ggplot2_2.2.1" };
 				
 				String dir[] = {"Tools/Rlib"};
 				cf.makeDirectory(dir);

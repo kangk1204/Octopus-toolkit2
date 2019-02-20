@@ -18,6 +18,7 @@ public class DataSet {
 	private CheckProgram cp;
 	
 	private String os;
+	private String os_version;
 	private int memory;
 	private int hdd_capacity;
 	private int os_bit;
@@ -116,6 +117,7 @@ public class DataSet {
 		labelTitle = "";
 		password = "";
 		os = "";
+		os_version="";
 		runGSM = "";
 		
 		hmP_Fastq = new HashMap<String,String>();
@@ -460,6 +462,9 @@ public class DataSet {
 	public void setOS(String os){
 		this.os = os;
 	}
+	public void setOS_Version(String os_version){
+		this.os_version = os_version;
+	}
 	
 	public void setAlignTools(String tool){
 		alignTool = tool;
@@ -625,6 +630,9 @@ public class DataSet {
 	}
 	public String getOS(){
 		return os;
+	}
+	public String getOS_Version(){
+		return os_version;
 	}
 	public String getAlignTools(){
 		return alignTool;

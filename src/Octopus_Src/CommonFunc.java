@@ -658,6 +658,8 @@ public class CommonFunc {
 				String python = "python";
 				if(ds.getOS().equals("Fedora")){
 					python = "python3";
+				}else if(ds.getOS().equals("Ubuntu") && ds.getOS_Version().equals("18.04")){
+					python = "python3";
 				}
 				
 				String cmd3[] = { python, ds.getPath() + "Tools/SubTool/Extract_Chr_Sequence.py", "-i",

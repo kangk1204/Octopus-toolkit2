@@ -331,7 +331,7 @@ public class QC_Trimming {
 				if(ds.getFullOption()){
 					trimmomatic_Cmd = "java -jar "+ds.getPath().replace(" ", "\\ ")+"Tools/Trimmomatic/trimmomatic.jar PE -phred"+encoding+" -threads "+ds.getAnalysisCPU()+" " + fr +" "+ rv +" "+ trimFr +" "+unpairFr+" "+trimRv+" "+unpairRv+" "+fullOption;
 				}else{
-					trimmomatic_Cmd = "java -jar "+ds.getPath().replace(" ", "\\ ")+"Tools/Trimmomatic/trimmomatic.jar PE -phred"+encoding+" -threads "+ds.getAnalysisCPU()+" " + fr +" "+ rv +" "+ trimFr +" "+unpairFr+" "+trimRv+" "+unpairRv+" LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36";
+					trimmomatic_Cmd = "java -jar "+ds.getPath().replace(" ", "\\ ")+"Tools/Trimmomatic/trimmomatic.jar PE -phred"+encoding+" -threads "+ds.getAnalysisCPU()+" " + fr +" "+ rv +" "+ trimFr +" "+unpairFr+" "+trimRv+" "+unpairRv+" LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:20";
 				}
 				fw.write(trimmomatic_Cmd+"\n");
 				

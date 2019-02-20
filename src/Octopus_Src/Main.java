@@ -27,7 +27,7 @@ public class Main {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 */                
-                String version = "2.1.1";
+                String version = "2.1.3";
         		System.out.println("[Octopus-toolkit."+version+"] ");
         		newVersion = version;
         				
@@ -209,6 +209,19 @@ public class Main {
 			String tmpTable[] = resultList.split("\n");
 			String requiredTool[] = {"zlib1g-dev","libpng12-dev","libncurses5-dev","g++","liblzma-dev","libbz2-dev"};
 				
+			
+			// 14.04,16.04 : libpng12-dev / 18.04 : libpng-dev
+			if(ds.getOS().equals("Ubuntu")){
+				for(int i = 0; i < result_cmd.length; i++){
+					if(result_cmd[i].contains("18.04")){
+						requiredTool[1] = "libpng-dev";
+						ds.setOS_Version("18.04");
+						break;
+					}
+				}
+			}
+			
+			
 			for(int i = 0; i < requiredTool.length; i++){
 				boolean checkFlag = false;
 				for(int j = 0; j < tmpTable.length; j++){
@@ -223,6 +236,8 @@ public class Main {
 						lib_name = lib_name + "zlib : sudo apt-get install zlib1g-dev\n";
 					}else if(requiredTool[i].equals("libpng12-dev")){
 						lib_name = lib_name + "libpng : sudo apt-get install libpng12-dev\n";
+					}else if(requiredTool[i].equals("libpng-dev")){
+						lib_name = lib_name + "libpng : sudo apt-get install libpng-dev\n";
 					}else if(requiredTool[i].equals("libncurses5-dev")){
 						lib_name = lib_name + "libncurses : sudo apt-get install libncurses5-dev\n";
 					}else if(requiredTool[i].equals("g++")){

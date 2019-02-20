@@ -17,18 +17,17 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 Download
 --------
 
-``Latest Version (2.1.2)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 09/05/2018
+``Latest Version (2.1.3)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 02/20/2019
 
-  - Version(``2.1.2``) is a minor release with the following changes.
-  - Added new operating system to support Ubuntu ``18.04`` version.
-  - Upgraded versions of R packages.
+  - Version(``2.1.3``) is a minor release with the following changes.
   - Optimized the analysis package for each operating system.
+  - Adjusted threshold of the read min length in Trimming process.
   
-``Latest Mac Version (2.1.2)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 09/05/2018
+``Latest Mac Version (2.1.3)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 02/20/2019
 
-  - Version(``2.1.2``) is a minor release with the following changes.
-  - Upgraded versions of R packages.
+  - Version(``2.1.3``) is a minor release with the following changes.
   - Optimized the analysis package for each operating system.
+  - Adjusted threshold of the read min length in Trimming process.
 
 Hardware/Software Requirement
 -----------------------------
@@ -59,6 +58,21 @@ Program development
 
 Previous version
 -------------------
+
+``Version (2.1.2)``,  release 09/05/2018
+
+  - Version(``2.1.2``) is a minor release with the following changes.
+  - Added new operating system to support Ubuntu ``18.04`` version.
+  - Upgraded versions of R packages.
+  - Optimized the analysis package for each operating system.
+  
+``Mac Version (2.1.2)``,  release 09/05/2018
+
+  - Version(``2.1.2``) is a minor release with the following changes.
+  - Upgraded versions of R packages.
+  - Optimized the analysis package for each operating system.
+
+---------------------------------------------------------------------------------------
 
 ``Version (2.1.1)``,  release 06/21/2018
 

@@ -86,7 +86,6 @@ public class UI_Octopus extends JFrame implements WindowListener{
 			this.setSize(390,565);
 		}
 		
-		
 		this.setLocation(100, 50);
 		this.addWindowListener(this);
 		this.setTitle("Octopus-toolkit");		
