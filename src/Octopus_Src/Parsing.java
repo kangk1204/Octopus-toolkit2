@@ -255,7 +255,7 @@ public class Parsing {
 					ds.setGSMInfo(2, e.nextElementSibling().ownText().toUpperCase());
 				}else if(e.text().equals("Instrument model")){
 					String tmp[] = e.nextElementSibling().ownText().split(" ");
-					ds.setGSMInfo(3, tmp[0]); // Illumina
+					ds.setGSMInfo(3, tmp[0]); // Illumina , HiSeq(2019-05-04)
 				}
 				
 				
@@ -387,8 +387,8 @@ public class Parsing {
 			ds.setSubRunLog(tmp);
 			return;
 		}
-		
-		if(!ds.getGSMInfo()[3].equals("Illumina")){
+
+		if(!ds.getGSMInfo()[3].equals("Illumina") && !ds.getGSMInfo()[3].equals("HiSeq")){
 			ds.getErrLog().setGSMInfoErr("Err004 : Unable to analze the data (this instrument model. of NGS data is not currently supported) : "+ds.getGSMInfo()[3]+"(Err004-3)");
 			checkGsmFlag = false;
 			ds.setAnalyzeFlag();
@@ -460,14 +460,13 @@ public class Parsing {
 					if (e.text().toString().substring(0, 3).equals("SRR")) {
 
 						String srr = e.text().toString();
-						String srrTmp = e.text().toString().substring(0, 6);
-						String address_tmp = "/sra/sra-instant/reads/ByRun/sra/SRR/" + srrTmp + "/" + srr + "/" + srr
-								+ ".sra";
+//						String srrTmp = e.text().toString().substring(0, 6);
+//						String address_tmp = "/sra/sra-instant/reads/ByRun/sra/SRR/" + srrTmp + "/" + srr + "/" + srr + ".sra";
 
 						if (srr_address.equals("")) {
-							srr_address = address_tmp;
+							srr_address = srr;
 						} else {
-							srr_address += " " + address_tmp;
+							srr_address += " " + srr;
 						}
 					}
 				}

@@ -8,8 +8,8 @@
 .. note::
     Applications in the ``Requirement`` section must be installed on your computer before running the Octopus-toolkit.
 
-1. Octopus-toolkit_2.1.3 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
-2. Octopus-toolkit_mac_2.1.3 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
+1. Octopus-toolkit_2.2.0 : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`) (64bit)
+2. Octopus-toolkit_mac_2.2.0 : (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`)
 
 
 1-2.Installation Movie Clip

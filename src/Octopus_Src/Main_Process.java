@@ -66,12 +66,12 @@ public class Main_Process {
 						// check remain Hdd capacity (Up to 2Gb)
 						if (cf.checkHDDCapacity() == true) {
 							
-							pre.use_Aspera();
+							pre.use_Prefetch();
 							if (cf.checkStepPass()) {
-								System.out.println("Step (Aspera) : Err006-1");
+								System.out.println("Step (Prefetch) : Err006-1");
 								ds.getMainUI().setSimpleLbl("Err006-1");
 								ds.writeLogRun("Error : Unable to access the NCBI ftp server.<a href=\"http://octopus-toolkit2.readthedocs.io/en/latest/error.html#err-006-1\">[Err006-1]</a> \n\n", true);
-								ds.getMainUI().setProgress(100, ds.getGSMInfo()[0] + " : Error Aspera...");
+								ds.getMainUI().setProgress(100, ds.getGSMInfo()[0] + " : Error Prefetch...");
 								ds.writeLogInfo("[Unable to access the NCBI ftp server. (Err006-1)]");
 								ds.setAnalyzeFlag();
 								String tmp[] = {ds.getGSM().get(i),"Err006-1"};

@@ -81,7 +81,7 @@ public class UI_Octopus extends JFrame implements WindowListener{
 		getContentPane().setLayout(null);
 		
 		if(ds.getOS().equals("Ubuntu")){
-			this.setSize(390,530);	
+			this.setSize(390,550);	
 		}else{
 			this.setSize(390,565);
 		}

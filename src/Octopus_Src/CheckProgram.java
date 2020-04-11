@@ -77,7 +77,7 @@ public class CheckProgram {
 		String[] tool_list = { "makeTagDirectory", "makeUCSCfile", "findPeaks",
 				"pos2bed.pl", "annotatePeaks.pl", "analyzeRepeats.pl", "removeOutOfBoundsReads.pl",
 				"fastq-dump", "fastqc", "twoBitToFa", "bedGraphToBigWig", "makeGraph.R","Extract_Chr_Sequence.py",
-				"igv.jar", "samtools", "bwtool","trimmomatic.jar","hisat2-build-l","hisat2-align-l","STAR", "ascp" };
+				"igv.sh", "samtools", "bwtool","trimmomatic.jar","hisat2-build-l","hisat2-align-l","STAR" };
 
 		ArrayList<String> tool_check = new ArrayList<String>();
 		int cnt = 1;
@@ -106,9 +106,7 @@ public class CheckProgram {
 					tool_check.add("Hisat2");
 				} else if (i == 19){
 					tool_check.add("STAR");
-				} else if (i == 20){
-					tool_check.add("Aspera");
-				}
+				} 
 			}
 		}
 
@@ -205,13 +203,6 @@ public class CheckProgram {
 			cf.shellCmd(star_cmd);
 			cf.shellCmd(star_cmd2);
 			new File(path+"Tools/STAR.zip").delete();
-		}
-		else if (tool.equals("Aspera")) {
-			String aspera_cmd[] = {"wget","143.248.14.23/Octopus-Sub/aspera.zip","-O",path + "/Tools/aspera.zip","-o",path	+ "/Script/Downlog"};
-			String aspera_cmd2[] = {"unzip","-o",path + "/Tools/aspera.zip","-d",path + "/Tools/"};
-			cf.shellCmd(aspera_cmd);
-			cf.shellCmd(aspera_cmd2);
-			new File(path+"Tools/aspera.zip").delete();
 		} else if (tool.equals("Fastqc")) {
 			String fastqc_cmd[] = {"wget","143.248.14.23/Octopus-Sub/FastQC.zip","-O",path + "/Tools/FastQC.zip","-o",path	+ "/Script/Downlog"};
 			String fastqc_cmd2[] = {"unzip","-o",path + "/Tools/FastQC.zip","-d",path + "/Tools/"};

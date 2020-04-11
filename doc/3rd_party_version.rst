@@ -2,7 +2,7 @@
 11. 3rd Party Tools
 ===================
 
-11-1.Version 2.1.3
+11-1.Version 2.2.0
 ^^^^^^^^^^^^^^^^^^
 
 Octopus-toolkit utilizes the following 3rd party tools during the process.
@@ -18,7 +18,7 @@ Octopus-toolkit utilizes the following 3rd party tools during the process.
      - v3.7.2.141527
      - Download SRA files from NCBI
    * - ``SRAToolkit``
-     - v2.8.2
+     - v2.9.2
      - Convert SRA files to Fastq files
    * - ``FastQC``
      - v0.11.5
@@ -42,7 +42,7 @@ Octopus-toolkit utilizes the following 3rd party tools during the process.
      - v3.1
      - Draw the heatmap and line plot
    * - ``IGV``
-     - v2.3.69
+     - v2.7.2
      - Explore the genome with processed data (bigWig files)
    * - ``Samtools``
      - v1.5

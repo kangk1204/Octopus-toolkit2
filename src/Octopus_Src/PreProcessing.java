@@ -20,9 +20,9 @@ public class PreProcessing {
 		this.cf = cf;
 	}
 	
-	public void use_Aspera(){
-		ds.getMainUI().setProgress(10, "Aspera : "+ ds.getGSMInfo()[0]);
-		ds.writeLogCmd("# Download SRA format file using the Aspera\n");
+	public void use_Prefetch(){
+		ds.getMainUI().setProgress(10, "Prefetch : "+ ds.getGSMInfo()[0]);
+		ds.writeLogCmd("# Download SRA format file using the Prefetch\n");
 		
 		ds.getMainUI().setRunningPrograss(true);
 		
@@ -34,34 +34,28 @@ public class PreProcessing {
 		
 		cf.makeDirectory(fold);
 
-		String resultAspera = "";
-		String tmpUrl[] = ds.getGSMInfo()[4].split(" ");
+		String resultPrefetch = "";
+		String tmpSrr[] = ds.getGSMInfo()[4].split(" ");
 
-		ds.writeLogRun("Preprocessing : Aspera (Start)\n", true);
+		ds.writeLogRun("Preprocessing : Prefetch (Start)\n", true);
 
-		if (tmpUrl.length > 1) {
+		if (tmpSrr.length > 1) {
 			// Multi
-			System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Aspera -> ");
-			for (int i = 0; i < tmpUrl.length; i++) {
+			System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Prefetch -> ");
+			for (int i = 0; i < tmpSrr.length; i++) {
 				String writeCmd = "";
 				if (ds.getFullOption()) {
-					String aspera_Cmd[] = makeAsperaCmd(tmpUrl[i]);
-					for (int j = 0; j < aspera_Cmd.length; j++) {
-						writeCmd = writeCmd + aspera_Cmd[j] + " ";
+					String prefetch_Cmd[] = makePrefetchCmd(tmpSrr[i]);
+					for (int j = 0; j < prefetch_Cmd.length; j++) {
+						writeCmd = writeCmd + prefetch_Cmd[j] + " ";
 					}
-					resultAspera = cf.shellCmd(aspera_Cmd);
+					resultPrefetch= cf.shellCmd(prefetch_Cmd);
 				} else {
-					String aspera_Cmd[] = {
-							ds.getPath() + "/Tools/aspera/connect/bin/ascp", "-T",
-							"-l", "1000m", "-i",
-							ds.getPath() + "/Tools/aspera/connect/etc/asperaweb_id_dsa.openssh",
-							"anonftp@ftp.ncbi.nlm.nih.gov:" + tmpUrl[i].replace("ftp://ftp-trace.ncbi.nlm.nih.gov", "")
-									+ "/",
-							ds.getAnalysisPath() + "/00_Download/" };
-					writeCmd = ds.getPath() + "/Tools/aspera/connect/bin/ascp -T -l 1000m -i "+ds.getPath() + "/Tools/aspera/connect/etc/asperaweb_id_dsa.openssh anonftp@ftp.ncbi.nlm.nih.gov:"
-							+ tmpUrl[i].replace("ftp://ftp-trace.ncbi.nlm.nih.gov", "") + " " + ds.getAnalysisPath()
-							+ "00_Download/";
-					resultAspera = cf.shellCmd(aspera_Cmd);
+					String prefetch_Cmd[] = {
+							ds.getPath() + "/Tools/sratoolkit/bin/prefetch", tmpSrr[i], "-X", "1000G",
+							"--output-directory", ds.getAnalysisPath() + "/00_Download/"};
+					writeCmd = ds.getPath() + "/Tools/sratoolkit/bin/prefetch "+tmpSrr[i]+" -X 1000G --output-directory "+ds.getAnalysisPath() + "/00_Download/";
+					resultPrefetch = cf.shellCmd(prefetch_Cmd);
 				}
 
 				// Log
@@ -70,18 +64,19 @@ public class PreProcessing {
 
 		} else {
 			// Single
-			System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Aspera -> ");
+			System.out.print("Public("+ds.getGSM().get(ds.getMainProcess().cnt-1)+") : Prefetch -> ");
 			String writeCmd = "";
 			if (ds.getFullOption()) {
-				String aspera_Cmd[] = makeAsperaCmd(ds.getGSMInfo()[4]);
-				for (int j = 0; j < aspera_Cmd.length; j++) {
-					writeCmd = writeCmd + aspera_Cmd[j] + " ";
+				String prefetch_Cmd[] = makePrefetchCmd(ds.getGSMInfo()[4]);
+				for (int j = 0; j < prefetch_Cmd.length; j++) {
+					writeCmd = writeCmd + prefetch_Cmd[j] + " ";
 				}
-				resultAspera = cf.shellCmd(aspera_Cmd);
+				resultPrefetch = cf.shellCmd(prefetch_Cmd);
 			}else{
-				String aspera_Cmd[] = {ds.getPath() + "/Tools/aspera/connect/bin/ascp","-T","-l","1000m","-i",ds.getPath() + "/Tools/aspera/connect/etc/asperaweb_id_dsa.openssh","anonftp@ftp.ncbi.nlm.nih.gov:"+ds.getGSMInfo()[4].replace("ftp://ftp-trace.ncbi.nlm.nih.gov", "")+"/",ds.getAnalysisPath()+"/00_Download/"};	
-				writeCmd = ds.getPath() + "/Tools/aspera/connect/bin/ascp -T -l 1000m -i "+ds.getPath() + "/Tools/aspera/connect/etc/asperaweb_id_dsa.openssh anonftp@ftp.ncbi.nlm.nih.gov:"+ds.getGSMInfo()[4].replace("ftp://ftp-trace.ncbi.nlm.nih.gov", "")+" "+ds.getAnalysisPath()+"00_Download/";
-				resultAspera = cf.shellCmd(aspera_Cmd);
+				String prefetch_Cmd[] = {ds.getPath() + "/Tools/sratoolkit/bin/prefetch", ds.getGSMInfo()[4], "-X", "1000G",
+						"--output-directory", ds.getAnalysisPath() + "/00_Download/"};	
+				writeCmd = ds.getPath() + "/Tools/sratoolkit/bin/prefetch "+ds.getGSMInfo()[4]+" -X 1000G --output-directory "+ds.getAnalysisPath() + "/00_Download/";
+				resultPrefetch = cf.shellCmd(prefetch_Cmd);
 
 			}
 
@@ -89,39 +84,29 @@ public class PreProcessing {
 			ds.writeLogCmd(writeCmd + "\n\n");
 		}
 	
-		if (resultAspera.substring(1, 8).equals("Session")) {
+		if (resultPrefetch.substring(1, 8).equals("Session")) {
 			// Error
 			ds.getErrLog().setStepErr(0, true);
 			System.out.println("\nError : Can't access ncbi ftp server. (Err006-1)");
 		}
 
-		ds.writeLogRun("Preprocessing : Aspera (End)\n", true);
+		ds.writeLogRun("Preprocessing : Prefetch (End)\n", true);
 	
 	}
 	
-	public String[] makeAsperaCmd(String url){
-		String fullOption = ds.getToolOPtion(0); //aspera option;
+	public String[] makePrefetchCmd(String srr){
+		String fullOption = ds.getToolOPtion(0); //prefetch option;
 		String tmp[] = fullOption.split(" ");
 		String testCmd[];
 		
 		int start = 0;
-		if(tmp[0].equals("")){
-			testCmd = new String[5+tmp.length];
-			start = 1;
-		}else{
-			testCmd = new String[6+tmp.length];
-		}
-		int idx = 2;
-				
-		testCmd[0] = ds.getPath() + "/Tools/aspera/connect/bin/ascp";
-		testCmd[1] = "-T";
-		for(int i = start; i < tmp.length ; i++){
-			testCmd[idx++] = tmp[i];
-		}
-		testCmd[idx++] = "-i";
-		testCmd[idx++] = ds.getPath() + "/Tools/aspera/connect/etc/asperaweb_id_dsa.openssh";
-		testCmd[idx++] = "anonftp@ftp.ncbi.nlm.nih.gov:"+url.replace("ftp://ftp-trace.ncbi.nlm.nih.gov", "")+"/";
-		testCmd[idx++] = ds.getAnalysisPath()+"/00_Download/";
+		testCmd = new String[6];
+		testCmd[0] = ds.getPath() + "/Tools/sratoolkit/bin/prefetch";
+		testCmd[1] = srr;
+		testCmd[2] = "-X";
+		testCmd[3] = "1000G";
+		testCmd[4] = "--output-directory";
+		testCmd[5] = ds.getAnalysisPath()+"/00_Download/";
 		
 		return testCmd;
 	}

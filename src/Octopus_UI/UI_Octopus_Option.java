@@ -40,9 +40,9 @@ public class UI_Octopus_Option extends JFrame {
 		getContentPane().setLayout(null);
 		
 		if(ds.getOS().equals("Ubuntu")){
-			this.setSize(435, 610);
+			this.setSize(435, 630);
 		}else if(ds.getOS().equals("Mint")){
-			this.setSize(435, 635);
+			this.setSize(435, 635);	
 		}else{
 			this.setSize(435, 645);
 		}

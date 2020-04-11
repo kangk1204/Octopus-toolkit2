@@ -27,7 +27,7 @@ public class Main {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 */                
-                String version = "2.1.3";
+                String version = "2.2.0";
         		System.out.println("[Octopus-toolkit."+version+"] ");
         		newVersion = version;
         				

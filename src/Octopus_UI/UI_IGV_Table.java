@@ -401,10 +401,10 @@ public class UI_IGV_Table extends JFrame{
 			fw.close();
 			
 			String item = genome_cbx.getSelectedItem().toString();
-			String cmd_igv[] = {"java","-jar",ds.getPath()+"Tools/IGV/igv.jar","-g",item,"-b",ds.getPath() + "Script/igvBatch"};
+			String cmd_igv[] = {ds.getPath()+"Tools/IGV/igv.sh","-g",item,"-b",ds.getPath() + "Script/igvBatch"};
 			
 			//Log
-			ds.writeLogCmd("java -jar "+ds.getPath()+"Tools/IGV/igv.jar -g "+item+" -b "+ds.getPath()+"Script/igvBatch\n\n");
+			ds.writeLogCmd(ds.getPath()+"Tools/IGV/igv.sh -g "+item+" -b "+ds.getPath()+"Script/igvBatch\n\n");
 
 			cf.shellCmd(cmd_igv);
 			

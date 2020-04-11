@@ -52,7 +52,7 @@ public class UI_Tool_Option extends JFrame{
 		panel_peakcall = new Panel_PeakCalling(ds);
 		
 		if(ds.getOS().equals("Ubuntu")){
-			this.setSize(668,700);	
+			this.setSize(668,720);	
 		}else if(ds.getOS().equals("Mint")){
 			this.setSize(668, 725);
 		}else{
@@ -167,9 +167,9 @@ public class UI_Tool_Option extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 					boolean changeFlag = false;
 					if(panel_pre.checkChangeValue()){
-						String asperaOption = panel_pre.getAsperaOption();
+//						String asperaOption = panel_pre.getAsperaOption();
 						String fastqdumpOption = panel_pre.getFastqDump();
-						ds.setToolOption(0, asperaOption);
+//						ds.setToolOption(0, asperaOption);
 						ds.setToolOption(1, fastqdumpOption);
 						changeFlag = true;
 		
@@ -314,7 +314,7 @@ public class UI_Tool_Option extends JFrame{
 	}
 	
 	public void saveFullOption(){
-		ds.setToolOption(0, panel_pre.getAsperaOption());
+//		ds.setToolOption(0, panel_pre.getAsperaOption());
 		ds.setToolOption(1, panel_pre.getFastqDump());
 		ds.setToolOption(2, panel_qc.getFastQCOption());
 		ds.setToolOption(3, panel_qc.getTrimmomatic());

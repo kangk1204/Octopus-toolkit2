@@ -17,17 +17,19 @@ Octopus-toolkit is a stand-alone application for retrieving and processing large
 Download
 --------
 
-``Latest Version (2.1.3)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 02/20/2019
+``Latest Version (2.2.0)`` : (:download:`Octopus-toolkit<_templates/Octopus-toolkit.zip>`),  release 04/11/2020
 
-  - Version(``2.1.3``) is a minor release with the following changes.
-  - Optimized the analysis package for each operating system.
-  - Adjusted threshold of the read min length in Trimming process.
+  - Version(``2.2.0``) is a major release with the following changes.
+  - Upgraded versions of some tools
+  - Changed the tool used to download raw data from NCBI
+  - Fixed the issue of Err006-1 what raw data was not downloaded.
   
-``Latest Mac Version (2.1.3)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 02/20/2019
+``Latest Mac Version (2.2.0)``: (:download:`Octopus-toolkit_mac<_templates/Octopus-toolkit_mac.zip>`),  release 04/11/2020
 
-  - Version(``2.1.3``) is a minor release with the following changes.
-  - Optimized the analysis package for each operating system.
-  - Adjusted threshold of the read min length in Trimming process.
+  - Version(``2.2.0``) is a major release with the following changes.
+  - Upgraded versions of some tools
+  - Changed the tool used to download raw data from NCBI
+  - Fixed the issue of Err006-1 what raw data was not downloaded.
 
 Hardware/Software Requirement
 -----------------------------
@@ -58,6 +60,20 @@ Program development
 
 Previous version
 -------------------
+
+``Latest Version (2.1.3)``, release 02/20/2019
+
+  - Version(``2.1.3``) is a minor release with the following changes.
+  - Optimized the analysis package for each operating system.
+  - Adjusted threshold of the read min length in Trimming process.
+  
+``Latest Mac Version (2.1.3)``, release 02/20/2019
+
+  - Version(``2.1.3``) is a minor release with the following changes.
+  - Optimized the analysis package for each operating system.
+  - Adjusted threshold of the read min length in Trimming process.
+
+---------------------------------------------------------------------------------------
 
 ``Version (2.1.2)``,  release 09/05/2018
 
